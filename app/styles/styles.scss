@@ -12,6 +12,12 @@ body {
   overflow-x: hidden;
 }
 
+.img-responsive {
+  max-width:100% !important;
+  height:auto;
+  display:block;
+}
+
 .centered {
   text-align: center;
 }

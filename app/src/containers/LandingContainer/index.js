@@ -1,38 +1,63 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LandingActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import {
-  Carousel,
-  Box,
+  Headline,
+  Spinning,
 } from 'grommet';
+import {
+  HeroCarousel,
+} from 'components';
 
 class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
+  constructor() {
+    super();
+    this.handleLoading = this.handleLoading.bind(this);
+  }
+  componentDidMount() {
+    this.handleLoading();
+  }
+  handleLoading() {
+    const {
+      actions,
+    } = this.props;
+    actions.loadImagesAsync();
+  }
   render() {
+    const {
+      images,
+      isLoading,
+    } = this.props;
     return (
       <div className={styles.landing}>
-        <Carousel>
-          <Box pad="large" colorIndex="neutral-3">
-            <Box pad="medium" colorIndex="neutral-2">
-              Content inside of a Box element.
-            </Box>
-          </Box>
-          <Box pad="large" colorIndex="neutral-3">
-            <Box pad="medium" colorIndex="neutral-2">
-              Content inside of a Box element.
-            </Box>
-          </Box>
-        </Carousel>
+        {!isLoading ?
+          <HeroCarousel images={images} />
+        :
+          <Spinning />
+        }
+        <Headline size="large" align="center" margin="large">
+          Restaurant Reviewer
+        </Headline>
       </div>
     );
   }
 }
 
+Landing.propTypes = {
+  images: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  errors: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+};
+
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  // myProp: state.myProp,
+  images: state.landing.images,
+  isLoading: state.landing.isLoading,
+  errors: state.landing.errors,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
