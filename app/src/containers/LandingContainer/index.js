@@ -5,22 +5,26 @@ import * as LandingActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import {
-  Hero,
+  Carousel,
+  Box,
 } from 'grommet';
 
 class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
-  constructor() {
-    super();
-    
-  }
   render() {
     return (
       <div className={styles.landing}>
-        <Hero
-          backgroundImage="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/main.jpg?raw=true"
-          flush
-          size={'small'}
-        />
+        <Carousel>
+          <Box pad="large" colorIndex="neutral-3">
+            <Box pad="medium" colorIndex="neutral-2">
+              Content inside of a Box element.
+            </Box>
+          </Box>
+          <Box pad="large" colorIndex="neutral-3">
+            <Box pad="medium" colorIndex="neutral-2">
+              Content inside of a Box element.
+            </Box>
+          </Box>
+        </Carousel>
       </div>
     );
   }
