@@ -5,7 +5,7 @@ import NpmInstallPlugin from 'npm-install-webpack-plugin';
 const ROOT_PATH = path.resolve(__dirname);
 
 const env = process.env.NODE_ENV || 'development';
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 1337;
 const HOST = '0.0.0.0'; // Set to localhost if need be.
 const URL = `http://${HOST}:${PORT}`
 
@@ -73,7 +73,8 @@ module.exports = {
     alias: {
       components: path.resolve(ROOT_PATH, 'app/src/components'),
       containers: path.resolve(ROOT_PATH, 'app/src/containers'),
-      pages: path.resolve(ROOT_PATH, 'app/src/pages')
+      pages: path.resolve(ROOT_PATH, 'app/src/pages'),
+      styles: path.resolve(ROOT_PATH, 'app/styles'),
     },
   },
   output: {
@@ -96,7 +97,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new NpmInstallPlugin(),
     new HtmlwebpackPlugin({
-      title: 'Scalable React Boilerplate',
+      title: 'Restaurant Reviewer',
       template: 'index.html'
     })
   ]

@@ -1,15 +1,5 @@
 // Delete if you don't want to use foundation and don't need any starter styles.
-@import "../../node_modules/foundation-sites/scss/foundation";
-@import "./settings.scss";
-
-// Global Styles defined and foundation classes
-// Just delete this if you don't want to use it!
-// NOTE: Stylesheets will be loaded by Sass loader, unless the name includes a .module
-// postfix, i.e.: MyModule.module.scss.  This is to allow you to use the best of both worlds
-// i.e. css / sass modules and global styles with imports
-@include foundation-flex-grid;
-@include foundation-flex-classes;
-@include foundation-everything;
+@import "./grommet.min.scss";
 
 $primary-color: rgba(0, 216, 255, .9);
 $off-white: #E9EAEC;
