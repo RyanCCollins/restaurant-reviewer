@@ -6,11 +6,14 @@ import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import {
   Headline,
+  Bricks,
+  Brick,
 } from 'grommet';
 import {
   HeroCarousel,
   LoadingIndicator,
 } from 'components';
+
 
 class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor() {
@@ -28,14 +31,14 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
   }
   render() {
     const {
-      images,
+      restaurants,
       isLoading,
     } = this.props;
     return (
       <div className={styles.landing}>
         {!isLoading ?
           <div>
-            <HeroCarousel images={images} />
+            <HeroCarousel restaurants={restaurants} />
             <Headline size="large" align="center" margin="large">
               Restaurant Reviewer
             </Headline>
@@ -49,7 +52,7 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
 }
 
 Landing.propTypes = {
-  images: PropTypes.array.isRequired,
+  restaurants: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
@@ -57,7 +60,7 @@ Landing.propTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  images: state.landing.images,
+  restaurants: state.landing.restaurants,
   isLoading: state.landing.isLoading,
   errors: state.landing.errors,
 });

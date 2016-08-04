@@ -10,7 +10,7 @@ const initialState = {
   landing: {
     isLoading: false,
     errors: [],
-    images: [],
+    restaurants: [],
   },
 };
 

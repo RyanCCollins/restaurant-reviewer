@@ -2,3 +2,48 @@
   max-height: 50vh;
   width: 100%;
 }
+
+.carousel {
+  max-height: 50vh;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 130px;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+  color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 10px;
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
+}
+
+.heading {
+  flex: 1;
+}
+
+.itemType {
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.rightInfo {
+
+}
+
+.rowOne{
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.itemCaption {
+  font-size: 1.3rem;
+}
