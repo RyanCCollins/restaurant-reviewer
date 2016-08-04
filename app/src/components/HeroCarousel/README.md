@@ -1,17 +1,17 @@
 ## HeroCarousel Component
-A component that ...
+A component that takes an array of images and makes a half-height image caraousel hero.
 
 ### Example
 
 ```js
-<HeroCarousel />
+<HeroCarousel images={images} />
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
+| **images**    | Array   |             | Arrays containing an object with a src and a caption attribute.
 
 
 ### Other Information

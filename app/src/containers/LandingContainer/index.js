@@ -6,10 +6,10 @@ import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import {
   Headline,
-  Spinning,
 } from 'grommet';
 import {
   HeroCarousel,
+  LoadingIndicator,
 } from 'components';
 
 class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -34,13 +34,15 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
     return (
       <div className={styles.landing}>
         {!isLoading ?
-          <HeroCarousel images={images} />
+          <div>
+            <HeroCarousel images={images} />
+            <Headline size="large" align="center" margin="large">
+              Restaurant Reviewer
+            </Headline>
+          </div>
         :
-          <Spinning />
+          <LoadingIndicator isLoading={isLoading} />
         }
-        <Headline size="large" align="center" margin="large">
-          Restaurant Reviewer
-        </Headline>
       </div>
     );
   }

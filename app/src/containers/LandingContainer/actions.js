@@ -20,13 +20,10 @@ const loadImagesFailure = (error) => ({
   error,
 });
 
-
 const fakeDelay = () => {
   return new Promise((resolve, _) => {
     setTimeout(() => {
-      if (true) {
-        resolve();
-      }
+      resolve('hello');
     }, 3000);
   });
 };
@@ -35,5 +32,8 @@ export const loadImagesAsync = () =>
   (dispatch) => {
     dispatch(loadImagesInitiation());
     fakeDelay()
-      .then(() => loadImagesSuccess());
+      .then(() => dispatch(
+        loadImagesSuccess()
+      )
+    );
   };

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 ![Restaurant Reviewer](https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/main.jpg?raw=true)
 
 
@@ -13,18 +11,17 @@ To install the dependencies, run
 ```
 npm run setup
 ```
-Then run 
+Then run
 ```
 npm run start
 ```
 
-The project uses the [Scalable React Boilerplate Project](https://github.com/RyanCCollins/scalable-react-boilerplate), so please reference it for more useful scripts. 
+The project uses the [Scalable React Boilerplate Project](https://github.com/RyanCCollins/scalable-react-boilerplate), so please reference it for more useful scripts.
 
 ## Built With
-React, Redux 
+React, Redux
 ## Authors
 * **Ryan Collins**
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
->>>>>>> 1a0173ff6c741072571ad4a0a6329d675c8c2075
