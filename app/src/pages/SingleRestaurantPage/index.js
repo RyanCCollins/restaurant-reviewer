@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import {
   SingleRestaurantContainer,
 } from 'containers';
 
-
-// Pages map directly to Routes, i.e. one page equals on Route
-
-const SingleRestaurantPage = () => (
+const SingleRestaurantPage = (props) => (
   <div className={styles.container}>
-    <SingleRestaurantContainer />
+    <SingleRestaurantContainer {...props} />
   </div>
 );
+
+SingleRestaurantPage.propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 export default cssModules(SingleRestaurantPage, styles);

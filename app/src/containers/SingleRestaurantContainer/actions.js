@@ -5,6 +5,7 @@ import {
   ADD_REVIEW_INITIATION,
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_FAILURE,
+  REVIEWS_ERRORS,
 } from './constants';
 
 const baseUrl = `http://0.0.0.0:8080/api/v1/`;
@@ -37,6 +38,11 @@ const loadReviewsSuccess = (reviews) => ({
 const loadReviewsFailure = (error) => ({
   type: REVIEWS_LOAD_FAILURE,
   error,
+});
+
+export const reviewsErrors = (errors) => ({
+  type: REVIEWS_ERRORS,
+  errors,
 });
 
 // loadReviews :: Integer -> Func -> Action -> Action Success : Failure
@@ -81,7 +87,7 @@ const addReviewData = (body) => ({
   body: JSON.stringify(body),
 });
 
-export const addReview = (restaurantId, review) =>
+export const submitReview = (restaurantId, review) =>
   (dispatch) => {
     dispatch(
       addReviewInitiation()

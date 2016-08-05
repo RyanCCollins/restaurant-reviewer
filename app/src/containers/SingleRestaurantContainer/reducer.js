@@ -5,6 +5,7 @@ import {
   ADD_REVIEW_INITIATION,
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_FAILURE,
+  REVIEWS_ERRORS,
 } from './constants';
 
 const initialState = {
@@ -48,6 +49,10 @@ const singleRestaurant =
         return Object.assign({}, state, {
           isLoading: false,
           errors: [...action.error],
+        });
+      case REVIEWS_ERRORS:
+        return Object.assign({}, state, {
+          errors: action.errors,
         });
       default:
         return state;
