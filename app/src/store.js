@@ -6,11 +6,17 @@ import createLogger from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers';
 
-const initialState = {
-  landing: {
+export const initialState = {
+  featured: {
     isLoading: false,
     errors: [],
     restaurants: [],
+  },
+  restaurants: {
+    isLoading: false,
+    items: [],
+    selectedFilterIndex: 0,
+    errors: [],
   },
 };
 

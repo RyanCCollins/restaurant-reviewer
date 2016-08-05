@@ -48,7 +48,7 @@ const seedData = [
   },
 ];
 
-const landing = (state = initialState, action) => {
+const featured = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_IMAGES_INITIATION:
       return Object.assign({}, state, {
@@ -69,4 +69,4 @@ const landing = (state = initialState, action) => {
   }
 };
 
-export default landing;
+export default featured;

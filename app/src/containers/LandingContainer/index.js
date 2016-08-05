@@ -6,8 +6,7 @@ import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import {
   Headline,
-  Bricks,
-  Brick,
+  Section,
 } from 'grommet';
 import {
   HeroCarousel,
@@ -37,12 +36,12 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
     return (
       <div className={styles.landing}>
         {!isLoading ?
-          <div>
+          <Section>
             <HeroCarousel restaurants={restaurants} />
             <Headline size="large" align="center" margin="large">
               Restaurant Reviewer
             </Headline>
-          </div>
+          </Section>
         :
           <LoadingIndicator isLoading={isLoading} />
         }
@@ -60,9 +59,9 @@ Landing.propTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  restaurants: state.landing.restaurants,
-  isLoading: state.landing.isLoading,
-  errors: state.landing.errors,
+  restaurants: state.featured.restaurants,
+  isLoading: state.featured.isLoading,
+  errors: state.featured.errors,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

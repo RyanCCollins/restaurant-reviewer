@@ -3,7 +3,10 @@ import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 // Example to import a component using ES6 destructuring.
 /* eslint-disable*/ // Containers is an alias, so no file is found
-import { LandingContainer } from 'containers';
+import {
+  LandingContainer,
+  RestaurantsGridContainer,
+} from 'containers';
 
 /* eslint-enable */
 
@@ -12,6 +15,7 @@ import { LandingContainer } from 'containers';
 const LandingPage = () => (
   <div className={styles.container}>
     <LandingContainer />
+    <RestaurantsGridContainer />
   </div>
 );
 
