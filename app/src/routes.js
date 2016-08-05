@@ -12,7 +12,9 @@ const routes = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Pages.LandingPage} />
-        <Route path="*" component={Pages.NotFoundPage} />
+        <Route path="/signin" component={Pages.SigninPage} />
+          <Route path="/signup" component={Pages.SignupPage} />
+          <Route path="*" component={Pages.NotFoundPage} />
       </Route>
     </Router>
   </Provider>
