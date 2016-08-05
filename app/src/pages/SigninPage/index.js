@@ -1,13 +1,13 @@
 import React from 'react';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
+import {
+  SigninContainer,
+} from 'containers';
 
-
-// Pages map directly to Routes, i.e. one page equals on Route
-
-const SigninPage = (props) => (
+const SigninPage = () => (
   <div className={styles.container}>
-    Hello from SigninPage !
+    <SigninContainer />
   </div>
 );
 

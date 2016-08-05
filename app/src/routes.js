@@ -13,8 +13,9 @@ const routes = (
       <Route path="/" component={App}>
         <IndexRoute component={Pages.LandingPage} />
         <Route path="/signin" component={Pages.SigninPage} />
-          <Route path="/signup" component={Pages.SignupPage} />
-          <Route path="*" component={Pages.NotFoundPage} />
+        <Route path="/signup" component={Pages.SignupPage} />
+        <Route path="/restaurant/:id" component={Pages.SingleRestaurantPage} />
+        <Route path="*" component={Pages.NotFoundPage} />
       </Route>
     </Router>
   </Provider>

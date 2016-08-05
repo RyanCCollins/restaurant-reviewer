@@ -3,7 +3,7 @@ import {
   RESTAURANTS_LOADING_SUCCESS,
   RESTAURANTS_LOADING_FAILURE,
 } from './constants';
-const baseUrl = `http://0.0.0.0:8000/api/v1/`;
+const baseUrl = `http://0.0.0.0:8080/api/v1/`;
 const restaurantUrl = `${baseUrl}restaurants`;
 const headers = new Headers({
   'Content-Type': 'application/json',

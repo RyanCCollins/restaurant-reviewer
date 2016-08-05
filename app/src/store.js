@@ -18,6 +18,11 @@ export const initialState = {
     selectedFilterIndex: 0,
     errors: [],
   },
+  singleRestaurant: {
+    reviews: [],
+    errors: [],
+    isLoading: false,
+  },
 };
 
 /* Commonly used middlewares and enhancers */
