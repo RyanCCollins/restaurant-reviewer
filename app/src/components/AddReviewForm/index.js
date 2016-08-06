@@ -8,18 +8,16 @@ import Footer from 'grommet/components/footer';
 import Button from 'grommet/components/button';
 
 const AddReviewForm = ({
-  onNameChange,
-  onReviewTextChange,
-  onRatingChange,
   onSubmit,
-  onStarChange,
-  fields,
+  nameInput,
+  ratingInput,
+  textInput,
 }) => (
   <div className={styles.addReviewForm}>
-    <Form>
+    <Form onSubmit={onSubmit}>
       <FormFields>
         <FormField label="Name" htmlFor="nameInput" help="What is your name">
-          <input id="nameInput" value={fields.value} name="name" onChange={onNameChange} />
+          <input {...nameInput} id="nameInput" name="name" />
         </FormField>
         <FormField
           label="Review"
@@ -27,24 +25,22 @@ const AddReviewForm = ({
           help="Add some text for your review"
         >
           <input
+            {...textInput}
             id="textInput"
             name="text"
             type="text"
             rows="5"
             cols="40"
-            onChange={onReviewTextChange}
-            value={fields.text}
           />
         </FormField>
-        <FormField label="Review" htmlFor="starInput" help="How many stars (1-5)">
+        <FormField label="Review" htmlFor="ratingInput" help="How many stars (1-5)">
           <input
+            {...ratingInput}
             min="1"
             max="5"
             type="number"
-            id="starInput"
-            name="reviewText"
-            onChange={onStarChange}
-            value={fields.star}
+            id="ratingInput"
+            name="rating"
           />
         </FormField>
       </FormFields>
@@ -61,7 +57,10 @@ const AddReviewForm = ({
 );
 
 AddReviewForm.propTypes = {
-
+  nameInput: PropTypes.object.isRequired,
+  textInput: PropTypes.object.isRequired,
+  ratingInput: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default cssModules(AddReviewForm, styles);

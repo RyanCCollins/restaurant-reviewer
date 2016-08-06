@@ -12,9 +12,6 @@ const ReviewGrid = ({
 }) => (
   <Section>
     <div className={styles.reviewGrid}>
-      <Heading align="center" tag="h3">
-        Reviews
-      </Heading>
       <Tiles
         flush={false}
         justify="center"
@@ -22,6 +19,9 @@ const ReviewGrid = ({
         full="horizontal"
         a11yTitle="Restaurant Reviews"
       >
+        <Heading align="center" tag="h2">
+          Reviews
+        </Heading>
         {reviews.map((item, i) =>
           <Tile pad="large" responsive align="start" colorIndex="light-1" size="large">
             <RestaurantReview key={i} review={item} />
