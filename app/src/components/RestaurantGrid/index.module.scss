@@ -4,7 +4,11 @@
 }
 
 .cardInfo {
-
+  margin: 0;
+  padding: 0 20px;
+  line-height: 10px;
+  line-spacing: 10px;
+  overflow: hidden;
 }
 
 .imageWrapper {
@@ -24,6 +28,7 @@
   opacity: 1 !important;
   text-align: center;
   z-index: 1;
+  color: #865CD6;
 }
 
 .panel {
@@ -44,14 +49,18 @@
   }
 }
 
-
 .cardImage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.2;
   transition: opacity 0.5s;
   cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+    z-index: 2;
+    transform: scale(1.3);
+  }
 }

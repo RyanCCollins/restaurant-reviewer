@@ -17,6 +17,7 @@ export const initialState = {
     items: [],
     selectedFilterIndex: 0,
     errors: [],
+    categories: [],
   },
   singleRestaurant: {
     reviews: [],

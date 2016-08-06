@@ -6,7 +6,6 @@ import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Menu from 'grommet/components/Menu';
 import Anchor from 'grommet/components/Anchor';
-import Search from 'grommet/components/Search';
 
 const Navbar = () => (
   <div className={styles.navbar}>
@@ -22,7 +21,6 @@ const Navbar = () => (
         <Anchor href="/">
           Home
         </Anchor>
-        <Search dropAlign={{ right: 'right' }} />
       </Menu>
     </Header>
   </div>

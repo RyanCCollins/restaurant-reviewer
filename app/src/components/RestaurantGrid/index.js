@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import StarRatingComponent from 'react-star-rating-component';
+import Paragraph from 'grommet/components/Paragraph';
+import Heading from 'grommet/components/Heading';
 
 const RestaurantGrid = ({
   restaurants,
@@ -12,7 +14,7 @@ const RestaurantGrid = ({
       <div className={styles.panel}>
         <div className={styles.imageWrapper}>
           <div className={styles.contents}>
-            <h3 className={styles.title}>{rest.name}</h3>
+            <Heading uppercase tag="h3" className={styles.title}>{rest.name}</Heading>
             <StarRatingComponent
               name=""
               starColor={"#FF7D28"}
@@ -25,9 +27,10 @@ const RestaurantGrid = ({
           </Link>
         </div>
         <div className={styles.cardInfo}>
-          <p>{rest.address}, {rest.city}, {rest.state} {rest.zip} {rest.country}</p>
-          <p>Ph: {rest.phone} Web: {rest.website}</p>
-          <p>{rest.type.name}</p>
+          <Paragraph>{rest.city}, {rest.state} {rest.country}</Paragraph>
+          <Paragraph>Ph: {rest.phone}</Paragraph>
+          <Paragraph>Web: {rest.website}</Paragraph>
+          <Paragraph>{rest.type.name}</Paragraph>
         </div>
       </div>
     )}

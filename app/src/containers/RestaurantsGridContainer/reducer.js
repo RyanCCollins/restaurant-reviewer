@@ -2,6 +2,7 @@ import {
   RESTAURANTS_LOADING_INITIATION,
   RESTAURANTS_LOADING_SUCCESS,
   RESTAURANTS_LOADING_FAILURE,
+  RESTAURANT_CATEGORIES,
 } from './constants';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   errors: [],
   isLoading: false,
   selectedFilterIndex: 0,
+  categories: [],
 };
 
 const restaurants = (state = initialState, action) => {
@@ -21,6 +23,10 @@ const restaurants = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: false,
         items: action.restaurants,
+      });
+    case RESTAURANT_CATEGORIES:
+      return Object.assign({}, state, {
+        categories: action.categories,
       });
     case RESTAURANTS_LOADING_FAILURE:
       return Object.assign({}, state, {

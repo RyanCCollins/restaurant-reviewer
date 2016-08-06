@@ -14,13 +14,21 @@ import {
   RestaurantGrid,
   LoadingIndicator,
 } from 'components';
+import Search from 'grommet/components/Search';
 
-class RestaurantsGrid extends Component { // eslint-disable-line react/prefer-stateless-function
+class RestaurantsGrid extends Component {
+  constructor() {
+    super();
+    this.handleSearch = this.handleSearch.bind(this);
+  }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
+  }
+  handleSearch(e) {
+
   }
   render() {
     const {
@@ -28,6 +36,7 @@ class RestaurantsGrid extends Component { // eslint-disable-line react/prefer-st
       isLoading,
       errors,
       selectedFilterIndex,
+      categories,
     } = this.props;
     return (
       <div className={styles.restaurantsGrid}>
@@ -43,11 +52,25 @@ class RestaurantsGrid extends Component { // eslint-disable-line react/prefer-st
           {isLoading ?
             <LoadingIndicator isLoading />
           :
-            <Tabs initialIndex={selectedFilterIndex} justify="center">
-              <Tab title="All">
-                <RestaurantGrid restaurants={restaurants} />
-              </Tab>
-            </Tabs>
+            <div>
+              <div className={styles.searchBar}>
+                <Search
+                  suggestions={restaurants.map(i => i.name)}
+                  dropAlign={{ right: 'right' }}
+                  onDOMChange={this.handleSearch}
+                />
+              </div>
+              <Tabs initialIndex={selectedFilterIndex} justify="center">
+                <Tab title="All">
+                  <RestaurantGrid restaurants={restaurants} />
+                </Tab>
+                {typeof categories !== 'undefined' && categories.map(cat =>
+                  <Tab title={cat}>
+                    <RestaurantGrid restaurants={restaurants.filter(i => i.type.name === cat)} />
+                  </Tab>
+                )}
+              </Tabs>
+            </div>
           }
         </Section>
       </div>
@@ -61,6 +84,7 @@ RestaurantsGrid.propTypes = {
   errors: PropTypes.array,
   selectedFilterIndex: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
@@ -69,6 +93,7 @@ const mapStateToProps = (state) => ({
   selectedFilterIndex: state.restaurants.selectedFilterIndex,
   isLoading: state.restaurants.isLoading,
   errors: state.restaurants.errors,
+  categories: state.restaurants.categories,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
