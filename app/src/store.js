@@ -25,6 +25,9 @@ export const initialState = {
     isLoading: false,
     selectedRestaurantId: null,
   },
+  addReview: {
+    isAddingReview: false,
+  },
 };
 
 /* Commonly used middlewares and enhancers */

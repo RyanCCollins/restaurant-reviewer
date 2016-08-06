@@ -4,8 +4,10 @@ import { bindActionCreators } from 'redux';
 import * as SingleRestaurantActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
+import { SingleRestaurant } from 'components';
+import { AddReviewContainer } from 'containers';
 
-class SingleRestaurant extends Component {
+class SingleRestaurantContainer extends Component {
   constructor(props) {
     super(props);
     this.handleLoadingReviews = this.handleLoadingReviews.bind(this);
@@ -20,7 +22,7 @@ class SingleRestaurant extends Component {
       params,
     } = this.props;
     const itemId = parseInt(params.id);
-    const selectedRestaurant = restaurants.filter(item => item.id === itemId);
+    const selectedRestaurant = restaurants.filter(item => item.id === itemId)[0];
     this.state = {
       selectedRestaurant,
     };
@@ -57,7 +59,8 @@ class SingleRestaurant extends Component {
       <div className={styles.singleRestaurant}>
         {selectedRestaurant ?
           <div>
-            {selectedRestaurant.name}
+            <SingleRestaurant restaurant={selectedRestaurant} />
+            <AddReviewContainer />
           </div>
         :
           <div className={styles.noneFoundContainer}>
@@ -69,7 +72,7 @@ class SingleRestaurant extends Component {
   }
 }
 
-SingleRestaurant.propTypes = {
+SingleRestaurantContainer.propTypes = {
   reviews: PropTypes.array,
   errors: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
@@ -94,7 +97,7 @@ const mapDispatchToProps = (dispatch) => ({
   ),
 });
 
-const Container = cssModules(SingleRestaurant, styles);
+const Container = cssModules(SingleRestaurantContainer, styles);
 
 export default connect(
   mapStateToProps,
