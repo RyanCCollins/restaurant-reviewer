@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export ReviewGrid from './ReviewGrid';
 export AddReviewForm from './AddReviewForm';
 export BannerHeader from './BannerHeader';
 export SingleRestaurant from './SingleRestaurant';

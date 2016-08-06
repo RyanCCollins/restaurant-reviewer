@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as SingleRestaurantActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import { SingleRestaurant } from 'components';
+import { SingleRestaurant, ReviewGrid } from 'components';
 import { AddReviewContainer } from 'containers';
 
 class SingleRestaurantContainer extends Component {
@@ -61,6 +61,7 @@ class SingleRestaurantContainer extends Component {
           <div>
             <SingleRestaurant restaurant={selectedRestaurant} />
             <AddReviewContainer />
+            <ReviewGrid reviews={selectedRestaurant.reviews} />
           </div>
         :
           <div className={styles.noneFoundContainer}>
