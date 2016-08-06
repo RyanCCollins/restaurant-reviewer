@@ -5,6 +5,7 @@ import {
 } from './constants';
 const baseUrl = `http://0.0.0.0:8080/api/v1/`;
 const restaurantUrl = `${baseUrl}restaurants`;
+import fetch from 'isomorphic-fetch';
 const headers = new Headers({
   'content-type': 'application/json',
 });

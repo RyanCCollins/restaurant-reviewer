@@ -11,6 +11,7 @@ import {
 const baseUrl = `http://0.0.0.0:8080/api/v1/`;
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
 const singleReview = (restaurantId, id) => `${reviewsUrl(restaurantId)}${id}`;
+import fetch from 'isomorphic-fetch';
 
 const headers = new Headers({
   'content-type': 'application/json',
