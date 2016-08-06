@@ -4,13 +4,14 @@ import { bindActionCreators } from 'redux';
 import * as AddReviewActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
+import validation from './validation';
+import { AddReviewForm } from 'components';
+import { reduxForm } from 'redux-form';
+import Footer from 'grommet/components/footer';
 import Layer from 'grommet/components/layer';
 import Header from 'grommet/components/header';
 import Box from 'grommet/components/box';
 import Button from 'grommet/components/button';
-import { AddReviewForm } from 'components';
-import { reduxForm } from 'redux-form';
-import Footer from 'grommet/components/footer';
 
 export const addReviewFields = [
   'nameInput',
@@ -21,11 +22,7 @@ export const addReviewFields = [
 class AddReview extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor() {
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
-  }
-  handleSubmit() {
-
   }
   handleToggleModal() {
     const {
@@ -37,6 +34,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     const {
       isAddingReview,
       fields,
+      onSubmit,
     } = this.props;
     return (
       <div className={styles.addReview}>
@@ -48,7 +46,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             align="right"
           >
             <Box pad={{ vertical: 'large', horizontal: 'small' }}>
-              <AddReviewForm {...fields} onSubmit={this.handleSubmit} />
+              <AddReviewForm {...fields} onSubmit={onSubmit} />
             </Box>
           </Layer>
         :
@@ -70,6 +68,7 @@ AddReview.propTypes = {
   isAddingReview: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,
   fields: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
@@ -95,4 +94,5 @@ const ConnectedContainer = connect(
 export default reduxForm({
   form: 'addReview',
   fields: addReviewFields,
+  validate: validation,
 })(ConnectedContainer);

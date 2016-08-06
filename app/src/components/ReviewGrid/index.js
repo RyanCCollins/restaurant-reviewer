@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import { RestaurantReview } from 'components';
-import Heading from 'grommet/components/heading';
+import Headline from 'grommet/components/headline';
 import Section from 'grommet/components/section';
 import Tiles from 'grommet/components/tiles';
 import Tile from 'grommet/components/tile';
@@ -12,6 +12,9 @@ const ReviewGrid = ({
 }) => (
   <Section>
     <div className={styles.reviewGrid}>
+      <Headline className={styles.headline} align="center">
+        Reviews
+      </Headline>
       <Tiles
         flush={false}
         justify="center"
@@ -19,9 +22,6 @@ const ReviewGrid = ({
         full="horizontal"
         a11yTitle="Restaurant Reviews"
       >
-        <Heading align="center" tag="h2">
-          Reviews
-        </Heading>
         {reviews.map((item, i) =>
           <Tile pad="large" responsive align="start" colorIndex="light-1" size="large">
             <RestaurantReview key={i} review={item} />

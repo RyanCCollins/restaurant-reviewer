@@ -21,7 +21,7 @@ const AddReviewForm = ({
           label="Name"
           htmlFor="nameInput"
           help="What is your name"
-          error={nameInput.error ? nameInput.error : null}
+          error={nameInput.touched && nameInput.error ? nameInput.error : null}
         >
           <input {...nameInput} id="nameInput" type="text" name="name" />
         </FormField>
@@ -29,7 +29,7 @@ const AddReviewForm = ({
           label="Review"
           htmlFor="textInput"
           help="Add some text for your review"
-          error={textInput.error ? textInput.error : null}
+          error={textInput.touched && textInput.error ? textInput.error : null}
         >
           <textarea
             {...textInput}
@@ -44,7 +44,7 @@ const AddReviewForm = ({
           label="Review"
           htmlFor="ratingInput"
           help="How many stars (1-5)"
-          error={ratingInput.error ? ratingInput.error : null}
+          error={ratingInput.touched && ratingInput.error ? ratingInput.error : null}
         >
           <NumberInput
             {...ratingInput}
@@ -59,6 +59,7 @@ const AddReviewForm = ({
         <Button
           label="Submit"
           primary
+          disabled={false}
           onClick={onSubmit}
           type="submit"
         />

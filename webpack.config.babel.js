@@ -82,6 +82,7 @@ module.exports = {
       containers: path.resolve(ROOT_PATH, 'app/src/containers'),
       pages: path.resolve(ROOT_PATH, 'app/src/pages'),
       styles: path.resolve(ROOT_PATH, 'app/styles'),
+      utils: path.resvole(ROOT_PATH, 'app/utils'),
     },
   },
   output: {

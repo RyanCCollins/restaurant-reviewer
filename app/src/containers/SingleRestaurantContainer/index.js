@@ -67,9 +67,9 @@ class SingleRestaurantContainer extends Component {
         {selectedRestaurant ?
           <div>
             <SingleRestaurant restaurant={selectedRestaurant} />
-            <AddReviewContainer />
+            <AddReviewContainer onSubmit={this.handleSubmitReview} />
             <ReviewGrid reviews={selectedRestaurant.reviews} />
-            <AddReviewContainer />
+            <AddReviewContainer onSubmit={this.handleSubmitReview} />
           </div>
         :
           <div className={styles.noneFoundContainer}>
