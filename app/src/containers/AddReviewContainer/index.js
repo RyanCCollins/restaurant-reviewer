@@ -10,6 +10,7 @@ import Box from 'grommet/components/box';
 import Button from 'grommet/components/button';
 import { AddReviewForm } from 'components';
 import { reduxForm } from 'redux-form';
+import Footer from 'grommet/components/footer';
 
 export const addReviewFields = [
   'nameInput',
@@ -51,11 +52,13 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             </Box>
           </Layer>
         :
-          <Button
-            label="Add Review"
-            primary
-            onClick={this.handleToggleModal}
-          />
+          <Footer className={styles.addReviewFooter} primary={false}>
+            <Button
+              label="Add Review"
+              primary
+              onClick={this.handleToggleModal}
+            />
+          </Footer>
         }
       </div>
     );

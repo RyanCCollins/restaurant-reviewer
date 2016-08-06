@@ -9,21 +9,26 @@ import Box from 'grommet/components/box';
 const RestaurantReview = ({
   review,
 }) => (
-  <Box className={styles.restaurantReview} a11yTitle="Restaurant Review" size="large">
+  <Box
+    className={styles.restaurantReview}
+    a11yTitle="Restaurant Review"
+    size="large"
+  >
     <Heading tag="h3">
       {review.person}
     </Heading>
     <Paragraph>
-       on {review.date}
+       {review.date}
     </Paragraph>
-    <StarRatingComponent
-      name="Review Stars"
-      className={styles.starRating}
-      starColor={"#FF7D28"}
-      value={review.total_stars}
-      editing={false}
-    />
-    <Paragraph>
+    <div className={styles.starRating}>
+      <StarRatingComponent
+        name="Review Stars"
+        starColor={"#FF7D28"}
+        value={review.total_stars}
+        editing={false}
+      />
+    </div>
+    <Paragraph className={styles.reviewParagraph}>
       {review.text}
     </Paragraph>
   </Box>
