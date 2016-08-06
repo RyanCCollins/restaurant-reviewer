@@ -8,7 +8,7 @@ import {
   REVIEWS_ERRORS,
 } from './constants';
 
-const baseUrl = `http://0.0.0.0:8080/api/v1/`;
+const baseUrl = `http://0.0.0.0:8000/api/v1/`;
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
 const singleReview = (restaurantId, id) => `${reviewsUrl(restaurantId)}${id}`;
 
@@ -40,6 +40,7 @@ const loadReviewsFailure = (error) => ({
   error,
 });
 
+// reviewsErrors :: [Obj] -> {Action}
 export const reviewsErrors = (errors) => ({
   type: REVIEWS_ERRORS,
   errors,
@@ -67,26 +68,31 @@ export const loadReviews = (restaurantId) =>
     });
   };
 
+// addReviewInitiation :: None -> {Action}
 const addReviewInitiation = () => ({
   type: ADD_REVIEW_INITIATION,
 });
 
+// addReviewSuccess :: JSON -> {Action}
 const addReviewSuccess = (review) => ({
   type: ADD_REVIEW_SUCCESS,
   review,
 });
 
+// addReviewFailure :: JSON -> {Action}
 const addReviewFailure = (error) => ({
   type: ADD_REVIEW_FAILURE,
   error,
 });
 
+// addReviewData :: JSON -> {Obj}
 const addReviewData = (body) => ({
   method: 'POST',
   headers,
   body: JSON.stringify(body),
 });
 
+// submitReview :: Int -> JSON -> Func -> Res JSON : Error
 export const submitReview = (restaurantId, review) =>
   (dispatch) => {
     dispatch(

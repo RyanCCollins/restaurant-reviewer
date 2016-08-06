@@ -13,7 +13,7 @@ class SingleRestaurant extends Component {
     } = this.props.location.query;
     const {
       restaurants,
-    } = this.props;
+    } = props;
     this.state = {
       selectedRestaurant: restaurants.filter(i =>
         i.id === restaurantId
@@ -59,7 +59,9 @@ class SingleRestaurant extends Component {
             {selectedRestaurant}
           </div>
         :
-          <h1>No Restaurant Found</h1>
+          <div className={styles.noneFoundContainer}>
+            <h1 className={styles.noneFound}>No Restaurant Found</h1>
+          </div>
         }
       </div>
     );

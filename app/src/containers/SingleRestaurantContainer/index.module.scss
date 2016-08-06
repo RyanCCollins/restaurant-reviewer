@@ -1,3 +1,14 @@
 .singleRestaurant {
-  
+
+}
+
+.noneFoundContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+}
+
+.noneFound {
+  text-align: center;
 }

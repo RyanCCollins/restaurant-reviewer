@@ -14,7 +14,7 @@ const routes = (
         <IndexRoute component={Pages.LandingPage} />
         <Route path="/signin" component={Pages.SigninPage} />
         <Route path="/signup" component={Pages.SignupPage} />
-        <Route path="/restaurant/:id" component={Pages.SingleRestaurantPage} />
+        <Route path="/restaurants/:id" component={Pages.SingleRestaurantPage} />
         <Route path="*" component={Pages.NotFoundPage} />
       </Route>
     </Router>

@@ -33,8 +33,9 @@ export const loadRestaurants = () =>
   (dispatch) => {
     dispatch(loadRestaurantsInitiation());
     fetch(restaurantUrl, options)
-      .then(res => res.json())
+      .then(res => res)
       .then(data => {
+        debugger;
         dispatch(
           loadRestaurantsSuccess(data.restaurants)
         );
