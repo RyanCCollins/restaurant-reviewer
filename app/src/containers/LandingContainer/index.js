@@ -36,12 +36,7 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
     return (
       <div className={styles.landing}>
         {!isLoading ?
-          <Section>
-            <HeroCarousel restaurants={restaurants} />
-            <Headline size="large" align="center" margin="large">
-              Restaurant Reviewer
-            </Headline>
-          </Section>
+          <HeroCarousel restaurants={restaurants} />
         :
           <LoadingIndicator isLoading={isLoading} />
         }

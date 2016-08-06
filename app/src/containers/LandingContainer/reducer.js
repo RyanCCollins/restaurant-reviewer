@@ -12,13 +12,6 @@ const initialState = {
 
 const seedData = [
   {
-    src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurantone.jpg?raw=true',
-    caption: 'Awesome Restaurant One',
-    name: 'Name One',
-    rating: 5,
-    type: 'Chinese',
-  },
-  {
     src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restauranttwo.jpg?raw=true',
     caption: 'Awesome Restaurant Two',
     name: 'Name Two',
