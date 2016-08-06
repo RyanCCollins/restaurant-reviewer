@@ -6,6 +6,7 @@ import FormField from 'grommet/components/formfield';
 import FormFields from 'grommet/components/formfields';
 import Footer from 'grommet/components/footer';
 import Button from 'grommet/components/button';
+import NumberInput from 'grommet/components/numberinput';
 
 const AddReviewForm = ({
   onSubmit,
@@ -16,15 +17,21 @@ const AddReviewForm = ({
   <div className={styles.addReviewForm}>
     <Form onSubmit={onSubmit}>
       <FormFields>
-        <FormField label="Name" htmlFor="nameInput" help="What is your name">
-          <input {...nameInput} id="nameInput" name="name" />
+        <FormField
+          label="Name"
+          htmlFor="nameInput"
+          help="What is your name"
+          error={nameInput.error ? nameInput.error : null}
+        >
+          <input {...nameInput} id="nameInput" type="text" name="name" />
         </FormField>
         <FormField
           label="Review"
           htmlFor="textInput"
           help="Add some text for your review"
+          error={textInput.error ? textInput.error : null}
         >
-          <input
+          <textarea
             {...textInput}
             id="textInput"
             name="text"
@@ -33,12 +40,16 @@ const AddReviewForm = ({
             cols="40"
           />
         </FormField>
-        <FormField label="Review" htmlFor="ratingInput" help="How many stars (1-5)">
-          <input
+        <FormField
+          label="Review"
+          htmlFor="ratingInput"
+          help="How many stars (1-5)"
+          error={ratingInput.error ? ratingInput.error : null}
+        >
+          <NumberInput
             {...ratingInput}
             min="1"
             max="5"
-            type="number"
             id="ratingInput"
             name="rating"
           />

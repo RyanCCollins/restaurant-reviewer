@@ -23,10 +23,17 @@ class SingleRestaurantContainer extends Component {
     } = this.props;
     const itemId = parseInt(params.id);
     const selectedRestaurant = restaurants.filter(item => item.id === itemId)[0];
-    this.state = {
-      selectedRestaurant,
-    };
-    this.handleLoadingReviews();
+    if (!selectedRestaurant) {
+      const {
+        router,
+      } = this.context;
+      router.push('/');
+    } else {
+      this.state = {
+        selectedRestaurant,
+      };
+      this.handleLoadingReviews();
+    }
   }
   handleLoadingReviews() {
     const {
@@ -62,10 +69,12 @@ class SingleRestaurantContainer extends Component {
             <SingleRestaurant restaurant={selectedRestaurant} />
             <AddReviewContainer />
             <ReviewGrid reviews={selectedRestaurant.reviews} />
+            <AddReviewContainer />
           </div>
         :
           <div className={styles.noneFoundContainer}>
             <h1 className={styles.noneFound}>No Restaurant Found</h1>
+            <h4>Going back home where it's safe!</h4>
           </div>
         }
       </div>
@@ -80,6 +89,10 @@ SingleRestaurantContainer.propTypes = {
   restaurants: PropTypes.array.isRequired,
   params: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
+};
+
+SingleRestaurantContainer.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 // mapStateToProps :: {State} -> {Props}

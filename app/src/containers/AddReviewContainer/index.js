@@ -55,6 +55,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
           <Footer className={styles.addReviewFooter} primary={false}>
             <Button
               label="Add Review"
+              className={styles.button}
               primary
               onClick={this.handleToggleModal}
             />
