@@ -4,7 +4,7 @@ import {
   RESTAURANTS_LOADING_FAILURE,
 } from './constants';
 const baseUrl = `http://0.0.0.0:8080/api/v1/`;
-const restaurantUrl = `${baseUrl}restaurants`;
+const restaurantUrl = `http://0.0.0.0:8080/api/v1/restaurants`;
 import fetch from 'isomorphic-fetch';
 const headers = new Headers({
   'content-type': 'application/json',
@@ -36,7 +36,7 @@ const loadRestaurantsFailure = (error) => ({
 export const loadRestaurants = () =>
   (dispatch) => {
     dispatch(loadRestaurantsInitiation());
-    fetch(restaurantUrl, options)
+    fetch(restaurantUrl)
       .then(res => res.json())
       .then(data => {
         dispatch(

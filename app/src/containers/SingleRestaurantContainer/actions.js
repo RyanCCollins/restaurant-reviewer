@@ -103,7 +103,7 @@ export const submitReview = (restaurantId, review) =>
       reviewsUrl(restaurantId),
       addReviewData(review)
     )
-    .then(data => data.json())
+    .then(res => res.json())
     .then(data => {
       dispatch(
         addReviewSuccess(data.review)

@@ -45,7 +45,7 @@ class RestaurantsGrid extends Component { // eslint-disable-line react/prefer-st
           :
             <Tabs initialIndex={selectedFilterIndex} justify="center">
               <Tab title="All">
-                <RestaurantGrid items={restaurants} />
+                <RestaurantGrid restaurants={restaurants} />
               </Tab>
             </Tabs>
           }
