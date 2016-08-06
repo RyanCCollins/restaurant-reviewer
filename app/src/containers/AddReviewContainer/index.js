@@ -7,17 +7,15 @@ import styles from './index.module.scss';
 import Layer from 'grommet/components/layer';
 import Header from 'grommet/components/header';
 import Box from 'grommet/components/box';
-import Button from 'grommet/components/button'
+import Button from 'grommet/components/button';
 import { AddReviewForm } from 'components';
+import { reduxForm } from 'redux-form';
 
-const Styles = {
-  hidden: {
-    display: 'none',
-  },
-  notHidden: {
-    display: '',
-  },
-};
+export const addReviewFields = [
+  'nameInput',
+  'textInput',
+  'ratingInput',
+];
 
 class AddReview extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor() {
@@ -37,6 +35,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
   render() {
     const {
       isAddingReview,
+      fields,
     } = this.props;
     return (
       <div className={styles.addReview}>
@@ -48,7 +47,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             align="right"
           >
             <Box pad={{ vertical: 'large', horizontal: 'small' }}>
-              <AddReviewForm onSubmit={this.handleSubmit} />
+              <AddReviewForm {...fields} onSubmit={this.handleSubmit} />
             </Box>
           </Layer>
         :
@@ -66,6 +65,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
 AddReview.propTypes = {
   isAddingReview: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,
+  fields: PropTypes.object.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
@@ -83,7 +83,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Container = cssModules(AddReview, styles);
 
-export default connect(
+const ConnectedContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Container);
+
+export default reduxForm({
+  form: 'addReview',
+  fields: addReviewFields,
+})(ConnectedContainer);
