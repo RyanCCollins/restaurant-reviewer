@@ -4,17 +4,20 @@ import cssModules from 'react-css-modules';
 import StarRatingComponent from 'react-star-rating-component';
 import {
   Carousel,
-  Heading,
+  Headline,
 } from 'grommet';
 
 const HeroCarousel = ({
   restaurants,
 }) => (
   <div className={styles.heroCarousel}>
+    <Headline className={styles.headline} align="center" size="large">
+      Restaurant Reviewer
+    </Headline>
     <Carousel>
       {restaurants.map((item, index) =>
         <div key={index} className={styles.carousel}>
-          <div className={styles.overlay}>
+          {/* <div className={styles.overlay}>
             <div className={styles.rowOne}>
               <Heading className={styles.heading}>
                 {item.name}
@@ -32,7 +35,7 @@ const HeroCarousel = ({
             <div className={styles.itemCaption}>
               <p>{item.caption}</p>
             </div>
-          </div>
+          </div> */}
           <img
             src={item.src}
             alt={item.caption}

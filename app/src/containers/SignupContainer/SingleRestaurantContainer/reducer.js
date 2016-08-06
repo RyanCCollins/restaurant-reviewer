@@ -13,6 +13,7 @@ const initialState = {
     reviews: [],
     errors: [],
     isLoading: false,
+    selectedRestaurantId: null,
   },
 };
 
@@ -22,6 +23,7 @@ const singleRestaurant =
       case REVIEWS_LOAD_INITIATION:
         return Object.assign({}, state, {
           isLoading: true,
+          selectedRestaurantId: action.selectedRestaurantId,
         });
       case REVIEWS_LOAD_SUCCESS:
         return Object.assign({}, state, {

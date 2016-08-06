@@ -6,18 +6,21 @@ import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Menu from 'grommet/components/Menu';
 import Anchor from 'grommet/components/Anchor';
+import { Link } from 'react-router';
 
 const Navbar = () => (
   <div className={styles.navbar}>
     <Header justify="between">
       <Title>
-        <img
-          className={styles.logo}
-          src='https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true'
-          alt="logo"
-        />
+        <Link to="/">
+          <img
+            className={styles.logo}
+            src='https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true'
+            alt="logo"
+          />
+        </Link>
       </Title>
-      <Menu direction="row" align="center" responsive={false}>
+      <Menu className={styles.menu} direction="row" align="center" responsive={false}>
         <Anchor href="/">
           Home
         </Anchor>

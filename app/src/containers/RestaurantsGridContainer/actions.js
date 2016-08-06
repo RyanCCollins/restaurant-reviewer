@@ -4,6 +4,7 @@ import {
   RESTAURANTS_LOADING_FAILURE,
   RESTAURANT_CATEGORIES,
 } from './constants';
+import uniq from 'lodash/uniq';
 const baseUrl = `http://0.0.0.0:8080/api/v1/`;
 const restaurantUrl = `http://0.0.0.0:8080/api/v1/restaurants`;
 import fetch from 'isomorphic-fetch';
@@ -27,7 +28,7 @@ const loadRestaurantsSuccess = (restaurants) => ({
   restaurants,
 });
 
-
+// loadRestaurantCategories :: [String] -> {Action}
 const loadRestaurantCategories = (categories) => ({
   type: RESTAURANT_CATEGORIES,
   categories,
@@ -39,10 +40,6 @@ const loadRestaurantsFailure = (error) => ({
   error,
 });
 
-// parseCategories :: [JSON] -> [String]
-const parseCategories = (restaurants) =>
-  restaurants.map(i => i.type.name).filter((i, e) => restaurants.indexOf(i) == e);
-
 // loadRestaurants :: None -> Dispatch Func -> Action Data : Error
 export const loadRestaurants = () =>
   (dispatch) => {
@@ -53,7 +50,7 @@ export const loadRestaurants = () =>
         const {
           restaurants,
         } = data;
-        const categories = parseCategories(restaurants);
+        const categories = uniq(restaurants.map(i => i.type.name));
         dispatch(
           loadRestaurantCategories(categories)
         );

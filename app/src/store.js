@@ -23,6 +23,7 @@ export const initialState = {
     reviews: [],
     errors: [],
     isLoading: false,
+    selectedRestaurantId: null,
   },
 };
 

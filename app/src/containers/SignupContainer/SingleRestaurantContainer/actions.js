@@ -25,8 +25,9 @@ const getOptions = {
 };
 
 // loadReviewsInitiation :: None -> {Action}
-const loadReviewsInitiation = () => ({
+const loadReviewsInitiation = (restaurantId) => ({
   type: REVIEWS_LOAD_INITIATION,
+  selectedRestaurantId: restaurantId,
 });
 
 // loadReviewsSuccess :: [JSON] -> {Action}
@@ -51,7 +52,7 @@ export const reviewsErrors = (errors) => ({
 export const loadReviews = (restaurantId) =>
   (dispatch) => {
     dispatch(
-      loadReviewsInitiation()
+      loadReviewsInitiation(restaurantId)
     );
     fetch(
       reviewsUrl(restaurantId),

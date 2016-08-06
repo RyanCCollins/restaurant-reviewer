@@ -8,23 +8,21 @@ import styles from './index.module.scss';
 class SingleRestaurant extends Component {
   constructor(props) {
     super(props);
-    this.handleLoadingReviews = this.handleLoadingReviews.bind(this);
-    this.handleSubmitReview = this.handleSubmitReview.bind(this);
-    this.state = {
-      selectedRestaurant: null,
-    };
-  }
-  componentDidMount() {
     const {
-      id,
-    } = this.props.location.params;
+      restaurantId,
+    } = this.props.location.query;
     const {
       restaurants,
-    } = this.props;
-    const selectedRestaurant = restaurants.filter(i => i.id === id);
+    } = props;
+    const selectedRestaurant = restaurants.filter(i => i.id === restaurantId);
+    console.log(`Selected restaurant is ${selectedRestaurant} restaurant id is ${restaurantId}`)
     this.state = {
       selectedRestaurant,
     };
+    this.handleLoadingReviews = this.handleLoadingReviews.bind(this);
+    this.handleSubmitReview = this.handleSubmitReview.bind(this);
+  }
+  componentDidMount() {
     this.handleLoadingReviews();
   }
   handleLoadingReviews() {

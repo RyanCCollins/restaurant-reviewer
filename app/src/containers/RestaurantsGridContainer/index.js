@@ -14,21 +14,13 @@ import {
   RestaurantGrid,
   LoadingIndicator,
 } from 'components';
-import Search from 'grommet/components/Search';
 
 class RestaurantsGrid extends Component {
-  constructor() {
-    super();
-    this.handleSearch = this.handleSearch.bind(this);
-  }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
-  }
-  handleSearch(e) {
-
   }
   render() {
     const {
@@ -53,13 +45,6 @@ class RestaurantsGrid extends Component {
             <LoadingIndicator isLoading />
           :
             <div>
-              <div className={styles.searchBar}>
-                <Search
-                  suggestions={restaurants.map(i => i.name)}
-                  dropAlign={{ right: 'right' }}
-                  onDOMChange={this.handleSearch}
-                />
-              </div>
               <Tabs initialIndex={selectedFilterIndex} justify="center">
                 <Tab title="All">
                   <RestaurantGrid restaurants={restaurants} />
