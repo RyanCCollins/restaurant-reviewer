@@ -49,6 +49,10 @@
   }
 }
 
+.link {
+  cursor: pointer;
+}
+
 .cardImage {
   position: absolute;
   top: 0;
@@ -57,7 +61,6 @@
   z-index: 0;
   opacity: 0.2;
   transition: all .6s ease-in-out;
-  cursor: pointer;
   &:hover {
     opacity: 0.8;
     z-index: 2;

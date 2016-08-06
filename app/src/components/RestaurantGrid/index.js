@@ -13,16 +13,16 @@ const RestaurantGrid = ({
     {restaurants.map(rest =>
       <div className={styles.panel}>
         <div className={styles.imageWrapper}>
-          <div className={styles.contents}>
-            <Heading uppercase tag="h3" className={styles.title}>{rest.name}</Heading>
-            <StarRatingComponent
-              name=""
-              starColor={"#FF7D28"}
-              value={rest.average_rating}
-              editing={false}
-            />
-          </div>
-          <Link to={`/restaurants/${rest.id}`}>
+          <Link className={styles.link} to={`/restaurants/${rest.id}`}>
+            <div className={styles.contents}>
+              <Heading uppercase tag="h3" className={styles.title}>{rest.name}</Heading>
+              <StarRatingComponent
+                name=""
+                starColor={"#FF7D28"}
+                value={rest.average_rating}
+                editing={false}
+              />
+            </div>
             <img className={styles.cardImage} src={rest.image} alt="Restaurant" />
           </Link>
         </div>

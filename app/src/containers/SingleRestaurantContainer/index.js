@@ -16,12 +16,11 @@ class SingleRestaurant extends Component {
   }
   componentDidMount() {
     const {
-      id,
-    } = this.props.location.params;
-    const {
       restaurants,
+      params,
     } = this.props;
-    const selectedRestaurant = restaurants.filter(i => i.id === id);
+    const itemId = parseInt(params.id);
+    const selectedRestaurant = restaurants.filter(item => item.id === itemId);
     this.state = {
       selectedRestaurant,
     };
@@ -58,7 +57,7 @@ class SingleRestaurant extends Component {
       <div className={styles.singleRestaurant}>
         {selectedRestaurant ?
           <div>
-            {selectedRestaurant}
+            {selectedRestaurant.name}
           </div>
         :
           <div className={styles.noneFoundContainer}>
@@ -75,7 +74,7 @@ SingleRestaurant.propTypes = {
   errors: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
   restaurants: PropTypes.array.isRequired,
-  location: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };
 
