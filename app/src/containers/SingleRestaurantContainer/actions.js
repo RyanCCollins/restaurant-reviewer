@@ -8,12 +8,12 @@ import {
   REVIEWS_ERRORS,
 } from './constants';
 
-const baseUrl = `http://0.0.0.0:8000/api/v1/`;
+const baseUrl = `http://0.0.0.0:8080/api/v1/`;
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
 const singleReview = (restaurantId, id) => `${reviewsUrl(restaurantId)}${id}`;
 
 const headers = new Headers({
-  'Content-Type': 'application/json',
+  'content-type': 'application/json',
   'Access-Control-Allow-Origin': '*',
 });
 

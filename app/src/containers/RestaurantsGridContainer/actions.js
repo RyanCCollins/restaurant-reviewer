@@ -6,7 +6,7 @@ import {
 const baseUrl = `http://0.0.0.0:8080/api/v1/`;
 const restaurantUrl = `${baseUrl}restaurants`;
 const headers = new Headers({
-  'Content-Type': 'application/json',
+  'content-type': 'application/json',
 });
 const options = {
   method: 'GET',
@@ -14,15 +14,18 @@ const options = {
   mode: 'no-cors',
 };
 
+// loadRestaurantsInitiation :: None -> {Action}
 const loadRestaurantsInitiation = () => ({
   type: RESTAURANTS_LOADING_INITIATION,
 });
 
+// loadRestaurantsSuccess :: [JSON] -> {Action}
 const loadRestaurantsSuccess = (restaurants) => ({
   type: RESTAURANTS_LOADING_SUCCESS,
   restaurants,
 });
 
+// loadRestaurantsFailure :: Error -> {Action}
 const loadRestaurantsFailure = (error) => ({
   type: RESTAURANTS_LOADING_FAILURE,
   error,
@@ -33,9 +36,8 @@ export const loadRestaurants = () =>
   (dispatch) => {
     dispatch(loadRestaurantsInitiation());
     fetch(restaurantUrl, options)
-      .then(res => res)
+      .then(res => res.json())
       .then(data => {
-        debugger;
         dispatch(
           loadRestaurantsSuccess(data.restaurants)
         );
