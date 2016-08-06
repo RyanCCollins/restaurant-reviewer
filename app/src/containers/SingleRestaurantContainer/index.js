@@ -5,7 +5,7 @@ import * as SingleRestaurantActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 
-class SingleRestaurant extends Component { // eslint-disable-line react/prefer-stateless-function
+class SingleRestaurant extends Component {
   constructor(props) {
     super(props);
     const {
