@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import * as actionCreators from './actions';
 import 'styles/styles.scss';
 import { Navbar } from 'components';
-import App from 'grommet/components/app';
+import AppComponent from 'grommet/components/app';
 
 const Main = (props) => (
-  <App lang="en-US">
+  <AppComponent lang="en-US">
     <Navbar />
     {React.cloneElement(props.children, props)}
-  </App>
+  </AppComponent>
 );
 
 Main.propTypes = {
