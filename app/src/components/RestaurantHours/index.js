@@ -4,15 +4,15 @@ import cssModules from 'react-css-modules';
 import List from 'grommet/components/list';
 import ListItem from 'grommet/components/ListItem';
 import Section from 'grommet/components/section';
-import Accordian from 'grommet/components/accordian';
-import AccordianPanel from 'grommet/components/AccordianPanel';
+import Accordian from 'grommet/components/Accordion';
+import AccordianPanel from 'grommet/components/AccordionPanel';
 
 const RestaurantHours = ({
   restaurant,
 }) => (
   <Section className={styles.restaurantHours}>
-    <Accordian animate initialIndex={0}>
-      <AccordianPanel heading="Restaurant Hours">
+    <Accordion animate initialIndex={0}>
+      <AccordionPanel heading="Restaurant Hours">
         <List>
           <ListItem justify="center">
             {`Monday:  ${restaurant.hours.monday}`}
@@ -36,8 +36,8 @@ const RestaurantHours = ({
             {`Sunday:  ${restaurant.hours.sunday}`}
           </ListItem>
         </List>
-      </AccordianPanel>
-    </Accordian>
+      </AccordionPanel>
+    </Accordion>
   </Section>
 );
 

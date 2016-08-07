@@ -7,9 +7,15 @@ import App from 'components/App';
 import * as Pages from 'pages';
 /* eslint-enable */
 
+const element = document.getElementById('content');
+
 const routes = (
   <Provider store={store}>
-    <Router history={history}>
+    <Router
+      /* eslint-disable */
+      onUpdate={() => element.focus()} /* eslint-enable */
+      history={history}
+    >
       <Route path="/" component={App}>
         <IndexRoute component={Pages.LandingPage} />
         <Route path="/signin" component={Pages.SigninPage} />
