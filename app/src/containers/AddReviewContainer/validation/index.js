@@ -1,24 +1,22 @@
 import * as validation from 'utils/validator';
 import memoize from 'lru-memoize';
 
-const nameInput = [
+const ratingInput = [
   validation.valueRequired,
-  validation.containsTwoWords,
 ];
 
 const textInput = [
   validation.valueRequired,
 ];
 
-const ratingInput = [
-  validation.containsValidRating,
+const nameInput = [
   validation.valueRequired,
 ];
 
 const formValidation = validation.createValidator({
-  nameInput,
-  textInput,
   ratingInput,
+  textInput,
+  nameInput,
 });
 
 const validator = memoize(10)(formValidation);

@@ -72,7 +72,7 @@ class SingleRestaurantContainer extends Component {
             <AddReviewContainer onSubmit={this.handleSubmitReview} />
           </div>
         :
-          <div className={styles.noneFoundContainer}>
+          <div className={styles.containerCenter}>
             <h1 className={styles.noneFound}>No Restaurant Found</h1>
             <h4>Going back home where it's safe!</h4>
           </div>
@@ -92,7 +92,7 @@ SingleRestaurantContainer.propTypes = {
 };
 
 SingleRestaurantContainer.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}

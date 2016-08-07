@@ -4,12 +4,11 @@ import { bindActionCreators } from 'redux';
 import * as AddReviewActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import validation from './validation';
+import validation from './validation/index';
 import { AddReviewForm } from 'components';
 import { reduxForm } from 'redux-form';
 import Footer from 'grommet/components/footer';
 import Layer from 'grommet/components/layer';
-import Header from 'grommet/components/header';
 import Box from 'grommet/components/box';
 import Button from 'grommet/components/button';
 

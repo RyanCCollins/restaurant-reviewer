@@ -4,7 +4,6 @@
 
 const isIntegerRE = /^\+?(0|[1-9]\d*)$/;
 const numberRE = /^(?=.*[0-9]).+$/;
-const numberOneToFive = /^(?=.*[1-5]).+$/;
 const twoWordsRE = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/;
 const lowercaseRE = /^(?=.*[a-z]).+$/;
 const uppercaseRE = /^(?=.*[A-Z]).+$/;
@@ -76,10 +75,6 @@ export const isInteger = (value) => {
 
 export const containsNumber = (value) => {
   return value && validateWithRE(numberRE, 'Must Contain at least one number')(value);
-};
-
-export const containsValidRating = (value) => {
-  return value && validateWithRE(numberOneToFive, 'Must Contain a valid number 1-5')(value);
 };
 
 export const containsLowercase = (value) => {
