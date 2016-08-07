@@ -5,8 +5,9 @@ import {
   RESTAURANT_CATEGORIES,
 } from './constants';
 import uniq from 'lodash/uniq';
-const baseUrl = `http://0.0.0.0:8080/api/v1/`;
-const restaurantUrl = `http://0.0.0.0:8080/api/v1/restaurants`;
+const baseUrl = process.env.NODE_ENV === 'production' ?
+  process.env.BASE_URL : 'http://0.0.0.0:8080/api/v1';
+const restaurantUrl = `${baseUrl}restaurants`;
 import fetch from 'isomorphic-fetch';
 const headers = new Headers({
   'content-type': 'application/json',

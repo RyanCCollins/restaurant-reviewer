@@ -26,7 +26,6 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      include:/node_modules\/grommet/,
       loaders: ['react-hot', 'babel']
     },
     {
