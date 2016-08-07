@@ -9,7 +9,7 @@ import {
 } from './constants';
 
 const baseUrl = process.env.NODE_ENV === 'production' ?
-  process.env.BASE_URL : 'http://0.0.0.0:8080/api/v1';
+  process.env.BASE_URL : 'http://0.0.0.0:8080/api/v1/';
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
 const singleReview = (restaurantId, id) => `${reviewsUrl(restaurantId)}${id}`;
 import fetch from 'isomorphic-fetch';

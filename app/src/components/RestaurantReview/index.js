@@ -9,11 +9,7 @@ import Box from 'grommet/components/box';
 const RestaurantReview = ({
   review,
 }) => (
-  <Box
-    className={styles.restaurantReview}
-    a11yTitle="Restaurant Review"
-    size="large"
-  >
+  <div className={styles.innerBox}>
     <Heading tag="h3">
       {review.person}
     </Heading>
@@ -31,7 +27,7 @@ const RestaurantReview = ({
     <Paragraph className={styles.reviewParagraph}>
       {review.text}
     </Paragraph>
-  </Box>
+  </div>
 );
 
 RestaurantReview.propTypes = {

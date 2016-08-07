@@ -7,13 +7,11 @@ import App from 'components/App';
 import * as Pages from 'pages';
 /* eslint-enable */
 
-const element = document.getElementById('content');
-
 const routes = (
   <Provider store={store}>
     <Router
       /* eslint-disable */
-      onUpdate={() => element.focus()} /* eslint-enable */
+      onUpdate={() => document.body.focus()} /* eslint-enable */
       history={history}
     >
       <Route path="/" component={App}>

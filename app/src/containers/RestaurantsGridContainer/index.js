@@ -35,7 +35,7 @@ class RestaurantsGrid extends Component {
     return (
       <div className={styles.restaurantsGrid}>
         <Article>
-          <Header>
+          <Header justify="center" pad={{ vertical: 'medium' }}>
             <h1>
               Restaurants
             </h1>

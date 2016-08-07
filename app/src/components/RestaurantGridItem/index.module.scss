@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   flex-direction: column;
-  padding: 40px;
+  padding: 50px;
   text-decoration: none;
   outline: none;
   background: #fff;
@@ -20,7 +20,7 @@
   letter-spacing: 20px;
   font-size: 1.6rem;
   overflow: hidden;
-  height: 70px;
+  min-height: 130px;
   h3 {
     font-family: 'Raleway';
     font-size: 1.3rem;
@@ -30,8 +30,8 @@
 .panel {
   display: inline-block;
   background: #ffffff;
-  min-height: 350px;
-  max-height: 400px;
+  min-height: 400px;
+  max-height: 450px;
   width: calc(33.33% - 20px);
   margin: 10px;
   box-shadow:0px 0px 5px 5px #C9C9C9;
