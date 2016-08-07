@@ -23,16 +23,9 @@ const ReviewGrid = ({
         a11yTitle="Restaurant Reviews"
       >
         {reviews.map((item, i) =>
-          <Tile
-            key={i}
-            pad="large"
-            responsive
-            className={styles.tile}
-            align="start"
-            colorIndex="light-1"
-          >
+          <div className={styles.responsive}>
             <RestaurantReview key={i} review={item} />
-          </Tile>
+          </div>
         )}
       </Tiles>
     </div>
