@@ -5,7 +5,7 @@ import * as AddReviewActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import validation from './validation/index';
-import { AddReviewForm } from 'components';
+import { AddReviewForm, AddButton, } from 'components';
 import { reduxForm } from 'redux-form';
 import Footer from 'grommet/components/footer';
 import Layer from 'grommet/components/layer';
@@ -34,9 +34,19 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
       isAddingReview,
       fields,
       onSubmit,
+      hasFab,
     } = this.props;
     return (
       <div className={styles.addReview}>
+        {hasFab ?
+          <div className={styles.fabContainer}>
+            <div className={styles.fab}>
+              <AddButton onAdd={this.handleToggleModal} />
+            </div>
+          </div>
+        :
+          <noscript />
+        }
         {isAddingReview ?
           <Layer
             onClose={this.handleToggleModal}
@@ -68,6 +78,7 @@ AddReview.propTypes = {
   actions: PropTypes.object.isRequired,
   fields: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  hasFab: PropTypes.bool.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}

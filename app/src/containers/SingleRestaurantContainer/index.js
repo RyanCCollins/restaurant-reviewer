@@ -4,8 +4,16 @@ import { bindActionCreators } from 'redux';
 import * as SingleRestaurantActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import { SingleRestaurant, ReviewGrid } from 'components';
+import {
+  SingleRestaurant,
+  ReviewGrid,
+} from 'components';
 import { AddReviewContainer } from 'containers';
+
+const validateReview = (x) =>
+  x.total_stars !== null &&
+    x.text !== null &&
+      x.name !== null;
 
 class SingleRestaurantContainer extends Component {
   constructor(props) {
@@ -52,11 +60,19 @@ class SingleRestaurantContainer extends Component {
       actions.reviewsErrors([error]);
     }
   }
-  handleSubmitReview(review) {
+  handleSubmitReview() {
     const {
       actions,
+      addReviewData,
     } = this.props;
-    actions.submitReview(review);
+    const review = {
+      name: addReviewData.nameInput.value,
+      text: addReviewData.textInput.value,
+      total_stars: addReviewData.ratingInput.value,
+    };
+    if (validateReview(review)) {
+      actions.submitReview(review);
+    }
   }
   render() {
     const {
@@ -67,7 +83,7 @@ class SingleRestaurantContainer extends Component {
         {selectedRestaurant ?
           <div>
             <SingleRestaurant restaurant={selectedRestaurant} />
-            <AddReviewContainer onSubmit={this.handleSubmitReview} />
+            <AddReviewContainer hasFab onSubmit={this.handleSubmitReview} />
             <ReviewGrid reviews={selectedRestaurant.reviews} />
             <AddReviewContainer onSubmit={this.handleSubmitReview} />
           </div>
@@ -89,6 +105,7 @@ SingleRestaurantContainer.propTypes = {
   restaurants: PropTypes.array.isRequired,
   params: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
+  addReviewData: PropTypes.object,
 };
 
 SingleRestaurantContainer.contextTypes = {
@@ -101,6 +118,7 @@ const mapStateToProps = (state) => ({
   errors: state.singleRestaurant.errors,
   isLoading: state.singleRestaurant.isLoading,
   restaurants: state.restaurants.items,
+  addReviewData: state.form.addReview,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

@@ -1,4 +1,7 @@
 /* Assemble all components for export */
+export RestaurantInfo from './RestaurantInfo';
+export RestaurantGridItem from './RestaurantGridItem';
+export AddButton from './AddButton';
 export ReviewGrid from './ReviewGrid';
 export AddReviewForm from './AddReviewForm';
 export BannerHeader from './BannerHeader';
