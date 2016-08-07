@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
-import LoadingImageSrc from './ripple.gif';
+import LoadingImageSrc from './200.gif';
 
 const LoadingIndicator = ({
   isLoading,

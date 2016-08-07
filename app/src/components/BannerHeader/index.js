@@ -8,7 +8,7 @@ const BannerHeader = ({
 }) => (
   <header className={styles.bannerHeader}>
     <div className={styles.banner}>
-      <Heading tag="h3" align="center">
+      <Heading tag="h1" strong align="center">
         {heading}
       </Heading>
     </div>

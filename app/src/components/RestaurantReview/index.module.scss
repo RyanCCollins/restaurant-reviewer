@@ -50,3 +50,16 @@
   margin: 12px;
   min-height: 330px;
 }
+
+.quote {
+  font-size: 2rem;
+  @media screen and (max-width: 1100px) {
+    font-size: 1.9rem;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 1.6rem;
+  }
+}
