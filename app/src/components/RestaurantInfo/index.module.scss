@@ -2,4 +2,19 @@
   margin: 0;
   overflow: hidden;
   padding: 30px;
+  text-align: center;
+  font-family: 'Open Sans';
+  font-size: 1.2rem;
+  color: rgb(107, 107, 107);
+  p {
+    margin-bottom: 10px;
+    line-height: 100%;
+  }
+}
+
+.type {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: black;
+  font-style: italic;
 }
