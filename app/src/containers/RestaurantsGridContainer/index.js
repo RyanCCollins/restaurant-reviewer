@@ -9,6 +9,8 @@ import {
   Tab,
   Section,
   Notification,
+  Article,
+  Header,
 } from 'grommet';
 import {
   RestaurantGrid,
@@ -32,32 +34,39 @@ class RestaurantsGrid extends Component {
     } = this.props;
     return (
       <div className={styles.restaurantsGrid}>
-        <Section>
-          {!isLoading && errors.length > 0 &&
-            <Notification
-              status="critical"
-              message={errors[0].message}
-              timestamp={{}}
-              state="Active"
-            />
-          }
-          {isLoading ?
-            <LoadingIndicator isLoading />
-          :
-            <div>
-              <Tabs initialIndex={selectedFilterIndex} justify="center">
-                <Tab title="All">
-                  <RestaurantGrid restaurants={restaurants} />
-                </Tab>
-                {typeof categories !== 'undefined' && categories.map(cat =>
-                  <Tab title={cat}>
-                    <RestaurantGrid restaurants={restaurants.filter(i => i.type.name === cat)} />
+        <Article>
+          <Header>
+            <h1>
+              Restaurants
+            </h1>
+          </Header>
+          <Section primary>
+            {!isLoading && errors.length > 0 &&
+              <Notification
+                status="critical"
+                message={errors[0].message}
+                timestamp={{}}
+                state="Active"
+              />
+            }
+            {isLoading ?
+              <LoadingIndicator isLoading />
+            :
+              <div>
+                <Tabs initialIndex={selectedFilterIndex} justify="center">
+                  <Tab title="All">
+                    <RestaurantGrid restaurants={restaurants} />
                   </Tab>
-                )}
-              </Tabs>
-            </div>
-          }
-        </Section>
+                  {typeof categories !== 'undefined' && categories.map(cat =>
+                    <Tab title={cat}>
+                      <RestaurantGrid restaurants={restaurants.filter(i => i.type.name === cat)} />
+                    </Tab>
+                  )}
+                </Tabs>
+              </div>
+            }
+          </Section>
+        </Article>
       </div>
     );
   }
