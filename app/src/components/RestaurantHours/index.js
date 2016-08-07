@@ -5,7 +5,7 @@ import List from 'grommet/components/list';
 import ListItem from 'grommet/components/ListItem';
 import Section from 'grommet/components/section';
 import Accordian from 'grommet/components/accordian';
-import AccordianPanel from 'grommet/components/accordianpanel';
+import AccordianPanel from 'grommet/components/AccordianPanel';
 
 const RestaurantHours = ({
   restaurant,
