@@ -12,7 +12,7 @@ const LoadingIndicator = ({
         <img
           className={styles.ripple}
           src={LoadingImageSrc}
-          alt="loading"
+          alt="Loading"
         />
         <h3>Loading...</h3>
       </span>
