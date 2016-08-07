@@ -59,7 +59,6 @@ const AddReviewForm = ({
         <Button
           label="Submit"
           primary
-          disabled={false}
           onClick={onSubmit}
           type="submit"
         />

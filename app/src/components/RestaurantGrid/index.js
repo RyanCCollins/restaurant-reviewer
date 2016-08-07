@@ -28,8 +28,8 @@ const RestaurantGrid = ({
         </div>
         <div className={styles.cardInfo}>
           <Paragraph>{rest.city}, {rest.state} {rest.country}</Paragraph>
-          <Paragraph>Ph: {rest.phone}</Paragraph>
-          <Paragraph>Web: {rest.website}</Paragraph>
+          <Paragraph>{rest.phone}</Paragraph>
+          <Paragraph><a href={rest.website}>{rest.website}</a></Paragraph>
           <Paragraph>{rest.type.name}</Paragraph>
         </div>
       </div>

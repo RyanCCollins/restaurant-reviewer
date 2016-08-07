@@ -14,6 +14,7 @@ const initialState = {
     errors: [],
     isLoading: false,
     selectedRestaurantId: null,
+    review: {},
   },
 };
 

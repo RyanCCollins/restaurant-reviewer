@@ -14,5 +14,14 @@
 }
 
 .featureImage {
-  
+  span {
+    align-items: center;  
+  }
+}
+
+.textWrapper {
+  margin: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Open Sans';
 }

@@ -94,6 +94,18 @@ const addReviewData = (body) => ({
   body: JSON.stringify(body),
 });
 
+// encodeReview :: {Object} -> Int -> {Object}
+const encodeReview = (review, restaurantId) => ({
+  review: {
+    total_stars: review.totalStars,
+    text: review.text,
+    restaurant_id: restaurantId,
+    person_attributes: {
+      name: review.person,
+    },
+  },
+});
+
 // submitReview :: Int -> JSON -> Func -> Res JSON : Error
 export const submitReview = (restaurantId, review) =>
   (dispatch) => {
@@ -102,7 +114,9 @@ export const submitReview = (restaurantId, review) =>
     );
     fetch(
       reviewsUrl(restaurantId),
-      addReviewData(review)
+      addReviewData(
+        encodeReview(review, restaurantId)
+      )
     )
     .then(res => res.json())
     .then(data => {
