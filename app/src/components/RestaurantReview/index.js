@@ -9,12 +9,14 @@ import Box from 'grommet/components/box';
 const RestaurantReview = ({
   review,
 }) => (
-  <Box colorIndex="light-1" pad="medium">
-    <Heading tag="h3">
+  <Box colorIndex="light-1" pad="medium" className={styles.box}>
+    <Heading tag="h2" className={styles.name}>
       {review.person}
     </Heading>
-    <Paragraph>
-       {review.date}
+    <Paragraph className={styles.dateWrapper}>
+      <div className={styles.dateDivider}>
+        <span className={styles.date}>{review.date}</span>
+      </div>
     </Paragraph>
     <div className={styles.starRating}>
       <StarRatingComponent
@@ -25,7 +27,7 @@ const RestaurantReview = ({
       />
     </div>
     <Paragraph className={styles.reviewParagraph}>
-      {review.text}
+      <blockquote className={styles.quote}>{review.text}</blockquote>
     </Paragraph>
   </Box>
 );
