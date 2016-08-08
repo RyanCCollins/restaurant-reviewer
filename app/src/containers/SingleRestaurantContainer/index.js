@@ -98,8 +98,10 @@ class SingleRestaurantContainer extends Component {
   render() {
     const {
       selectedRestaurant,
-      selectedReviewId,
     } = this.state;
+    const {
+      selectedReviewId,
+    } = this.props;
     return (
       <div className={styles.singleRestaurant}>
         {selectedRestaurant ?
@@ -115,8 +117,10 @@ class SingleRestaurantContainer extends Component {
               reviews={selectedRestaurant.reviews}
             />
             <FullReviewModal
-              isOpen={selectedReviewId === null}
-              review={selectedRestaurant.reviews[selectedReviewId]}
+              isOpen={selectedReviewId !== null}
+              review={selectedRestaurant.reviews.filter(i =>
+                i.id === selectedReviewId
+              )}
               onToggleClose={this.handleCloseReview}
             />
           </Section>

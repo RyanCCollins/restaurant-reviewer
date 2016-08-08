@@ -11,11 +11,14 @@
 }
 
 .responsive {
-  flex-basis: calc(33.33% - 24px);
+  flex-basis: calc(25% - 24px);
+  @media screen and (max-width: 1600px) {
+    flex-basis: calc(33.33% - 24px);
+  }
   @media screen and (max-width: 1200px) {
-    flex-basis: calc(50% - 20px);
+    flex-basis: calc(50% - 24px);
   }
   @media screen and (max-width: 768px) {
-    flex-basis: calc(100% - 20px);
+    flex-basis: calc(100%);
   }
 }
