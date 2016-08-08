@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import * as SingleRestaurantActionCreators from './actions';
 import cssModules from 'react-css-modules';
@@ -9,6 +10,7 @@ import {
   ReviewGrid,
 } from 'components';
 import { AddReviewContainer } from 'containers';
+import Section from 'grommet/components/section';
 
 const validateReview = (x) =>
   x.total_stars !== null &&
@@ -20,6 +22,7 @@ class SingleRestaurantContainer extends Component {
     super(props);
     this.handleLoadingReviews = this.handleLoadingReviews.bind(this);
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
+    this.handleClear = this.handleClear.bind(this);
     this.state = {
       selectedRestaurant: null,
     };
@@ -60,6 +63,9 @@ class SingleRestaurantContainer extends Component {
       actions.reviewsErrors([error]);
     }
   }
+  handleClear() {
+
+  }
   handleSubmitReview() {
     const {
       actions,
@@ -81,12 +87,15 @@ class SingleRestaurantContainer extends Component {
     return (
       <div className={styles.singleRestaurant}>
         {selectedRestaurant ?
-          <div>
+          <Section>
             <SingleRestaurant restaurant={selectedRestaurant} />
-            <AddReviewContainer hasFab onSubmit={this.handleSubmitReview} />
+            <AddReviewContainer
+              hasFab
+              onClear={this.handleClear}
+              onSubmit={this.handleSubmitReview}
+            />
             <ReviewGrid reviews={selectedRestaurant.reviews} />
-            <AddReviewContainer onSubmit={this.handleSubmitReview} />
-          </div>
+          </Section>
         :
           <div className={styles.containerCenter}>
             <h1 className={styles.noneFound}>No Restaurant Found</h1>
