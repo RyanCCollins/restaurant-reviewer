@@ -16,7 +16,7 @@ const Navbar = () => (
           <img
             className={styles.logo}
             src='https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true'
-            alt="logo"
+            alt="A11y Written in rainbow colors"
           />
         </Link>
       </Title>

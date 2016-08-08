@@ -6,11 +6,11 @@ import { RestaurantGridItem } from 'components';
 const RestaurantGrid = ({
   restaurants,
 }) => (
-  <div className={styles.restaurantGrid}>
+  <section className={styles.restaurantGrid}>
     {restaurants.map((rest, i) =>
       <RestaurantGridItem key={i} restaurant={rest} />
     )}
-  </div>
+  </section>
 );
 
 RestaurantGrid.propTypes = {

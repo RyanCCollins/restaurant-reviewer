@@ -7,6 +7,7 @@ import FormFields from 'grommet/components/formfields';
 import Footer from 'grommet/components/footer';
 import Button from 'grommet/components/button';
 import NumberInput from 'grommet/components/numberinput';
+import Menu from 'grommet/components/menu';
 
 const tabIndexes = {
   nameInput: 0,
@@ -17,7 +18,6 @@ const tabIndexes = {
 class AddReviewForm extends Component {
   constructor() {
     super();
-    this.goToNextTab = this.goToNextTab.bind(this);
     this.watchKeys = this.watchKeys.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.state = {
@@ -28,23 +28,23 @@ class AddReviewForm extends Component {
     this.handleFocus();
   }
   watchKeys(e) {
-    if (e.keyCode === 9) {
-      e.preventDefault();
-      if (e.shiftKey) {
-        if (document.activeElement === this.refs.nameInput) {
-          this.refs.buttonInput.focus();
-        } else {
-          console.log(`Need some logic here`)
-        }
-      }
-      if (document.activeElement === this.refs.buttonInput) {
-        this.refs.nameInput.focus();
-      }
-      this.trigger(e);
-    }
-  }
-  goToNextTab() {
-
+    // if (e.keyCode === 9) {
+    //   e.preventDefault();
+    //   if (e.shiftKey) {
+    //     if (document.activeElement === this.refs.nameInput) {
+    //       console.log(`Made it`);
+    //       this.refs.buttonInput.focus();
+    //     } else {
+    //       console.log(`Need some logic here`)
+    //     }
+    //   } else {
+    //     if (document.activeElement === this.refs.buttonInput) {
+    //       this.refs.nameInput.focus();
+    //     } else if (document.activeElement === this.refs.nameInput) {
+    //       this.ref
+    //     }
+    //   }
+    // }
   }
   handleFocus() {
     this.refs.nameInput.focus();
@@ -56,6 +56,7 @@ class AddReviewForm extends Component {
       nameInput,
       ratingInput,
       textInput,
+      onClear,
     } = this.props;
     return (
       <div onKeyDown={this.watchKeys} className={styles.addReviewForm}>
@@ -107,14 +108,16 @@ class AddReviewForm extends Component {
               />
             </FormField>
           </FormFields>
-          <Footer pad={{ vertical: 'medium' }}>
-            <Button
-              label="Submit"
-              primary
-              ref="buttonInput"
-              onClick={onSubmit}
-              type="submit"
-            />
+          <Footer className={styles.footer}>
+            <Menu direction="row">
+              <Button
+                className={styles.button}
+                label="Submit"
+                primary
+                onClick={onSubmit}
+              />
+              <Button label="Clear" onClick={onClear} />
+            </Menu>
           </Footer>
         </Form>
       </div>
@@ -127,6 +130,7 @@ AddReviewForm.propTypes = {
   textInput: PropTypes.object.isRequired,
   ratingInput: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onClear: PropTypes.func.isRequired,
 };
 
 export default cssModules(AddReviewForm, styles);

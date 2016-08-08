@@ -11,6 +11,7 @@ import Footer from 'grommet/components/footer';
 import Layer from 'grommet/components/layer';
 import Box from 'grommet/components/box';
 import Button from 'grommet/components/button';
+import Menu from 'grommet/components/menu';
 
 export const addReviewFields = [
   'nameInput',
@@ -22,12 +23,16 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
   constructor() {
     super();
     this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
   handleToggleModal() {
     const {
       actions,
     } = this.props;
     actions.toggleAddReview();
+  }
+  handleClear() {
+
   }
   render() {
     const {
@@ -41,7 +46,10 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
         {hasFab ?
           <div className={styles.fabContainer}>
             <div className={styles.fab}>
-              <AddButton onAdd={this.handleToggleModal} />
+              <AddButton
+                className={styles.fabButton}
+                onAdd={this.handleToggleModal}
+              />
             </div>
           </div>
         :
@@ -59,13 +67,15 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             </Box>
           </Layer>
         :
-          <Footer className={styles.addReviewFooter} primary={false}>
-            <Button
-              label="Add Review"
-              className={styles.button}
-              primary
-              onClick={this.handleToggleModal}
-            />
+          <Footer className={styles.addReviewFooter}>
+            <Menu direction="row">
+              <Button
+                className={styles.button}
+                label="Add Review"
+                primary
+                onClick={this.handleToggleModal}
+              />
+            </Menu>
           </Footer>
         }
       </div>

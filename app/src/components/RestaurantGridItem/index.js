@@ -18,13 +18,17 @@ const RestaurantGridItem = ({
         <div className={styles.contents}>
           <Heading uppercase tag="h3" className={styles.title}>{restaurant.name}</Heading>
           <StarRatingComponent
-            name=""
+            name="Restaurant Star Rating"
             starColor={"#FF7D28"}
             value={restaurant.average_rating}
             editing={false}
           />
         </div>
-        <img className={styles.cardImage} src={restaurant.image} alt="Restaurant" />
+        <img
+          className={styles.cardImage}
+          src={restaurant.image}
+          alt={`A restaurant named ${restaurant.name}`}
+        />
       </Link>
     </div>
     <RestaurantInfo restaurant={restaurant} />
