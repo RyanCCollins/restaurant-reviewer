@@ -5,6 +5,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import Heading from 'grommet/components/Heading';
 import { Link } from 'react-router';
 import { RestaurantInfo } from 'components';
+import Button from 'grommet/components/button';
+import Footer from 'grommet/components/footer';
 
 const RestaurantGridItem = ({
   restaurant,
@@ -25,6 +27,15 @@ const RestaurantGridItem = ({
       </Link>
     </div>
     <RestaurantInfo restaurant={restaurant} />
+    <Footer className={styles.footer}>
+      <Link to={`/restaurants/${restaurant.id}`}>
+        <Button
+          label="More Info"
+          primary /* eslint-disable */
+          onClick={() => console.log('👻 BOO!!!')} /* eslint-enable */
+        />
+      </Link>
+    </Footer>
   </div>
 );
 
