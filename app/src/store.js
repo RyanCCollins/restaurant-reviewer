@@ -24,6 +24,7 @@ export const initialState = {
     errors: [],
     isLoading: false,
     selectedRestaurantId: null,
+    selectedReviewId: null,
   },
   addReview: {
     isAddingReview: false,

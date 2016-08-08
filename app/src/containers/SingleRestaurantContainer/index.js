@@ -8,6 +8,7 @@ import styles from './index.module.scss';
 import {
   SingleRestaurant,
   ReviewGrid,
+  FullReviewModal,
 } from 'components';
 import { AddReviewContainer } from 'containers';
 import Section from 'grommet/components/section';
@@ -23,6 +24,8 @@ class SingleRestaurantContainer extends Component {
     this.handleLoadingReviews = this.handleLoadingReviews.bind(this);
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleCloseReview = this.handleCloseReview.bind(this);
+    this.handleOpenReview = this.handleOpenReview.bind(this);
     this.state = {
       selectedRestaurant: null,
     };
@@ -80,9 +83,22 @@ class SingleRestaurantContainer extends Component {
       actions.submitReview(review);
     }
   }
+  handleCloseReview() {
+    const {
+      actions,
+    } = this.props;
+    actions.closeFullReview();
+  }
+  handleOpenReview(id) {
+    const {
+      actions,
+    } = this.props;
+    actions.openFullReview(id);
+  }
   render() {
     const {
       selectedRestaurant,
+      selectedReviewId,
     } = this.state;
     return (
       <div className={styles.singleRestaurant}>
@@ -94,7 +110,15 @@ class SingleRestaurantContainer extends Component {
               onClear={this.handleClear}
               onSubmit={this.handleSubmitReview}
             />
-            <ReviewGrid reviews={selectedRestaurant.reviews} />
+            <ReviewGrid
+              onClickReview={this.handleOpenReview}
+              reviews={selectedRestaurant.reviews}
+            />
+            <FullReviewModal
+              isOpen={selectedReviewId === null}
+              review={selectedRestaurant.reviews[selectedReviewId]}
+              onToggleClose={this.handleCloseReview}
+            />
           </Section>
         :
           <div className={styles.containerCenter}>
@@ -109,6 +133,7 @@ class SingleRestaurantContainer extends Component {
 
 SingleRestaurantContainer.propTypes = {
   reviews: PropTypes.array,
+  selectedReviewId: PropTypes.object,
   errors: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
   restaurants: PropTypes.array.isRequired,
@@ -128,6 +153,7 @@ const mapStateToProps = (state) => ({
   isLoading: state.singleRestaurant.isLoading,
   restaurants: state.restaurants.items,
   addReviewData: state.form.addReview,
+  selectedReviewId: state.singleRestaurant.selectedReviewId,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

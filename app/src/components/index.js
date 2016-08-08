@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export FullReviewModal from './FullReviewModal';
 export RestaurantHours from './RestaurantHours';
 export RestaurantInfo from './RestaurantInfo';
 export RestaurantGridItem from './RestaurantGridItem';

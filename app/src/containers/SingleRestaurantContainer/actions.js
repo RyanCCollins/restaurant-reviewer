@@ -6,6 +6,8 @@ import {
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_FAILURE,
   REVIEWS_ERRORS,
+  OPEN_FULL_REVIEW,
+  CLOSE_FULL_REVIEW,
 } from './constants';
 
 const baseUrl = process.env.NODE_ENV === 'production' ?
@@ -24,6 +26,17 @@ const getOptions = {
   headers,
   mode: 'no-cors',
 };
+
+// closeFullReview :: None -> {Action}
+export const closeFullReview = () => ({
+  type: CLOSE_FULL_REVIEW,
+});
+
+// openFullReview :: {Object} -> {Action}
+export const openFullReview = (review) => ({
+  type: OPEN_FULL_REVIEW,
+  review,
+});
 
 // loadReviewsInitiation :: None -> {Action}
 const loadReviewsInitiation = (restaurantId) => ({

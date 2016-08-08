@@ -6,6 +6,8 @@ import {
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_FAILURE,
   REVIEWS_ERRORS,
+  OPEN_FULL_REVIEW,
+  CLOSE_FULL_REVIEW,
 } from './constants';
 
 const initialState = {
@@ -14,7 +16,7 @@ const initialState = {
     errors: [],
     isLoading: false,
     selectedRestaurantId: null,
-    review: {},
+    selectedReviewId: null,
   },
 };
 
@@ -56,6 +58,14 @@ const singleRestaurant =
       case REVIEWS_ERRORS:
         return Object.assign({}, state, {
           errors: action.errors,
+        });
+      case OPEN_FULL_REVIEW:
+        return Object.assign({}, state, {
+          selectedReviewId: action.review,
+        });
+      case CLOSE_FULL_REVIEW:
+        return Object.assign({}, state, {
+          selectedReviewId: null,
         });
       default:
         return state;

@@ -5,10 +5,10 @@ import { RestaurantReview } from 'components';
 import Headline from 'grommet/components/headline';
 import Section from 'grommet/components/section';
 import Tiles from 'grommet/components/tiles';
-import Tile from 'grommet/components/tile';
 
 const ReviewGrid = ({
   reviews,
+  onClickReview,
 }) => (
   <Section>
     <div className={styles.reviewGrid}>
@@ -24,7 +24,7 @@ const ReviewGrid = ({
       >
         {reviews.map((item, i) =>
           <div className={styles.responsive}>
-            <RestaurantReview key={i} review={item} />
+            <RestaurantReview onReviewClick={onClickReview} key={i} review={item} />
           </div>
         )}
       </Tiles>
@@ -34,6 +34,7 @@ const ReviewGrid = ({
 
 ReviewGrid.propTypes = {
   reviews: PropTypes.array.isRequired,
+  onClickReview: PropTypes.func.isRequired,
 };
 
 export default cssModules(ReviewGrid, styles);
