@@ -8,16 +8,47 @@ import Footer from 'grommet/components/footer';
 import Button from 'grommet/components/button';
 import NumberInput from 'grommet/components/numberinput';
 
+const tabIndexes = {
+  nameInput: 0,
+  textInput: 1,
+  ratingInput: 2,
+};
+
 class AddReviewForm extends Component {
   constructor() {
     super();
+    this.goToNextTab = this.goToNextTab.bind(this);
+    this.watchKeys = this.watchKeys.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
+    this.state = {
+      selectedTab: tabIndexes.nameInput,
+    };
   }
   componentDidMount() {
     this.handleFocus();
   }
+  watchKeys(e) {
+    if (e.keyCode === 9) {
+      e.preventDefault();
+      if (e.shiftKey) {
+        if (document.activeElement === this.refs.nameInput) {
+          this.refs.buttonInput.focus();
+        } else {
+          console.log(`Need some logic here`)
+        }
+      }
+      if (document.activeElement === this.refs.buttonInput) {
+        this.refs.nameInput.focus();
+      }
+      this.trigger(e);
+    }
+  }
+  goToNextTab() {
+
+  }
   handleFocus() {
     this.refs.nameInput.focus();
+    this.refs.nameInput.select();
   }
   render() {
     const {
@@ -27,7 +58,7 @@ class AddReviewForm extends Component {
       textInput,
     } = this.props;
     return (
-      <div className={styles.addReviewForm}>
+      <div onKeyDown={this.watchKeys} className={styles.addReviewForm}>
         <Form onSubmit={onSubmit}>
           <FormFields>
             <FormField
@@ -53,6 +84,7 @@ class AddReviewForm extends Component {
               <textarea
                 {...textInput}
                 id="textInput"
+                ref="textInput"
                 name="text"
                 type="text"
                 rows="5"
@@ -68,6 +100,7 @@ class AddReviewForm extends Component {
               <NumberInput
                 {...ratingInput}
                 min="1"
+                ref="ratingInput"
                 max="5"
                 id="ratingInput"
                 name="rating"
@@ -78,6 +111,7 @@ class AddReviewForm extends Component {
             <Button
               label="Submit"
               primary
+              ref="buttonInput"
               onClick={onSubmit}
               type="submit"
             />

@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import { RestaurantInfo } from 'components';
 import Button from 'grommet/components/button';
 import Footer from 'grommet/components/footer';
+import QuickView from 'grommet/components/icons/base/QuickView';
 
 const RestaurantGridItem = ({
   restaurant,
@@ -30,9 +31,12 @@ const RestaurantGridItem = ({
     <Footer className={styles.footer}>
       <Link to={`/restaurants/${restaurant.id}`}>
         <Button
-          label="More Info"
-          primary /* eslint-disable */
+          plain
+          fill={false}                              /* eslint-disable */
           onClick={() => console.log('👻 BOO!!!')} /* eslint-enable */
+          icon={
+            <QuickView size="large" colorIndex="brand" />
+          }
         />
       </Link>
     </Footer>
