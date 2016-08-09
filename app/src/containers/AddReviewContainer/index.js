@@ -23,14 +23,15 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
   constructor() {
     super();
     this.handleToggleModal = this.handleToggleModal.bind(this);
-    this.handleClear = this.handleClear.bind(this);
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
   handleToggleModal() {
     const {
       actions,
     } = this.props;
     actions.toggleAddReview();
+    this.handleClear();
   }
   handleSubmitReview(review) {
     const {
@@ -40,14 +41,17 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     this.handleToggleModal();
   }
   handleClear() {
-
+    const {
+      resetForm,
+    } = this.props;
+    resetForm();
   }
   render() {
     const {
       isAddingReview,
       fields,
-      onClear,
       hasFab,
+      resetForm,
     } = this.props;
     return (
       <div className={styles.addReview}>
@@ -75,7 +79,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
               <AddReviewForm
                 {...fields}
                 onSubmitReview={this.handleSubmitReview}
-                onClear={onClear}
+                onClear={resetForm}
               />
             </Box>
           </Layer>
@@ -103,6 +107,7 @@ AddReview.propTypes = {
   onSubmitReview: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   hasFab: PropTypes.bool.isRequired,
+  resetForm: PropTypes.func.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
