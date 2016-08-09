@@ -63,6 +63,7 @@ class SingleRestaurantContainer extends Component {
     } = this.state;
     if (validateReview(review)) {
       actions.submitReview(review, selectedRestaurant);
+
     } else {
       // Handle else clause
     }

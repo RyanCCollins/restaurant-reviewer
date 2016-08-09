@@ -9,46 +9,18 @@ import Button from 'grommet/components/button';
 import NumberInput from 'grommet/components/numberinput';
 import Menu from 'grommet/components/menu';
 
-const tabIndexes = {
-  nameInput: 0,
-  textInput: 1,
-  ratingInput: 2,
-};
-
 class AddReviewForm extends Component {
   constructor() {
     super();
-    this.watchKeys = this.watchKeys.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
-    this.state = {
-      selectedTab: tabIndexes.nameInput,
-    };
   }
   componentDidMount() {
     this.handleFocus();
   }
-  watchKeys(e) {
-    // if (e.keyCode === 9) {
-    //   e.preventDefault();
-    //   if (e.shiftKey) {
-    //     if (document.activeElement === this.refs.nameInput) {
-    //       console.log(`Made it`);
-    //       this.refs.buttonInput.focus();
-    //     } else {
-    //       console.log(`Need some logic here`)
-    //     }
-    //   } else {
-    //     if (document.activeElement === this.refs.buttonInput) {
-    //       this.refs.nameInput.focus();
-    //     } else if (document.activeElement === this.refs.nameInput) {
-    //       this.ref
-    //     }
-    //   }
-    // }
-  }
   handleFocus() {
     this.refs.nameInput.focus();
     this.refs.nameInput.select();
+    this.refs.nameInput.blur();
   }
   render() {
     const {
@@ -63,7 +35,7 @@ class AddReviewForm extends Component {
         <Form onSubmit={onSubmitReview}>
           <FormFields>
             <FormField
-              label="Name"
+              label="Name Input"
               htmlFor="nameInput"
               help="What is your name"
               error={nameInput.touched && nameInput.error ? nameInput.error : null}
@@ -71,13 +43,14 @@ class AddReviewForm extends Component {
               <input
                 {...nameInput}
                 ref="nameInput"
+                autofocus="autofocus"
                 id="nameInput"
                 type="text"
                 name="name"
               />
             </FormField>
             <FormField
-              label="Review"
+              label="Review Text"
               htmlFor="textInput"
               help="Add some text for your review"
               error={textInput.touched && textInput.error ? textInput.error : null}
@@ -93,7 +66,7 @@ class AddReviewForm extends Component {
               />
             </FormField>
             <FormField
-              label="Review"
+              label="Rating Input"
               htmlFor="ratingInput"
               help="How many stars (1-5)"
               error={ratingInput.touched && ratingInput.error ? ratingInput.error : null}
