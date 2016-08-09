@@ -137,6 +137,11 @@ export const submitReview = (review, restaurant) =>
       dispatch(
         addReviewSuccess(data.review)
       );
+    }).then(_ => {
+      dispatch(
+        closeFullReview()
+      );
+      loadReviews(restaurant.id);
     })
     .catch(error => {
       dispatch(
