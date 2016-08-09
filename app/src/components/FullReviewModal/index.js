@@ -23,7 +23,7 @@ const FullReviewModal = ({
     <Article>
       {review ?
         <Section>
-          <Header>
+          <Header className={styles.header}>
             <h2>{review.person}</h2>
           </Header>
           <Paragraph className={styles.dateWrapper}>

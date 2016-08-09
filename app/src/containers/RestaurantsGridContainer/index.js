@@ -57,9 +57,13 @@ class RestaurantsGrid extends Component {
                   <Tab title="All">
                     <RestaurantGrid restaurants={restaurants} />
                   </Tab>
-                  {typeof categories !== 'undefined' && categories.map(cat =>
-                    <Tab title={cat}>
-                      <RestaurantGrid restaurants={restaurants.filter(i => i.type.name === cat)} />
+                  {typeof categories !== 'undefined' && categories.map((cat, i) =>
+                    <Tab key={i} title={cat}>
+                      <RestaurantGrid
+                        restaurants={restaurants.filter(item =>
+                          item.type.name === cat)
+                        }
+                      />
                     </Tab>
                   )}
                 </Tabs>

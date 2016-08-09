@@ -49,6 +49,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             <div className={styles.fab}>
               <AddButton
                 className={styles.fabButton}
+                colorIndex="white"
                 onAdd={this.handleToggleModal}
               />
             </div>

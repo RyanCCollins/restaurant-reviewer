@@ -21,7 +21,7 @@ const validateReview = (x) =>
 class SingleRestaurantContainer extends Component {
   constructor(props) {
     super(props);
-    this.handleLoadingReviews = this.handleLoadingReviews.bind(this);
+    this.handleLoadingOfRestaurant = this.handleLoadingOfRestaurant.bind(this);
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleCloseReview = this.handleCloseReview.bind(this);
@@ -31,40 +31,24 @@ class SingleRestaurantContainer extends Component {
     };
   }
   componentDidMount() {
+    this.handleLoadingOfRestaurant();
+  }
+  handleLoadingOfRestaurant() {
     const {
       restaurants,
       params,
     } = this.props;
-    const itemId = parseInt(params.id);
+    const itemId = parseInt(params.id, 10);
     const selectedRestaurant = restaurants.filter(item => item.id === itemId)[0];
     if (!selectedRestaurant) {
       const {
         router,
       } = this.context;
       router.push('/');
-    } else {
-      this.state = {
-        selectedRestaurant,
-      };
-      this.handleLoadingReviews();
     }
-  }
-  handleLoadingReviews() {
-    const {
-      actions,
-    } = this.props;
-    const {
+    this.setState({
       selectedRestaurant,
-    } = this.state;
-    if (selectedRestaurant !== null || typeof selectedRestaurant !== 'undefined') {
-      const {
-        id,
-      } = selectedRestaurant;
-      actions.loadReviews(id);
-    } else {
-      const error = new Error('The selected Restaurant cannot be found.');
-      actions.reviewsErrors([error]);
-    }
+    });
   }
   handleClear() {
 
@@ -105,7 +89,7 @@ class SingleRestaurantContainer extends Component {
     return (
       <div className={styles.singleRestaurant}>
         {selectedRestaurant ?
-          <Section>
+          <Section className={styles.noPad}>
             <SingleRestaurant restaurant={selectedRestaurant} />
             <AddReviewContainer
               hasFab
@@ -118,9 +102,9 @@ class SingleRestaurantContainer extends Component {
             />
             <FullReviewModal
               isOpen={selectedReviewId !== null}
-              review={selectedRestaurant.reviews.filter(i =>
-                i.id === selectedReviewId
-              )}
+              review={selectedRestaurant.reviews.filter(item =>
+                item.id === selectedReviewId
+              )[0]}
               onToggleClose={this.handleCloseReview}
             />
           </Section>
@@ -136,7 +120,6 @@ class SingleRestaurantContainer extends Component {
 }
 
 SingleRestaurantContainer.propTypes = {
-  reviews: PropTypes.array,
   selectedReviewId: PropTypes.object,
   errors: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
@@ -152,7 +135,6 @@ SingleRestaurantContainer.contextTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  reviews: state.singleRestaurant.reviews,
   errors: state.singleRestaurant.errors,
   isLoading: state.singleRestaurant.isLoading,
   restaurants: state.restaurants.items,

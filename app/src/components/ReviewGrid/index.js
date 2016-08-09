@@ -25,7 +25,7 @@ const ReviewGrid = ({
       >
         {reviews.map((item, i) =>
           <div className={styles.responsive}>
-            <RestaurantReview onReviewClick={onClickReview} key={i} review={item} />
+            <RestaurantReview key={i} onReviewClick={onClickReview} review={item} />
           </div>
         )}
       </Tiles>
