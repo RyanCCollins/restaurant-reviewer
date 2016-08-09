@@ -9,24 +9,22 @@ import Anchor from 'grommet/components/Anchor';
 import { Link } from 'react-router';
 
 const Navbar = () => (
-  <div className={styles.navbar}>
-    <Header justify="between">
-      <Title>
-        <Link to="/">
-          <img
-            className={styles.logo}
-            src='https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true'
-            alt="A11y Written in rainbow colors"
-          />
-        </Link>
-      </Title>
-      <Menu className={styles.menu} direction="row" align="center" responsive={false}>
-        <Anchor href="/">
-          Home
-        </Anchor>
-      </Menu>
-    </Header>
-  </div>
+  <Header justify="between" className={styles.navbar}>
+    <Title>
+      <Link to="/">
+        <img
+          className={styles.logo}
+          src='https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true'
+          alt="A11y Written in rainbow colors"
+        />
+      </Link>
+    </Title>
+    <Menu className={styles.menu} direction="row" align="center" responsive={false}>
+      <Anchor href="/">
+        Home
+      </Anchor>
+    </Menu>
+  </Header>
 );
 
 export default cssModules(Navbar, styles);

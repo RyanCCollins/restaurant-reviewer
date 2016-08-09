@@ -9,9 +9,9 @@ import AppComponent from 'grommet/components/app';
 const Main = (props) => (
   <AppComponent lang="en-US">
     <Navbar />
-    <div id="content">
+    <main id="content">
       {React.cloneElement(props.children, props)}
-    </div>
+    </main>
   </AppComponent>
 );
 

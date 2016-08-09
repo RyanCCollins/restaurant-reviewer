@@ -24,12 +24,20 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     super();
     this.handleToggleModal = this.handleToggleModal.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleSubmitReview = this.handleSubmitReview.bind(this);
   }
   handleToggleModal() {
     const {
       actions,
     } = this.props;
     actions.toggleAddReview();
+  }
+  handleSubmitReview(review) {
+    const {
+      onSubmitReview,
+    } = this.props;
+    onSubmitReview(review);
+    this.handleToggleModal();
   }
   handleClear() {
 
@@ -38,7 +46,6 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     const {
       isAddingReview,
       fields,
-      onSubmitReview,
       onClear,
       hasFab,
     } = this.props;
@@ -65,7 +72,11 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             align="right"
           >
             <Box pad={{ vertical: 'large', horizontal: 'small' }}>
-              <AddReviewForm {...fields} onSubmitReview={onSubmitReview} onClear={onClear} />
+              <AddReviewForm
+                {...fields}
+                onSubmitReview={this.handleSubmitReview}
+                onClear={onClear}
+              />
             </Box>
           </Layer>
         :

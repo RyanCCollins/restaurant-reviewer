@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import StarRatingComponent from 'react-star-rating-component';
 import Heading from 'grommet/components/Heading';
+import Article from 'grommet/components/article';
 import { Link } from 'react-router';
 import { RestaurantInfo } from 'components';
 import Button from 'grommet/components/button';
@@ -13,7 +14,7 @@ const RestaurantGridItem = ({
   restaurant,
   onViewDetails,
 }) => (
-  <div className={styles.panel}>
+  <Article className={styles.panel}>
     <div className={styles.imageWrapper}>
       <div className={styles.contents}>
         <Heading uppercase tag="h3" className={styles.title}>{restaurant.name}</Heading>
@@ -51,7 +52,7 @@ const RestaurantGridItem = ({
         }
       />
     </Footer>
-  </div>
+  </Article>
 );
 
 RestaurantGridItem.propTypes = {
