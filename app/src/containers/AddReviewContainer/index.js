@@ -38,7 +38,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     const {
       isAddingReview,
       fields,
-      onSubmit,
+      onSubmitReview,
       onClear,
       hasFab,
     } = this.props;
@@ -65,7 +65,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             align="right"
           >
             <Box pad={{ vertical: 'large', horizontal: 'small' }}>
-              <AddReviewForm {...fields} onSubmit={onSubmit} onClear={onClear} />
+              <AddReviewForm {...fields} onSubmitReview={onSubmitReview} onClear={onClear} />
             </Box>
           </Layer>
         :
@@ -89,7 +89,7 @@ AddReview.propTypes = {
   isAddingReview: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,
   fields: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmitReview: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   hasFab: PropTypes.bool.isRequired,
 };

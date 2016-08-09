@@ -52,7 +52,7 @@ class AddReviewForm extends Component {
   }
   render() {
     const {
-      onSubmit,
+      onSubmitReview,
       nameInput,
       ratingInput,
       textInput,
@@ -60,7 +60,7 @@ class AddReviewForm extends Component {
     } = this.props;
     return (
       <div onKeyDown={this.watchKeys} className={styles.addReviewForm}>
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmitReview}>
           <FormFields>
             <FormField
               label="Name"
@@ -114,7 +114,11 @@ class AddReviewForm extends Component {
                 className={styles.button}
                 label="Submit"
                 primary
-                onClick={onSubmit}
+                onClick={() => onSubmitReview({
+                  rating: ratingInput.value,
+                  text: textInput.value,
+                  name: nameInput.value,
+                })}
               />
               <Button label="Clear" onClick={onClear} />
             </Menu>
@@ -129,7 +133,7 @@ AddReviewForm.propTypes = {
   nameInput: PropTypes.object.isRequired,
   textInput: PropTypes.object.isRequired,
   ratingInput: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmitReview: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
 };
 

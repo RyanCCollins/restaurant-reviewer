@@ -14,7 +14,7 @@ import { AddReviewContainer } from 'containers';
 import Section from 'grommet/components/section';
 
 const validateReview = (x) =>
-  x.total_stars !== null &&
+  x.rating !== null &&
     x.text !== null &&
       x.name !== null;
 
@@ -53,18 +53,15 @@ class SingleRestaurantContainer extends Component {
   handleClear() {
 
   }
-  handleSubmitReview() {
+  handleSubmitReview(review) {
     const {
       actions,
-      addReviewData,
     } = this.props;
-    const review = {
-      name: addReviewData.nameInput.value,
-      text: addReviewData.textInput.value,
-      total_stars: addReviewData.ratingInput.value,
-    };
+    const {
+      selectedRestaurant,
+    } = this.state;
     if (validateReview(review)) {
-      actions.submitReview(review);
+      actions.submitReview(review, selectedRestaurant.id);
     }
   }
   handleCloseReview() {
@@ -94,7 +91,7 @@ class SingleRestaurantContainer extends Component {
             <AddReviewContainer
               hasFab
               onClear={this.handleClear}
-              onSubmit={this.handleSubmitReview}
+              onSubmitReview={this.handleSubmitReview}
             />
             <ReviewGrid
               onClickReview={this.handleOpenReview}

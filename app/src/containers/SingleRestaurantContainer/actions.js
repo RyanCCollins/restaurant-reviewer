@@ -111,7 +111,7 @@ const addReviewData = (body) => ({
 // encodeReview :: {Object} -> Int -> {Object}
 const encodeReview = (review, restaurantId) => ({
   review: {
-    total_stars: review.totalStars,
+    total_stars: review.rating,
     text: review.text,
     restaurant_id: restaurantId,
     person_attributes: {
