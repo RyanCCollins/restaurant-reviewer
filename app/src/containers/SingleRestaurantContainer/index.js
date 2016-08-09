@@ -9,6 +9,7 @@ import {
   SingleRestaurant,
   ReviewGrid,
   FullReviewModal,
+  LoadingIndicator,
 } from 'components';
 import { AddReviewContainer } from 'containers';
 import Section from 'grommet/components/section';
@@ -61,7 +62,7 @@ class SingleRestaurantContainer extends Component {
       selectedRestaurant,
     } = this.state;
     if (validateReview(review)) {
-      actions.submitReview(review, selectedRestaurant.id);
+      actions.submitReview(review, selectedRestaurant);
     }
   }
   handleCloseReview() {
@@ -82,9 +83,15 @@ class SingleRestaurantContainer extends Component {
     } = this.state;
     const {
       selectedReviewId,
+      isLoading,
     } = this.props;
     return (
       <div className={styles.singleRestaurant}>
+        {isLoading ?
+          <LoadingIndicator isLoading />
+        :
+          <noscript />
+        }
         {selectedRestaurant ?
           <Section className={styles.noPad}>
             <SingleRestaurant restaurant={selectedRestaurant} />
