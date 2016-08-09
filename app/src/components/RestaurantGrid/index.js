@@ -5,7 +5,7 @@ import { RestaurantGridItem } from 'components';
 
 const RestaurantGrid = ({
   restaurants,
-  onClickViewDetails,
+  onViewDetails,
 }) => (
   <section className={styles.restaurantGrid}>
     {restaurants.map((rest, i) =>
@@ -13,7 +13,7 @@ const RestaurantGrid = ({
         key={i}
         restaurant={rest}
         /* eslint-disable */
-        onClickViewDetail={onClickViewDetails.bind(rest.id)} /* eslint-enable */
+        onViewDetails={onViewDetails} /* eslint-enable */
       />
     )}
   </section>
@@ -21,7 +21,7 @@ const RestaurantGrid = ({
 
 RestaurantGrid.propTypes = {
   restaurants: PropTypes.array.isRequired,
-  onClickViewDetails: PropTypes.func.isRequired,
+  onViewDetails: PropTypes.func.isRequired,
 };
 
 export default cssModules(RestaurantGrid, styles);

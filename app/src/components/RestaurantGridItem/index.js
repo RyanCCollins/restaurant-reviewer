@@ -11,7 +11,7 @@ import Information from 'grommet/components/icons/base/information';
 
 const RestaurantGridItem = ({
   restaurant,
-  onClickViewDetails,
+  onViewDetails,
 }) => (
   <div className={styles.panel}>
     <div className={styles.imageWrapper}>
@@ -24,7 +24,7 @@ const RestaurantGridItem = ({
           value={restaurant.average_rating}
           editing={false}
         />
-        <Link a11yTitle="View Details" className={styles.link} to={`/restaurants/${restaurant.id}`}>
+        <Link className={styles.link} to={`/restaurants/${restaurant.id}`}>
           <img
             className={styles.cardImage}
             src={restaurant.image}
@@ -38,27 +38,25 @@ const RestaurantGridItem = ({
     </div>
     <RestaurantInfo restaurant={restaurant} />
     <Footer className={styles.footer}>
-      <Link to={`/restaurants/${restaurant.id}`}>
-        <Button
-          plain
-          fill={false}
-          onClick={onClickViewDetails}
-          icon={
-            <Information
-              size="medium"
-              colorIndex="brand"
-              a11yTitle={`View details of restaurant named ${restaurant.name}`}
-            />
-          }
-        />
-      </Link>
+      <Button
+        plain
+        fill={false} /*eslint-disable*/
+        onClick={() => onViewDetails(restaurant.id)} /* eslint-enable */
+        icon={
+          <Information
+            size="medium"
+            colorIndex="brand"
+            a11yTitle="View details of restaurant"
+          />
+        }
+      />
     </Footer>
   </div>
 );
 
 RestaurantGridItem.propTypes = {
   restaurant: PropTypes.object.isRequired,
-  onClickViewDetails: PropTypes.func.isRequired,
+  onViewDetails: PropTypes.func.isRequired,
 };
 
 export default cssModules(RestaurantGridItem, styles);

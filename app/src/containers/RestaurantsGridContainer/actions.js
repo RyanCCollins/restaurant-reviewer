@@ -51,9 +51,11 @@ export const loadRestaurants = () =>
         const {
           restaurants,
         } = data;
-        const categories = uniq(restaurants.map(i => i.type.name));
+        const staticCategories = ['All'];
+        const dynamicCategories = uniq(restaurants.map(i => i.type.name));
+        const finalCategories = [...staticCategories, ...dynamicCategories];
         dispatch(
-          loadRestaurantCategories(categories)
+          loadRestaurantCategories(finalCategories)
         );
         return restaurants;
       })

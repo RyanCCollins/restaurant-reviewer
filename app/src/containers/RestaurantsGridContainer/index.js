@@ -32,7 +32,7 @@ class RestaurantsGrid extends Component {
     const {
       router,
     } = this.context;
-    router.push(`/restaurants/${id}`)
+    router.push(`/restaurants/${id}`);
   }
   render() {
     const {
@@ -64,15 +64,13 @@ class RestaurantsGrid extends Component {
             :
               <div>
                 <Tabs initialIndex={selectedFilterIndex} justify="center">
-                  <Tab title="All">
-                    <RestaurantGrid restaurants={restaurants} />
-                  </Tab>
                   {typeof categories !== 'undefined' && categories.map((cat, i) =>
                     <Tab key={i} title={cat}>
                       <RestaurantGrid
-                        onClickViewDetails={this.handleViewDetails}
-                        restaurants={restaurants.filter(item =>
-                          item.type.name === cat)
+                        onViewDetails={this.handleViewDetails}
+                        restaurants={cat === 'All' ? restaurants :
+                          restaurants.filter(item =>
+                            item.type.name === cat)
                         }
                       />
                     </Tab>
