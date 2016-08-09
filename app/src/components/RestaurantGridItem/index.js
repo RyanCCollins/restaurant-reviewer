@@ -7,39 +7,48 @@ import { Link } from 'react-router';
 import { RestaurantInfo } from 'components';
 import Button from 'grommet/components/button';
 import Footer from 'grommet/components/footer';
-import Magnifier from 'grommet/components/icons/base/AdvancedSearch';
+import Information from 'grommet/components/icons/base/information';
 
 const RestaurantGridItem = ({
   restaurant,
+  onClickViewDetails,
 }) => (
   <div className={styles.panel}>
     <div className={styles.imageWrapper}>
-      <Link className={styles.link} to={`/restaurants/${restaurant.id}`}>
-        <div className={styles.contents}>
-          <Heading uppercase tag="h3" className={styles.title}>{restaurant.name}</Heading>
-          <StarRatingComponent
-            name="Restaurant Star Rating"
-            starColor={"#FF7D28"}
-            value={restaurant.average_rating}
-            editing={false}
-          />
-        </div>
-        <img
-          className={styles.cardImage}
-          src={restaurant.image}
-          alt={`A restaurant named ${restaurant.name}`}
+      <div className={styles.contents}>
+        <Heading uppercase tag="h3" className={styles.title}>{restaurant.name}</Heading>
+        <StarRatingComponent
+          name="Restaurant Star Rating"
+          role="presentation"
+          starColor={"#FF7D28"}
+          value={restaurant.average_rating}
+          editing={false}
         />
-      </Link>
+        <Link a11yTitle="View Details" className={styles.link} to={`/restaurants/${restaurant.id}`}>
+          <img
+            className={styles.cardImage}
+            src={restaurant.image}
+            alt={`A restaurant named ${restaurant.name}`}
+          />
+          <span className={styles.srOnly}>
+            {`Average rating of ${restaurant.average_rating} out of 5 stars`}
+          </span>
+        </Link>
+      </div>
     </div>
     <RestaurantInfo restaurant={restaurant} />
     <Footer className={styles.footer}>
       <Link to={`/restaurants/${restaurant.id}`}>
         <Button
           plain
-          fill={false}                              /* eslint-disable */
-          onClick={() => console.log('👻 BOO!!!')} /* eslint-enable */
+          fill={false}
+          onClick={onClickViewDetails}
           icon={
-            <Magnifier size="medium" colorIndex="brand" />
+            <Information
+              size="medium"
+              colorIndex="brand"
+              a11yTitle={`View details of restaurant named ${restaurant.name}`}
+            />
           }
         />
       </Link>
@@ -49,6 +58,7 @@ const RestaurantGridItem = ({
 
 RestaurantGridItem.propTypes = {
   restaurant: PropTypes.object.isRequired,
+  onClickViewDetails: PropTypes.func.isRequired,
 };
 
 export default cssModules(RestaurantGridItem, styles);

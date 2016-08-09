@@ -12,9 +12,9 @@
 }
 
 .contents {
+  speak: none;
   opacity: 1 !important;
   text-align: center;
-  z-index: 1;
   color: #865CD6;
   padding: 20px;
   letter-spacing: 20px;
@@ -51,6 +51,7 @@
 
 .cardImage {
   position: absolute;
+  height: 220px;
   top: 0;
   left: 0;
   width: 100%;
@@ -67,4 +68,15 @@
 .footer {
   display: flex;
   justify-content: center;
+}
+
+.srOnly {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
 }

@@ -18,11 +18,21 @@ import {
 } from 'components';
 
 class RestaurantsGrid extends Component {
+  constructor() {
+    super();
+    this.handleViewDetails = this.handleViewDetails.bind(this);
+  }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
+  }
+  handleViewDetails(id) {
+    const {
+      router,
+    } = this.context;
+    router.push(`/restaurants/${id}`)
   }
   render() {
     const {
@@ -60,6 +70,7 @@ class RestaurantsGrid extends Component {
                   {typeof categories !== 'undefined' && categories.map((cat, i) =>
                     <Tab key={i} title={cat}>
                       <RestaurantGrid
+                        onClickViewDetails={this.handleViewDetails}
                         restaurants={restaurants.filter(item =>
                           item.type.name === cat)
                         }
@@ -83,6 +94,10 @@ RestaurantsGrid.propTypes = {
   selectedFilterIndex: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
+};
+
+RestaurantsGrid.contextTypes = {
+  router: PropTypes.object.isRequired,
 };
 
 // mapStateToProps :: {State} -> {Props}
