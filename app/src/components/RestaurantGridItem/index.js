@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import { RestaurantInfo } from 'components';
 import Button from 'grommet/components/button';
 import Footer from 'grommet/components/footer';
-import QuickView from 'grommet/components/icons/base/QuickView';
+import Magnifier from 'grommet/components/icons/base/AdvancedSearch';
 
 const RestaurantGridItem = ({
   restaurant,
@@ -39,7 +39,7 @@ const RestaurantGridItem = ({
           fill={false}                              /* eslint-disable */
           onClick={() => console.log('👻 BOO!!!')} /* eslint-enable */
           icon={
-            <QuickView size="large" colorIndex="brand" />
+            <Magnifier size="medium" colorIndex="brand" />
           }
         />
       </Link>
