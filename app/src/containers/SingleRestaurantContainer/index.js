@@ -7,10 +7,9 @@ import styles from './index.module.scss';
 import {
   SingleRestaurant,
   ReviewGrid,
-  FullReviewModal,
   LoadingIndicator,
 } from 'components';
-import { AddReviewContainer } from 'containers';
+import { AddReviewContainer, FullReviewModalContainer } from 'containers';
 import Section from 'grommet/components/section';
 
 const validateReview = (x) =>
@@ -103,12 +102,12 @@ class SingleRestaurantContainer extends Component {
               onClickReview={this.handleOpenReview}
               reviews={selectedRestaurant.reviews}
             />
-            <FullReviewModal
+            <FullReviewModalContainer
+              onToggleClose={this.handleCloseReview}
               isOpen={selectedReviewId !== null}
               review={selectedRestaurant.reviews.filter(item =>
                 item.id === selectedReviewId
               )[0]}
-              onToggleClose={this.handleCloseReview}
             />
           </Section>
         :
@@ -123,7 +122,7 @@ class SingleRestaurantContainer extends Component {
 }
 
 SingleRestaurantContainer.propTypes = {
-  selectedReviewId: PropTypes.object,
+  selectedReviewId: PropTypes.number,
   errors: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
   restaurants: PropTypes.array.isRequired,

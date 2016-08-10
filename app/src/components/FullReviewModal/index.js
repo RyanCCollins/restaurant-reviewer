@@ -57,7 +57,7 @@ const FullReviewModal = ({
 FullReviewModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onToggleClose: PropTypes.func.isRequired,
-  review: PropTypes.object.isRequired,
+  review: PropTypes.object,
 };
 
 export default cssModules(FullReviewModal, styles);
