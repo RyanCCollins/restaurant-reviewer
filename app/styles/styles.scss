@@ -5,12 +5,18 @@ $primary-color: rgba(0, 216, 255, .9);
 $off-white: #E9EAEC;
 $light-grey: #a1a1a1;
 
+.no-scroll {
+  overflow: hidden;
+}
+
 body {
   font-family: Lato,sans-serif;
   font-size: 16px;
   line-height: 25px;
   overflow-x: hidden;
 }
+
+
 
 .img-responsive {
   max-width:100% !important;

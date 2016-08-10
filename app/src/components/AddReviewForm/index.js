@@ -12,15 +12,13 @@ import Menu from 'grommet/components/menu';
 class AddReviewForm extends Component {
   constructor() {
     super();
-    this.handleFocus = this.handleFocus.bind(this);
+    this.focusInput = this.focusInput.bind(this);
   }
   componentDidMount() {
-    this.handleFocus();
+    this.focusInput();
   }
-  handleFocus() {
+  focusInput() {
     this.refs.nameInput.focus();
-    this.refs.nameInput.select();
-    this.refs.nameInput.blur();
   }
   render() {
     const {
@@ -43,7 +41,6 @@ class AddReviewForm extends Component {
               <input
                 {...nameInput}
                 ref="nameInput"
-                autofocus="autofocus"
                 id="nameInput"
                 type="text"
                 name="name"
@@ -60,6 +57,7 @@ class AddReviewForm extends Component {
                 id="textInput"
                 ref="textInput"
                 name="text"
+                autofocus
                 type="text"
                 rows="5"
                 cols="40"

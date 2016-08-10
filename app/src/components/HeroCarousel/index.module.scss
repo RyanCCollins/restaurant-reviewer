@@ -44,8 +44,11 @@
   font-size: 1.3rem;
 }
 
-.rightInfo {
-
+.image {
+  max-width:100% !important;
+  height:auto;
+  display:block;
+  min-height: 50vh;
 }
 
 .rowOne{

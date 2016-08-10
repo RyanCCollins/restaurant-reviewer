@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { reset } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import * as SingleRestaurantActionCreators from './actions';
 import cssModules from 'react-css-modules';
@@ -24,7 +23,6 @@ class SingleRestaurantContainer extends Component {
     super(props);
     this.handleLoadingOfRestaurant = this.handleLoadingOfRestaurant.bind(this);
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
-    this.handleClear = this.handleClear.bind(this);
     this.handleCloseReview = this.handleCloseReview.bind(this);
     this.handleOpenReview = this.handleOpenReview.bind(this);
     this.state = {
@@ -51,9 +49,6 @@ class SingleRestaurantContainer extends Component {
       selectedRestaurant,
     });
   }
-  handleClear() {
-
-  }
   handleSubmitReview(review) {
     const {
       actions,
@@ -63,7 +58,6 @@ class SingleRestaurantContainer extends Component {
     } = this.state;
     if (validateReview(review)) {
       actions.submitReview(review, selectedRestaurant);
-
     } else {
       // Handle else clause
     }
@@ -72,12 +66,14 @@ class SingleRestaurantContainer extends Component {
     const {
       actions,
     } = this.props;
+    document.getElementById('app').classList.remove('no-scroll');
     actions.closeFullReview();
   }
   handleOpenReview(id) {
     const {
       actions,
     } = this.props;
+    document.getElementById('app').classList.add('no-scroll');
     actions.openFullReview(id);
   }
   render() {

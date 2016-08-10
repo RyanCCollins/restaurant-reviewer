@@ -18,7 +18,7 @@ const RestaurantReview = ({
     className={styles.box}
     onClick={() => onReviewClick(review.id)}
   >
-    <Heading align="center" tag="h2">
+    <Heading align="center" tag="h2" className={styles.header}>
       {review.person}
     </Heading>
     <Article className={styles.content}>

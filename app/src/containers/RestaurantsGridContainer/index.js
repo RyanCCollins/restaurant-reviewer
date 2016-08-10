@@ -4,17 +4,15 @@ import { bindActionCreators } from 'redux';
 import * as RestaurantsGridActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import {
-  Tabs,
-  Tab,
-  Section,
-  Notification,
-  Article,
-  Header,
-} from 'grommet';
+import Tabs from 'grommet/components/tabs';
+import Tab from 'grommet/components/tab';
+import Section from 'grommet/components/section';
+import Article from 'grommet/components/article';
+import Header from 'grommet/components/header';
 import {
   RestaurantGrid,
   LoadingIndicator,
+  ErrorAlert,
 } from 'components';
 
 class RestaurantsGrid extends Component {
@@ -34,6 +32,12 @@ class RestaurantsGrid extends Component {
     } = this.context;
     router.push(`/restaurants/${id}`);
   }
+  handleClearErrors() {
+    const {
+      actions,
+    } = this.props;
+    actions.clearRestaurantErrors();
+  }
   render() {
     const {
       restaurants,
@@ -46,23 +50,14 @@ class RestaurantsGrid extends Component {
       <div className={styles.restaurantsGrid}>
         <Article>
           <Header justify="center" pad={{ vertical: 'medium' }}>
-            <h1>
-              Restaurants
-            </h1>
+            <h1>Restaurants</h1>
           </Header>
           <Section primary>
-            {!isLoading && errors.length > 0 &&
-              <Notification
-                status="critical"
-                message={errors[0].message}
-                timestamp={{}}
-                state="Active"
-              />
-            }
             {isLoading ?
               <LoadingIndicator isLoading />
             :
               <div>
+                <ErrorAlert errors={errors} onClose={this.handleClearErrors} />
                 <Tabs initialIndex={selectedFilterIndex} justify="center">
                   {typeof categories !== 'undefined' && categories.map((cat, i) =>
                     <Tab key={i} title={cat}>

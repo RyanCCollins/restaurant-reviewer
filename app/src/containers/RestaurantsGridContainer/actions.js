@@ -3,15 +3,18 @@ import {
   RESTAURANTS_LOADING_SUCCESS,
   RESTAURANTS_LOADING_FAILURE,
   RESTAURANT_CATEGORIES,
+  CLEAR_RESTAURANT_ERRORS,
 } from './constants';
 import uniq from 'lodash/uniq';
 const baseUrl = process.env.NODE_ENV === 'production' ?
   process.env.BASE_URL : 'http://0.0.0.0:8080/api/v1/';
 const restaurantUrl = `${baseUrl}restaurants`;
 import fetch from 'isomorphic-fetch';
+
 const headers = new Headers({
   'content-type': 'application/json',
 });
+
 const options = {
   method: 'GET',
   headers,
@@ -41,6 +44,10 @@ const loadRestaurantsFailure = (error) => ({
   error,
 });
 
+export const clearRestaurantErrors = () => ({
+  type: CLEAR_RESTAURANT_ERRORS,
+});
+
 // loadRestaurants :: None -> Dispatch Func -> Action Data : Error
 export const loadRestaurants = () =>
   (dispatch) => {
@@ -64,7 +71,10 @@ export const loadRestaurants = () =>
           loadRestaurantsSuccess(restaurants)
         );
       })
-      .catch(error => {
+      .catch(err => {
+        const error = {
+          message: `An error occurred while loading data from server: ${err}`,
+        };
         dispatch(
           loadRestaurantsFailure(error)
         );

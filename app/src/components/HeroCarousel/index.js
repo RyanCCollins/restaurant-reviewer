@@ -28,7 +28,7 @@ const HeroCarousel = ({
           <img
             src={item.src}
             alt={item.caption}
-            className="img-responsive"
+            className={styles.image}
           />
         </div>
       )}
