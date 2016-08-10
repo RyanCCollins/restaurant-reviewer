@@ -19,6 +19,7 @@ class RestaurantsGrid extends Component {
   constructor() {
     super();
     this.handleViewDetails = this.handleViewDetails.bind(this);
+    this.handleClearErrors = this.handleClearErrors.bind(this);
   }
   componentDidMount() {
     const {

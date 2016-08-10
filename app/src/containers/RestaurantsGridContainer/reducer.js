@@ -32,7 +32,7 @@ const restaurants = (state = initialState, action) => {
     case RESTAURANTS_LOADING_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
-        errors: [...action.error],
+        errors: [...state.errors, action.error],
       });
     case CLEAR_RESTAURANT_ERRORS:
       return Object.assign({}, state, {

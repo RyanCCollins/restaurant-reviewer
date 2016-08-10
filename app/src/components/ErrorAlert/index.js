@@ -11,14 +11,18 @@ const ErrorAlert = ({
 }) => (
   <div className={styles.errorAlert}>
     {errors.length > 0 && errors.map((error, i) =>
-      <div className={styles.error}>
+      <div key={i} className={styles.error}>
         <div className="error-alert__closer">
-          <Button plain onClick={onClose}>
+          <Button
+            plain
+            onClick={onClose}
+            className={styles.closeButton}
+          >
             <CloseIcon a11yTitle="Close Alert" />
           </Button>
         </div>
         <Notification
-          key={i}
+          style={{ paddingTop: 10 }}
           status="critical"
           size="large"
           message={error.message}
