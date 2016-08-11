@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export ReviewSrOnly from './ReviewSrOnly';
 export ErrorAlert from './ErrorAlert';
 export FullReviewModal from './FullReviewModal';
 export RestaurantHours from './RestaurantHours';

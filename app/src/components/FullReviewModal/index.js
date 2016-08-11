@@ -7,6 +7,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import Article from 'grommet/components/article';
 import Layer from 'grommet/components/layer';
 import Section from 'grommet/components/section';
+import { ReviewSrOnly } from 'components';
 
 const FullReviewModal = ({
   isOpen,
@@ -44,6 +45,7 @@ const FullReviewModal = ({
               <Paragraph className={styles.reviewParagraph}>
                 <p className={styles.quote}>{review.text}</p>
               </Paragraph>
+              <ReviewSrOnly review={review} />
             </Section>
           :
             <div className={styles.center}>

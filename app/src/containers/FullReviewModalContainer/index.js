@@ -14,7 +14,8 @@ class FullReviewModalContainer extends Component {
   }
   handleTabs(e) {
     if (e.keyCode === 9) {
-      e.preventDefault();
+      //e.preventDefault();
+      
     }
   }
   render() {

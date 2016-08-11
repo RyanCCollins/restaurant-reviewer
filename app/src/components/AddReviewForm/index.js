@@ -57,7 +57,6 @@ class AddReviewForm extends Component {
                 id="textInput"
                 ref="textInput"
                 name="text"
-                autofocus
                 type="text"
                 rows="5"
                 cols="40"
@@ -84,12 +83,12 @@ class AddReviewForm extends Component {
               <Button
                 className={styles.button}
                 label="Submit"
-                primary
+                primary /* eslint-disable */
                 onClick={() => onSubmitReview({
                   rating: ratingInput.value,
                   text: textInput.value,
                   name: nameInput.value,
-                })}
+                })} /* eslint-enable */
               />
               <Button label="Clear" onClick={onClear} />
             </Menu>
