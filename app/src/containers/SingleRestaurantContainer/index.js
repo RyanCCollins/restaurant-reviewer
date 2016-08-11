@@ -85,11 +85,6 @@ class SingleRestaurantContainer extends Component {
     } = this.props;
     return (
       <div className={styles.singleRestaurant}>
-        {isLoading ?
-          <LoadingIndicator isLoading />
-        :
-          <noscript />
-        }
         {selectedRestaurant ?
           <Section className={styles.noPad}>
             <SingleRestaurant restaurant={selectedRestaurant} />
@@ -98,6 +93,9 @@ class SingleRestaurantContainer extends Component {
               onClear={this.handleClear}
               onSubmitReview={this.handleSubmitReview}
             />
+            {isLoading &&
+              <LoadingIndicator isLoading />
+            }
             <ReviewGrid
               onClickReview={this.handleOpenReview}
               reviews={selectedRestaurant.reviews}
