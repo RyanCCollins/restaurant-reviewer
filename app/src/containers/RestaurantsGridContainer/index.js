@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as RestaurantsGridActionCreators from './actions';
@@ -20,6 +21,7 @@ class RestaurantsGrid extends Component {
     super();
     this.handleViewDetails = this.handleViewDetails.bind(this);
     this.handleClearErrors = this.handleClearErrors.bind(this);
+    this.handleSwitchTab = this.handleSwitchTab.bind(this);
   }
   componentDidMount() {
     const {
@@ -39,6 +41,12 @@ class RestaurantsGrid extends Component {
     } = this.props;
     actions.clearRestaurantErrors();
   }
+  handleSwitchTab(e) {
+    if (e.keyCode === 9) {
+      console.log('Clicked tab');
+    }
+    ReactDOM.findDOMNode(this.refs.tabHeader).focus();
+  }
   render() {
     const {
       restaurants,
@@ -50,8 +58,8 @@ class RestaurantsGrid extends Component {
     return (
       <div className={styles.restaurantsGrid}>
         <Article>
-          <Header justify="center" pad={{ vertical: 'medium' }}>
-            <h1>Restaurants</h1>
+          <Header justify="center" tag="h1" pad={{ vertical: 'medium' }}>
+            Restaurants
           </Header>
           <Section primary>
             {isLoading ?
@@ -61,7 +69,10 @@ class RestaurantsGrid extends Component {
                 <ErrorAlert errors={errors} onClose={this.handleClearErrors} />
                 <Tabs initialIndex={selectedFilterIndex} justify="center">
                   {typeof categories !== 'undefined' && categories.map((cat, i) =>
-                    <Tab key={i} title={cat}>
+                    <Tab key={i} onKeyUp={this.handleSwitchTab} title={cat}>
+                      <Header justify="center" tag="h3">
+                        {`${cat} Restaurants`}
+                      </Header>
                       <RestaurantGrid
                         onViewDetails={this.handleViewDetails}
                         restaurants={cat === 'All' ? restaurants :

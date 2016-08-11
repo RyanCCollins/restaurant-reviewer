@@ -7,10 +7,10 @@ class FullReviewModalContainer extends Component {
     this.handleTabs = this.handleTabs.bind(this);
   }
   componentDidMount() {
-    const element = document.querySelector('.grommetux-layer__closer button');
-    if (typeof element !== 'undefined' || !element) {
-      element.focus();
-    }
+    window.addEventListener('keydown', this.handleTabs);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleTabs);
   }
   handleTabs(e) {
     if (e.keyCode === 9) {
@@ -19,7 +19,7 @@ class FullReviewModalContainer extends Component {
   }
   render() {
     return (
-      <FullReviewModal {...this.props} onKeyPress={this.handleTabs} />
+      <FullReviewModal {...this.props} />
     );
   }
 }

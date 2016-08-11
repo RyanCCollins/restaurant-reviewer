@@ -14,15 +14,13 @@ const RestaurantInfo = ({
 }) => (
   <div className={styles.cardInfo}>
     <Box>
+      <div className={styles.type}>
+        <span className={styles.span}>
+          <Java />{'   '}{restaurant.type.name}
+        </span>
+      </div>
       <Paragraph>
-        <p className={styles.type}>
-          <span className={styles.span}>
-            <Java />{'   '}{restaurant.type.name}
-          </span>
-          <span className={styles.span}>
-            <ContactUs />{'   '}{restaurant.phone}
-          </span>
-        </p>
+        <ContactUs />{'   '}{restaurant.phone}
       </Paragraph>
       <Paragraph>
         <LocationPin />
