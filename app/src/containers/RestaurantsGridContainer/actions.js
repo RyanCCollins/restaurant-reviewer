@@ -6,9 +6,7 @@ import {
   CLEAR_RESTAURANT_ERRORS,
 } from './constants';
 import uniq from 'lodash/uniq';
-const environment = process.env.NODE_ENV || 'development';
-const baseUrl = environment === 'production' ?
-  process.env.BASE_URL : 'http://0.0.0.0:8080/api/v1/';
+const baseUrl = 'https://restaurant-reviewer-api.herokuapp.com/api/v1/';
 const restaurantUrl = `${baseUrl}restaurants`;
 import fetch from 'isomorphic-fetch';
 
