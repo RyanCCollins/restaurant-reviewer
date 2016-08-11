@@ -6,7 +6,8 @@ import {
   CLEAR_RESTAURANT_ERRORS,
 } from './constants';
 import uniq from 'lodash/uniq';
-const baseUrl = process.env.NODE_ENV === 'production' ?
+const environment = process.env.NODE_ENV || 'development';
+const baseUrl = environment === 'production' ?
   process.env.BASE_URL : 'http://0.0.0.0:8080/api/v1/';
 const restaurantUrl = `${baseUrl}restaurants`;
 import fetch from 'isomorphic-fetch';
