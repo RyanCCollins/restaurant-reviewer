@@ -1,8 +1,4 @@
 /* eslint-disable */
-const webpack = require('webpack');
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../webpack.config.babel.js');
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 8016 : process.env.PORT;
 const path = require('path');
@@ -10,6 +6,10 @@ const express = require('express');
 const app = express();
 
 if (isDeveloping) {
+  const webpack = require('webpack');
+  const webpackMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const config = require('../webpack.config.babel.js');
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
