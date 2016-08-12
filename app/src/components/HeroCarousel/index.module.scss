@@ -2,11 +2,23 @@
   max-height: 50vh;
   width: 100%;
   position: relative;
+  @media screen and (max-width: 631px) {
+    height: 100vh;
+  }
+  @media screen and (max-width: 768px) {
+    height: 80vh;
+  }
 }
 
 .carousel {
-  max-height: 40vh;
+  max-height: 50vh;
   position: relative;
+  @media screen and (max-width: 631px) {
+    height: 100vh;
+  }
+  @media screen and (max-width: 768px) {
+    height: 80vh;
+  }
 }
 
 .overlay {
@@ -49,6 +61,12 @@
   height:auto;
   display:block;
   min-height: 50vh;
+  @media screen and (max-height: 631px) {
+    min-height: 100vh;
+  }
+  @media screen and (max-width: 768px) {
+    min-height: 80vh;
+  }
 }
 
 .rowOne{
