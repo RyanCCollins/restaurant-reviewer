@@ -11,7 +11,10 @@ const routes = (
   <Provider store={store}>
     <Router
       /* eslint-disable */
-      onUpdate={() => document.body.focus()} /* eslint-enable */
+      onUpdate={() => {
+        document.body.focus();
+        window.scrollTo(0, 0);
+      }} /* eslint-enable */
       history={history}
     >
       <Route path="/" component={App}>

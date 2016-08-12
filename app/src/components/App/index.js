@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from './actions';
@@ -16,7 +16,8 @@ const Main = (props) => (
 );
 
 Main.propTypes = {
-  children: React.children,
+  children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 // Map the global state to global props here.
