@@ -11,7 +11,7 @@ const RestaurantHours = ({
   restaurant,
 }) => (
   <Section className={styles.restaurantHours}>
-    <Accordion animate>
+    <Accordion>
       <AccordionPanel heading="Restaurant Hours">
         <List>
           <ListItem justify="center">

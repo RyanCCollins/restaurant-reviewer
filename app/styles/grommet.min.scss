@@ -7775,3 +7775,17 @@ section:not(.grommetux-section) {
   content: "";
   display: table;
   clear: both; }
+
+
+  .grommetux-accordion-panel--active .grommetux-accordion-panel__control {
+      transform: rotate(90deg)
+  }
+
+  .grommetux-accordion-panel__header {
+      user-select: none;
+      -webkit-user-select: none
+  }
+
+  .grommetux-accordion-panel header:focus {
+      outline: none
+  }
