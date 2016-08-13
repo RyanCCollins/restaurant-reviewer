@@ -41,7 +41,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     actions.toggleAddReview();
   }
   handleReviewInvalid() {
-    
+
   }
   handleSubmitReview(review) {
     const {
@@ -65,19 +65,6 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     } = this.props;
     return (
       <div className={styles.addReview}>
-        {hasFab ?
-          <div className={styles.fabContainer}>
-            <div className={styles.fab}>
-              <AddButton
-                className={styles.fabButton}
-                colorIndex="white"
-                onAdd={this.handleToggleModal}
-              />
-            </div>
-          </div>
-        :
-          <noscript />
-        }
         {isAddingReview ?
           <Layer
             onClose={this.handleToggleModal}
@@ -104,6 +91,9 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
                 onClick={this.handleToggleModal}
               />
             </Menu>
+            {hasFab &&
+              <AddButton onAdd={this.handleToggleModal} />
+            }
           </Footer>
         }
       </div>

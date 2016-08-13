@@ -25,6 +25,10 @@
     font-family: 'Raleway';
     font-size: 1.3rem;
   }
+  @media screen and (max-width: 768px) {
+    letter-spacing: 10px;
+    font-size: 1.4rem;
+  }
 }
 
 .panel {

@@ -7,14 +7,18 @@ import Button from 'grommet/components/button';
 const AddButton = ({
   onAdd,
 }) => (
-  <Button
-    className={styles.addButton}
-    icon={
-      <Add className={styles.icon} />
-    }
-    onClick={onAdd}
-    a11yTitle="Add Review Button"
-  />
+  <div className={styles.fabContainer}>
+    <div className={styles.fab}>
+      <Button
+        className={styles.addButton}
+        icon={
+          <Add className={styles.icon} />
+        }
+        onClick={onAdd}
+        a11yTitle="Add Review Button"
+      />
+    </div>
+  </div>
 );
 
 AddButton.propTypes = {
