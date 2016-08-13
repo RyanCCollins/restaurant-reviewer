@@ -105,7 +105,6 @@ AddReview.propTypes = {
   actions: PropTypes.object.isRequired,
   fields: PropTypes.object.isRequired,
   onSubmitReview: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
   hasFab: PropTypes.bool.isRequired,
   resetForm: PropTypes.func.isRequired,
 };

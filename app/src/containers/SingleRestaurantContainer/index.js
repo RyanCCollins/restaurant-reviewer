@@ -8,6 +8,7 @@ import {
   SingleRestaurant,
   ReviewGrid,
   LoadingIndicator,
+  ErrorAlert,
 } from 'components';
 import { AddReviewContainer, FullReviewModalContainer } from 'containers';
 import Section from 'grommet/components/section';
@@ -58,7 +59,9 @@ class SingleRestaurantContainer extends Component {
     if (validateReview(review)) {
       actions.submitReview(review, selectedRestaurant);
     } else {
-      // Handle else clause
+      actions.handleReviewError({
+        message: 'Unable to process the review.  Please ensure that all fields are filled out.',
+      });
     }
   }
   handleCloseReview() {
@@ -82,6 +85,7 @@ class SingleRestaurantContainer extends Component {
     const {
       selectedReviewId,
       isLoading,
+      errors,
     } = this.props;
     return (
       <div className={styles.singleRestaurant}>
@@ -95,6 +99,9 @@ class SingleRestaurantContainer extends Component {
             />
             {isLoading &&
               <LoadingIndicator isLoading />
+            }
+            {errors.length > 0 &&
+              <ErrorAlert errors={errors} />
             }
             <ReviewGrid
               onClickReview={this.handleOpenReview}

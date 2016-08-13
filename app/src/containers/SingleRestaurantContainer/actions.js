@@ -118,6 +118,13 @@ const encodeReview = (review, restaurant) => ({
   },
 });
 
+export const handleReviewError = (error) =>
+  (dispatch) => {
+    dispatch(
+      addReviewFailure(error)
+    );
+  };
+
 // submitReview :: Int -> JSON -> Func -> Res JSON : Error
 export const submitReview = (review, restaurant) =>
   (dispatch) => {
