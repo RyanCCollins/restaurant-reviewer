@@ -52,7 +52,10 @@ export const loadRestaurants = () =>
   (dispatch) => {
     dispatch(loadRestaurantsInitiation());
     fetch(restaurantUrl)
-      .then(res => res.json())
+      .then(res => {
+        console.log('Received a response from the server: ', res);
+        return res.json();
+      })
       .then(data => {
         const {
           restaurants,

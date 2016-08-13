@@ -25,13 +25,23 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     this.handleToggleModal = this.handleToggleModal.bind(this);
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleReviewInvalid = this.handleReviewInvalid.bind(this);
   }
   handleToggleModal() {
     const {
       actions,
+      isAddingReview,
     } = this.props;
+    if (isAddingReview) {
+      document.getElementById('app').classList.remove('no-scroll');
+      this.handleClear();
+    } else {
+      document.getElementById('app').classList.add('no-scroll');
+    }
     actions.toggleAddReview();
-    this.handleClear();
+  }
+  handleReviewInvalid() {
+    
   }
   handleSubmitReview(review) {
     const {
@@ -79,6 +89,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
               <AddReviewForm
                 {...fields}
                 onSubmitReview={this.handleSubmitReview}
+                onSubmitReviewInvalid={this.handleReviewInvalid}
                 onClear={resetForm}
               />
             </Box>

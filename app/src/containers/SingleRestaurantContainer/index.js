@@ -13,11 +13,6 @@ import {
 import { AddReviewContainer, FullReviewModalContainer } from 'containers';
 import Section from 'grommet/components/section';
 
-const validateReview = (x) =>
-  x.rating !== null &&
-    x.text !== null &&
-      x.name !== null;
-
 class SingleRestaurantContainer extends Component {
   constructor(props) {
     super(props);
@@ -56,13 +51,7 @@ class SingleRestaurantContainer extends Component {
     const {
       selectedRestaurant,
     } = this.state;
-    if (validateReview(review)) {
-      actions.submitReview(review, selectedRestaurant);
-    } else {
-      actions.handleReviewError({
-        message: 'Unable to process the review.  Please ensure that all fields are filled out.',
-      });
-    }
+    actions.submitReview(review, selectedRestaurant);
   }
   handleCloseReview() {
     const {
