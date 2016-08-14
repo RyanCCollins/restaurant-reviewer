@@ -9,17 +9,25 @@ import ListItem from 'grommet/components/ListItem';
 const FilterMenu = ({
   menuItems,
   onSelectItem,
+  label,
+  selectedItem,
 }) => (
   <Menu
     icon={<Filter />}
     closeOnClick={false}
+    label={label}
     className={styles.filterMenu}
     pad="medium"
   >
-    <List selectable onSelect={onSelectItem}>
-      {menuItems.map(item =>
-        <ListItem justify="between">
-          {item}
+    <List selectable onSelect={onSelectItem} selected={selectedItem}>
+      {menuItems.map((item, i) => /* eslint-disable */
+        <ListItem
+          key={i}
+          ref={`list-item-${item.id}`}
+          justify="between"
+          onClick={() => onSelectItem(item.id)}
+        > /* eslint-enable */
+          {item.value}
         </ListItem>
       )}
     </List>
@@ -29,6 +37,8 @@ const FilterMenu = ({
 FilterMenu.propTypes = {
   menuItems: PropTypes.array.isRequired,
   onSelectItem: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  selectedItem: PropTypes.object.isRequired,
 };
 
 export default cssModules(FilterMenu, styles);

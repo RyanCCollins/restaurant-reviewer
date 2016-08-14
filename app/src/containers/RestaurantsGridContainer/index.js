@@ -14,6 +14,7 @@ import {
   RestaurantGrid,
   LoadingIndicator,
   ErrorAlert,
+  FilterRestaurants,
 } from 'components';
 
 class RestaurantsGrid extends Component {
@@ -73,6 +74,12 @@ class RestaurantsGrid extends Component {
                       <Header justify="center" tag="h3">
                         {`${cat} Restaurants`}
                       </Header>
+                      <FilterRestaurants
+                        locations={locations}
+                        ratings={ratings}
+                        onFilterRatings={this.handleFilterRatings}
+                        onFilterLocations={this.handleFilterLocations}
+                      />
                       <RestaurantGrid
                         onViewDetails={this.handleViewDetails}
                         restaurants={cat === 'All' ? restaurants :
