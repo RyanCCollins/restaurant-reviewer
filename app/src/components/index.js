@@ -1,4 +1,6 @@
 /* Assemble all components for export */
+export FilterMenu from './FilterMenu';
+export FilterRestaurants from './FilterRestaurants';
 export ReviewSrOnly from './ReviewSrOnly';
 export ErrorAlert from './ErrorAlert';
 export FullReviewModal from './FullReviewModal';
