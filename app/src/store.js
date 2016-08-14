@@ -18,6 +18,33 @@ export const initialState = {
     selectedFilterIndex: 0,
     errors: [],
     categories: [],
+    locations: [],
+    ratings: [
+      {
+        id: 0,
+        value: 'All',
+      },
+      {
+        id: 1,
+        value: '1 Star',
+      },
+      {
+        id: 2,
+        value: '2 Star',
+      },
+      {
+        id: 3,
+        value: '3 Star',
+      },
+      {
+        id: 4,
+        value: '4 Star',
+      },
+      {
+        id: 5,
+        value: '5 Star',
+      },
+    ],
   },
   singleRestaurant: {
     reviews: [],

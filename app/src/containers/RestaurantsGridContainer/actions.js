@@ -37,6 +37,12 @@ const loadRestaurantCategories = (categories) => ({
   categories,
 });
 
+// loadRestaurantLocations :: [String] -> {Action}
+const loadRestaurantLocations = (locations) => ({
+  type: RESTAURANT_CATEGORIES,
+  locations,
+});
+
 // loadRestaurantsFailure :: Error -> {Action}
 const loadRestaurantsFailure = (error) => ({
   type: RESTAURANTS_LOADING_FAILURE,
@@ -65,6 +71,18 @@ export const loadRestaurants = () =>
         const finalCategories = [...staticCategories, ...dynamicCategories];
         dispatch(
           loadRestaurantCategories(finalCategories)
+        );
+        return restaurants;
+      })
+      .then(restaurants => {
+        const staticLocations = ['All'];
+        const dynamicLocations = uniq(restaurants.map(i => i.city));
+        const finalLocations = [
+          ...staticLocations,
+          ...dynamicLocations,
+        ];
+        dispatch(
+          loadRestaurantLocations(finalLocations)
         );
         return restaurants;
       })

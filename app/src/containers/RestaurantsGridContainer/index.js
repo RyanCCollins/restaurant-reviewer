@@ -55,6 +55,8 @@ class RestaurantsGrid extends Component {
       errors,
       selectedFilterIndex,
       categories,
+      locations,
+      ratings,
     } = this.props;
     return (
       <div className={styles.restaurantsGrid}>
@@ -106,6 +108,8 @@ RestaurantsGrid.propTypes = {
   selectedFilterIndex: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
+  locations: PropTypes.array.isRequired,
+  ratings: PropTypes.array.isRequired,
 };
 
 RestaurantsGrid.contextTypes = {
@@ -119,6 +123,8 @@ const mapStateToProps = (state) => ({
   isLoading: state.restaurants.isLoading,
   errors: state.restaurants.errors,
   categories: state.restaurants.categories,
+  locations: state.restaurants.locations,
+  ratings: state.restaurants.ratings,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

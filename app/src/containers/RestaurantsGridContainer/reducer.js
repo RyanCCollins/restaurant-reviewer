@@ -4,6 +4,7 @@ import {
   RESTAURANTS_LOADING_FAILURE,
   RESTAURANT_CATEGORIES,
   CLEAR_RESTAURANT_ERRORS,
+  RESTAURANT_LOCATIONS,
 } from './constants';
 
 const initialState = {
@@ -55,6 +56,10 @@ const restaurants = (state = initialState, action) => {
     case RESTAURANT_CATEGORIES:
       return Object.assign({}, state, {
         categories: action.categories,
+      });
+    case RESTAURANT_LOCATIONS:
+      return Object.assign({}, state, {
+        locations: action.locations,
       });
     case RESTAURANTS_LOADING_FAILURE:
       return Object.assign({}, state, {

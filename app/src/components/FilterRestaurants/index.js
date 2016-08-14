@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
-import FilterMenu from 'components';
+import { FilterMenu } from 'components';
 import Section from 'grommet/components/Section';
 import Menu from 'grommet/components/Menu';
 
