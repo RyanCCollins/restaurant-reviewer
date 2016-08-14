@@ -10,6 +10,9 @@ Accesses JSON served from a [Ruby on Rails API](https://github.com/RyanCCollins/
 ## UX & Accessibility Features
 This app integrates [grommet](https://github.com/grommet/grommet), the world's most advanced UX framework. 
 
+### Getting Started
+The application requires npm v3.8.8 and node v4.2.4.  Errors may occur if you are using other versions.  For details on setting node and npm permissions and using node version manager to install specific node versions, please see [this gist](https://gist.github.com/RyanCCollins/69443f0ff1f7725d305d).
+
 ### Installing
 
 To install the dependencies, run
