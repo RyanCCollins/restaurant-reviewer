@@ -38,7 +38,7 @@ FilterMenu.propTypes = {
   menuItems: PropTypes.array.isRequired,
   onSelectItem: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
-  selectedItem: PropTypes.object.isRequired,
+  selectedItem: PropTypes.object,
 };
 
 export default cssModules(FilterMenu, styles);
