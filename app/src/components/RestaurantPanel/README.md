@@ -1,17 +1,20 @@
 ## RestaurantPanel Component
-A component that ...
+A presentational component that represents information for a single restaurant, to be shown on the single restaurant page.
 
 ### Example
 
 ```js
-<RestaurantPanel />
+<RestaurantPanel
+  restaurant={myRestaurant}
+/>
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
+| **restaurant**    | Object   |             | A restaurant to show information about.
 
 
 ### Other Information
+Presentational component
