@@ -14,18 +14,23 @@ const FilterRestaurants = ({
   <Section
     className={styles.filterRestaurants}
   >
-    <Menu direction="row" size="large">
-      <FilterMenu
-        menuItems={locations}
-        onSelectItem={onFilterLocations}
-        label="Filter by Location"
-      />
-      <FilterMenu
-        menuItems={ratings}
-        onSelectItem={onFilterRatings}
-        label="Filter by Rating"
-      />
-    </Menu>
+    <div className={styles.menuWrapper}>
+      <Menu
+        direction="row"
+        size="large"
+      >
+        <FilterMenu
+          menuItems={locations}
+          onSelectItem={onFilterLocations}
+          label="Filter by Location"
+        />
+        <FilterMenu
+          menuItems={ratings}
+          onSelectItem={onFilterRatings}
+          label="Filter by Rating"
+        />
+      </Menu>
+    </div>
   </Section>
 );
 

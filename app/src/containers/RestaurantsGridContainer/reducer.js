@@ -59,7 +59,10 @@ const restaurants = (state = initialState, action) => {
       });
     case RESTAURANT_LOCATIONS:
       return Object.assign({}, state, {
-        locations: action.locations,
+        locations: action.locations.map((i, index) => ({
+          id: index,
+          value: i,
+        })),
       });
     case RESTAURANTS_LOADING_FAILURE:
       return Object.assign({}, state, {

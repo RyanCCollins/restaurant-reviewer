@@ -3,6 +3,7 @@ import {
   RESTAURANTS_LOADING_SUCCESS,
   RESTAURANTS_LOADING_FAILURE,
   RESTAURANT_CATEGORIES,
+  RESTAURANT_LOCATIONS,
   CLEAR_RESTAURANT_ERRORS,
 } from './constants';
 import uniq from 'lodash/uniq';
@@ -39,7 +40,7 @@ const loadRestaurantCategories = (categories) => ({
 
 // loadRestaurantLocations :: [String] -> {Action}
 const loadRestaurantLocations = (locations) => ({
-  type: RESTAURANT_CATEGORIES,
+  type: RESTAURANT_LOCATIONS,
   locations,
 });
 
