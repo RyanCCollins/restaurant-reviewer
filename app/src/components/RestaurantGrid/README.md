@@ -20,3 +20,22 @@ A presentational component that shows a grid of restaurants.
 
 ### Other Information
 Presentational only component with no state.
+
+```js
+const myRestaurants = [
+{
+  id: 1,
+    name: "The New Magnum Café",
+    address: "Jalan M Husni Thamrin 1",
+    city: "Jakarta Pusat",
+    state:"Daerah Khusus Ibukota Jakarta",
+    zip:"23435",
+    country: "id",
+    phone: "(021) 23580055",
+    website: "http://mymagnum.co.id/",
+  },
+  {
+    ...
+  }
+]
+```
