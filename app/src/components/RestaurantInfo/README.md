@@ -1,17 +1,18 @@
 ## RestaurantInfo Component
-A component that ...
+A component that shows the restaurants info, following specifications for project.
 
 ### Example
 
 ```js
-<RestaurantInfo />
+<RestaurantInfo restaurant={myRestaurant} />
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
+| **restaurant**    | Object   |             | An object describing a restaurant.
 
 
 ### Other Information
+Does not error check for bad data.  Is a presentational component ONLY.
