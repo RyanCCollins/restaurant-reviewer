@@ -5,6 +5,10 @@ import {
   RESTAURANT_CATEGORIES,
   RESTAURANT_LOCATIONS,
   CLEAR_RESTAURANT_ERRORS,
+  FILTER_RESTAURANTS_BY_CATEGORY,
+  FILTER_RESTAURANTS_BY_RATING,
+  FILTER_RESTAURANTS_BY_LOCATION,
+  CLEAR_RESTAURANTS_FILTERS,
 } from './constants';
 import uniq from 'lodash/uniq';
 const baseUrl = 'https://restaurant-reviewer-api.herokuapp.com/api/v1/';
@@ -101,3 +105,26 @@ export const loadRestaurants = () =>
         );
       });
   };
+
+// filterByCategory :: String -> {Action}
+export const filterRestaurantsByCategory = (category) => ({
+  type: FILTER_RESTAURANTS_BY_CATEGORY,
+  category,
+});
+
+// filterByRating :: String -> {Action}
+export const filterRestaurantsByRating = (rating) => ({
+  type: FILTER_RESTAURANTS_BY_RATING,
+  rating,
+});
+
+// filterByLocation :: String -> {Action}
+export const filterRestaurantsByLocation = (location) => ({
+  type: FILTER_RESTAURANTS_BY_LOCATION,
+  location,
+});
+
+// clearRestaurantsFilters :: None -> {Action}
+export const clearRestaurantsFilters = () => ({
+  type: CLEAR_RESTAURANTS_FILTERS,
+});

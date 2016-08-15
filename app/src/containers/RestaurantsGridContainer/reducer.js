@@ -5,6 +5,10 @@ import {
   RESTAURANT_CATEGORIES,
   CLEAR_RESTAURANT_ERRORS,
   RESTAURANT_LOCATIONS,
+  FILTER_RESTAURANTS_BY_CATEGORY,
+  FILTER_RESTAURANTS_BY_RATING,
+  FILTER_RESTAURANTS_BY_LOCATION,
+  CLEAR_RESTAURANTS_FILTERS,
 } from './constants';
 
 const initialState = {
@@ -75,6 +79,23 @@ const restaurants = (state = initialState, action) => {
       return Object.assign({}, state, {
         errors: [],
       });
+    case FILTER_RESTAURANTS_BY_CATEGORY:
+      return Object.assign({}, state, {
+        restaurants: state.restaurants.filter(i =>
+          i.category === action.category.value
+        ),
+        selectedFilterIndex: action.category,
+      });
+    case FILTER_RESTAURANTS_BY_RATING:
+      return Object.assign({}, state, {
+        selectedRatingFilter: action.rating,
+      });
+    case FILTER_RESTAURANTS_BY_LOCATION:
+      return Object.assign({}, state, {
+        selectedLocationFilter: action.rating,
+      });
+    case CLEAR_RESTAURANTS_FILTERS:
+      return state;
     default:
       return state;
   }
