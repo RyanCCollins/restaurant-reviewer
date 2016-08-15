@@ -7,6 +7,7 @@ import LocationPin from 'grommet/components/icons/base/LocationPin';
 import LinkIcon from 'grommet/components/icons/base/Link';
 import ContactUs from 'grommet/components/icons/base/ContactUs';
 import Box from 'grommet/components/box';
+import Anchor from 'grommet/components/Anchor';
 import Java from 'grommet/components/icons/base/Java';
 
 const RestaurantInfo = ({
@@ -25,14 +26,13 @@ const RestaurantInfo = ({
       </Paragraph>
       <Paragraph className={styles.paragraph}>
         <LocationPin />
-        {'   '}
         {restaurant.city}, {restaurant.state} {restaurant.country}
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <LinkIcon />{'   '}
-        <a href={restaurant.website}>
+        <LinkIcon />
+        <Anchor href={restaurant.website}>
           {restaurant.website.length > 30 ? 'Visit Website' : restaurant.website}
-        </a>
+        </Anchor>
       </Paragraph>
     </Box>
   </div>
