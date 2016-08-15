@@ -4,7 +4,12 @@ A component that shows two filter buttons to allow filtering of the restaurant l
 ### Example
 
 ```js
-<FilterRestaurants />
+<FilterRestaurants 
+  locations={myLocations}
+  ratings={myRatings}
+  onFilterLocations={this.handleFilter.bind(this, 'locations')}
+  onFilterRatings={this.handleFilter.bind(this, 'ratings')}
+/>
 ```
 
 ### Props
@@ -22,4 +27,4 @@ A component that shows two filter buttons to allow filtering of the restaurant l
   onFilterRatings,
 
 ### Other Information
-In some ways is a higher order component, although
+In some ways is a higher order component, although there is no internal state so left as a component vs. container.
