@@ -1,17 +1,14 @@
 ## HeroCarousel Component
-A component that takes an array of images and makes a half-height image caraousel hero.
+A component that takes an array of restaurants with images and makes a half-height image caraousel hero with an item for each restaurant.
 
 ### Example
 
 ```js
-<HeroCarousel images={images} />
+<HeroCarousel restaurants={restaurants} />
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **images**    | Array   |             | Arrays containing an object with a src and a caption attribute.
-
-
-### Other Information
+| **restaurants**    | Array   |             | Arrays containing an object with a src and a caption attribute for each restaurant to be shown.
