@@ -5,6 +5,7 @@ import Menu from 'grommet/components/Menu';
 import Filter from 'grommet/components/icons/base/Filter';
 import List from 'grommet/components/List';
 import ListItem from 'grommet/components/ListItem';
+import Anchor from 'grommet/components/Anchor';
 
 class FilterMenu extends Component {
   render() {
@@ -23,15 +24,24 @@ class FilterMenu extends Component {
         pad="medium"
         dropAlign={{ left: 'left', top: 'bottom' }}
       >
-        <List selectable onSelect={onSelectItem} selected={selectedItem}>
+        <List
+          style={{ maxHeight: 400 }}
+          selectable
+          onSelect={onSelectItem}
+          selected={selectedItem}
+        >
           {menuItems.map((item, i) =>
             <ListItem
               key={i}
               ref={`list-item-${item.id}`}
               justify="between"
-              onClick={() => onSelectItem(item.id)}  // eslint-disable-line react/jsx-no-bind
             >
-              {item.value}
+              <Anchor
+                href="#"
+                onClick={() => onSelectItem(item.id)} // eslint-disable-line react/jsx-no-bind
+              >
+                {item.value}
+              </Anchor>
             </ListItem>
           )}
         </List>

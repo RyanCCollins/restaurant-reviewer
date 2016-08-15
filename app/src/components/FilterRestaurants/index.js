@@ -18,6 +18,8 @@ const FilterRestaurants = ({
       <Menu
         direction="row"
         size="large"
+        responsive
+        closeOnClick={false}
       >
         <FilterMenu
           menuItems={locations}

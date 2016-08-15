@@ -12,6 +12,8 @@ const initialState = {
   errors: [],
   isLoading: false,
   selectedFilterIndex: 0,
+  selectedRatingFilter: 'All',
+  selectedLocationFilter: 'All',
   categories: [],
   locations: [],
   ratings: [

@@ -23,6 +23,8 @@ class RestaurantsGrid extends Component {
     this.handleViewDetails = this.handleViewDetails.bind(this);
     this.handleClearErrors = this.handleClearErrors.bind(this);
     this.handleSwitchTab = this.handleSwitchTab.bind(this);
+    this.handleFilterRatings = this.handleFilterRatings.bind(this);
+    this.handleFilterLocation = this.handleFilterRatings.bind(this);
   }
   componentDidMount() {
     const {
@@ -47,6 +49,12 @@ class RestaurantsGrid extends Component {
       console.log('Clicked tab');
     }
     ReactDOM.findDOMNode(this.refs.tabHeader).focus();
+  }
+  handleFilterRatings() {
+
+  }
+  handleFilterLocation() {
+
   }
   render() {
     const {
