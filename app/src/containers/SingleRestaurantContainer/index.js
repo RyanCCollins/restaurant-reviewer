@@ -107,7 +107,7 @@ class SingleRestaurantContainer extends Component {
         :
           <div className={styles.containerCenter}>
             <h1 className={styles.noneFound}>No Restaurant Found</h1>
-            <h4>Going back home where it's safe!</h4>
+            <h4>Going back home where it\'s safe!</h4>
           </div>
         }
       </div>
