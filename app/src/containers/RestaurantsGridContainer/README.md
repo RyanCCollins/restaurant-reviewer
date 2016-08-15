@@ -69,7 +69,14 @@ const errors = [
 
 Categories:
 ```js
-
+const categories = [
+  {
+    0:"All"
+  },
+  {
+    1:"Cafe"
+  }
+];
 ```
 
 Locations:
