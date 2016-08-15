@@ -41,8 +41,9 @@ const RestaurantGridItem = ({
     <Footer className={styles.footer}>
       <Button
         plain
-        fill={false} /*eslint-disable*/
-        onClick={() => onViewDetails(restaurant.id)} /* eslint-enable */
+        fill={false}
+        label="More Info"
+        onClick={() => onViewDetails(restaurant.id)} // eslint-disable-line react/jsx-no-bind
         icon={
           <Information
             size="medium"

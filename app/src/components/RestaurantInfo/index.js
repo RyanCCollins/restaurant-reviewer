@@ -22,11 +22,16 @@ const RestaurantInfo = ({
         </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <ContactUs />{'   '}{restaurant.phone}
+        <ContactUs />{'   '}
+          <span>
+            {restaurant.phone}
+          </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
         <LocationPin />
-        {restaurant.city}, {restaurant.state} {restaurant.country}
+        <span>
+          {restaurant.city}, {restaurant.state} {restaurant.country}
+        </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
         <LinkIcon />

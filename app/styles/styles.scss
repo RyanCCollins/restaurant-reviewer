@@ -266,3 +266,51 @@ span.form-field__contents {
   opacity: 0.01;
   transition: opacity 600ms ease-in;
 }
+$c1: #114357;
+$c2: #826C75;
+$c3: #F29492;
+.dizzy-gillespie {
+  filter: saturate(3);
+  width: 0.1px;
+  height: 0.1px;
+  border: 30px solid transparent;
+  border-radius: 5px;
+  animation: loader 3s ease-in infinite, spin 1s linear infinite;
+}
+.dizzy-gillespie::before {
+  filter: saturate(0.3);
+  display: block;
+  position: absolute;
+  z-index: -1;
+  margin-left: -30px;
+  margin-top: -30px;
+  content:'';
+  height:0.1;
+  width:0.1;
+  border: 30px solid transparent;
+  border-radius: 5px;
+  animation: loader 2s ease-in infinite reverse, spin 0.8s linear infinite reverse;
+}
+.dizzy-gillespie::after {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  margin-left: -10px;
+  margin-top: -10px;
+  content:'';
+  height:20px;
+  width:20px;
+  border-radius: 20px;
+  background-color: white;
+}
+@keyframes loader {
+  0% {border-bottom-color:transparent;border-top-color:$c1}
+  25% {border-left-color:transparent;border-right-color:$c2}
+  50% {border-top-color:transparent;border-bottom-color:$c3}
+  75% {border-right-color:transparent;border-left-color:$c2}
+  100% {border-bottom-color:transparent;border-top-color:$c1}
+}
+@keyframes spin {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(-360deg)}
+}
