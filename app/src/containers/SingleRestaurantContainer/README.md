@@ -5,14 +5,8 @@ A container for single restaurants, loading info and reviews for it.
 
 ```js
 <SingleRestaurantContainer  />
+// Props are connected through redux, not passed into the container.
 ```
-  selectedReviewId: PropTypes.number,
-  errors: PropTypes.array,
-  isLoading: PropTypes.bool.isRequired,
-  restaurants: PropTypes.array.isRequired,
-  params: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
-  addReviewData: PropTypes.object,
 
 ### Props
 
