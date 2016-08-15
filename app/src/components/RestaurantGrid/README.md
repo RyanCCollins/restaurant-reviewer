@@ -4,11 +4,12 @@ A presentational component that shows a grid of restaurants.
 ### Example
 
 ```js
-<RestaurantGrid />
+<RestaurantGrid 
+  restaurants={myRestaurants}
+  onViewDetails={this.viewDetails}
+/>
 ```
 
-  restaurants,
-  onViewDetails,
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
