@@ -1,5 +1,5 @@
 ## Navbar Component
-A component that ...
+A component that is a visual navbar with a logo and a link for home page.
 
 ### Example
 
@@ -8,10 +8,7 @@ A component that ...
 ```
 
 ### Props
-
-| Prop          | Type     | Default     | Possible Values
-| ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
-
+None
 
 ### Other Information
+None
