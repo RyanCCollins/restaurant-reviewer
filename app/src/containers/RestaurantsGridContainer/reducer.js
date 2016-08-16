@@ -81,9 +81,6 @@ const restaurants = (state = initialState, action) => {
       });
     case FILTER_RESTAURANTS_BY_CATEGORY:
       return Object.assign({}, state, {
-        restaurants: state.restaurants.filter(i =>
-          i.category === action.category.value
-        ),
         selectedFilterIndex: action.category,
       });
     case FILTER_RESTAURANTS_BY_RATING:

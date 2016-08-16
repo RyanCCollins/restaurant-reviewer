@@ -17,6 +17,9 @@ import {
   FilterRestaurants,
 } from 'components';
 
+const visibleRestaurants = (restaurants, filter, property) =>
+  restaurants.filter(i => i[property] === filter);
+
 class RestaurantsGrid extends Component {
   constructor() {
     super();
@@ -25,13 +28,24 @@ class RestaurantsGrid extends Component {
     this.handleSwitchTab = this.handleSwitchTab.bind(this);
     this.handleFilterRatings = this.handleFilterRatings.bind(this);
     this.handleFilterLocation = this.handleFilterRatings.bind(this);
-    this.getFilteredRestaurants = this.getFilteredRestaurants.bind(this);
+    this.handleRestaurantFiltering = this.handleRestaurantFiltering.bind(this);
+    this.state = {
+      filteredRestaurants: [],
+    };
   }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
+  }
+  componentWillReceiveProps(newProps) {
+    const {
+      restaurants,
+    } = newProps;
+    if (restaurants.length > 0) {
+      this.handleRestaurantFiltering();
+    }
   }
   handleViewDetails(id) {
     const {
@@ -51,13 +65,19 @@ class RestaurantsGrid extends Component {
     }
     ReactDOM.findDOMNode(this.refs.tabHeader).focus();
   }
-  handleFilterRatings() {
-
+  handleFilterRatings(rating) {
+    const {
+      actions,
+    } = this.props;
+    actions.filterRestaurantsByRating();
   }
-  handleFilterLocation() {
-
+  handleFilterLocation(location) {
+    const {
+      actions,
+    } = this.props;
+    actions.filterRestaurantsByLocation();
   }
-  getFilteredRestaurants() {
+  handleRestaurantFiltering() {
     const {
       restaurants,
       selectedFilterIndex,
@@ -66,21 +86,34 @@ class RestaurantsGrid extends Component {
       ratingFilter,
     } = this.props;
     const category = categories[selectedFilterIndex];
-    if (category !== 'All') {
-      return restaurants.filter(rest =>
+    if (typeof category !== 'undefined' && category !== 'All') {
+      const filteredRestaurants = restaurants.filter(rest =>
         rest.type.name === category,
       );
-    }
-    if (locationFilter !== 'All') {
-      return restaurants.filter(rest =>
+      this.setState({
+        filteredRestaurants,
+      });
+    } else if (typeof locationFilter !== 'undefined' &&
+                      locationFilter !== 'All') {
+      const filteredRestaurants = restaurants.filter(rest =>
         rest.city === locationFilter,
       );
-    } else if (ratingFilter !== 'All') {
-      return restaurants.filter(rest =>
+      this.setState({
+        filteredRestaurants,
+      });
+    } else if (typeof ratingFilter !== 'undefined' &&
+                      ratingFilter !== 'All') {
+      const filteredRestaurants = restaurants.filter(rest =>
         rest.average_rating === parseInt(ratingFilter, 10),
       );
+      this.setState({
+        filteredRestaurants,
+      });
+    } else {
+      this.setState({
+        filteredRestaurants: restaurants,
+      });
     }
-    return restaurants;
   }
   render() {
     const {
@@ -91,6 +124,9 @@ class RestaurantsGrid extends Component {
       locations,
       ratings,
     } = this.props;
+    const {
+      filteredRestaurants,
+    } = this.state;
     return (
       <div className={styles.restaurantsGrid}>
         <Article>
@@ -110,18 +146,21 @@ class RestaurantsGrid extends Component {
                         {`${cat} Restaurants`}
                       </Header>
                       {categories[selectedFilterIndex] === 'All' &&
+                          filteredRestaurants.length > 0 &&
                         <FilterRestaurants
-                          restaurants={this.getFilteredRestaurants}
+                          restaurants={filteredRestaurants.length > 0 && filteredRestaurants}
                           locations={locations}
                           ratings={ratings}
                           onFilterRatings={this.handleFilterRatings}
                           onFilterLocations={this.handleFilterLocations}
                         />
                       }
-                      <RestaurantGrid
-                        onViewDetails={this.handleViewDetails}
-                        restaurants={this.getFilteredRestaurants}
-                      />
+                      {filteredRestaurants.length > 0 &&
+                        <RestaurantGrid
+                          onViewDetails={this.handleViewDetails}
+                          restaurants={filteredRestaurants}
+                        />
+                      }
                     </Tab>
                   )}
                 </Tabs>

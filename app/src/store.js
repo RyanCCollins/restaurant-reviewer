@@ -16,6 +16,8 @@ export const initialState = {
     isLoading: false,
     items: [],
     selectedFilterIndex: 0,
+    selectedRatingFilter: 'All',
+    selectedLocationFilter: 'All',
     errors: [],
     categories: [],
     locations: [],
