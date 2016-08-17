@@ -40,8 +40,7 @@ const ErrorAlert = ({
           state="Active"
         />
       </div>
-    )
-    }
+    )}
   </div>
 );
 
