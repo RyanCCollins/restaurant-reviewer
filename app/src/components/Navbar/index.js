@@ -1,7 +1,8 @@
 /**
+* By Ryan Collins
 * @Date:   2016-08-16T19:56:27-04:00
 * @Email:  admin@ryancollins.io
-* @Last modified time: 2016-08-16T19:56:31-04:00
+* @Last modified time: 2016-08-16T20:00:04-04:00
 * @License: All rights reserved.
 
  This source code is licensed under the MIT license found in the
