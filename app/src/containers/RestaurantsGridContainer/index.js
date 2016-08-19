@@ -27,7 +27,7 @@ class RestaurantsGrid extends Component {
     this.handleClearErrors = this.handleClearErrors.bind(this);
     this.handleSwitchTab = this.handleSwitchTab.bind(this);
     this.handleFilterRatings = this.handleFilterRatings.bind(this);
-    this.handleFilterLocation = this.handleFilterRatings.bind(this);
+    this.handleFilterLocations = this.handleFilterLocations.bind(this);
     this.handleRestaurantFiltering = this.handleRestaurantFiltering.bind(this);
     this.state = {
       filteredRestaurants: [],
@@ -44,6 +44,7 @@ class RestaurantsGrid extends Component {
       restaurants,
     } = newProps;
     if (restaurants.length > 0) {
+      console.log('Called componentWillReceiveProps', newProps);
       this.handleRestaurantFiltering();
     }
   }
@@ -69,13 +70,13 @@ class RestaurantsGrid extends Component {
     const {
       actions,
     } = this.props;
-    actions.filterRestaurantsByRating();
+    actions.filterRestaurantsByRating(rating);
   }
-  handleFilterLocation(location) {
+  handleFilterLocations(location) {
     const {
       actions,
     } = this.props;
-    actions.filterRestaurantsByLocation();
+    actions.filterRestaurantsByLocation(location);
   }
   handleRestaurantFiltering() {
     const {
@@ -148,7 +149,6 @@ class RestaurantsGrid extends Component {
                       {categories[selectedFilterIndex] === 'All' &&
                           filteredRestaurants.length > 0 &&
                         <FilterRestaurants
-                          restaurants={filteredRestaurants.length > 0 && filteredRestaurants}
                           locations={locations}
                           ratings={ratings}
                           onFilterRatings={this.handleFilterRatings}

@@ -48,7 +48,10 @@ const FilterRestaurants = ({
 );
 
 FilterRestaurants.propTypes = {
-  restaurants: PropTypes.array.isRequired,
+  locations: PropTypes.array.isRequired,
+  ratings: PropTypes.array.isRequired,
+  onFilterLocations: PropTypes.func.isRequired,
+  onFilterRatings: PropTypes.func.isRequired,
 };
 
 export default cssModules(FilterRestaurants, styles);

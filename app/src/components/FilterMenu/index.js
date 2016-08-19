@@ -49,7 +49,9 @@ class FilterMenu extends Component {
             >
               <Anchor
                 href="#"
-                onClick={() => onSelectItem(item.id)} // eslint-disable-line react/jsx-no-bind
+                onClick={() => // eslint-disable-line react/jsx-no-bind
+                  onSelectItem({ value: item.value })
+                }
               >
                 {item.value}
               </Anchor>
