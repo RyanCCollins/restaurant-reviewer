@@ -90,6 +90,7 @@ const restaurants = (state = initialState, action) => {
       });
     case FILTER_RESTAURANTS_BY_RATING:
       return Object.assign({}, state, {
+        selectedFilterIndex: 0,
         selectedRatingFilter: action.rating,
         filteredItems: state.items.filter(item =>
           item.average_rating === parseInt(action.rating, 10)
@@ -97,6 +98,7 @@ const restaurants = (state = initialState, action) => {
       });
     case FILTER_RESTAURANTS_BY_LOCATION:
       return Object.assign({}, state, {
+        selectedFilterIndex: 0,
         selectedLocationFilter: action.location,
         filteredItems: state.items.filter(item =>
           item.city === action.location

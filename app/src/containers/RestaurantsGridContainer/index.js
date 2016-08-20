@@ -30,6 +30,7 @@ class RestaurantsGrid extends Component {
     this.handleFilterRatings = this.handleFilterRatings.bind(this);
     this.handleFilterLocations = this.handleFilterLocations.bind(this);
     this.getCurrentFilter = this.getCurrentFilter.bind(this);
+    this.handleClearFilter = this.handleClearFilter.bind(this);
   }
   componentDidMount() {
     const {
@@ -85,6 +86,12 @@ class RestaurantsGrid extends Component {
     }
     return undefined;
   }
+  handleClearFilter() {
+    const {
+      actions,
+    } = this.props;
+    actions.clearRestaurantsFilters();
+  }
   render() {
     const {
       isLoading,
@@ -118,6 +125,8 @@ class RestaurantsGrid extends Component {
                         <FilterRestaurants
                           locations={locations}
                           ratings={ratings}
+                          isFiltering={this.getCurrentFilter() !== undefined}
+                          onClearFilter={this.handleClearFilter}
                           onFilterRatings={this.handleFilterRatings}
                           onFilterLocations={this.handleFilterLocations}
                         />
