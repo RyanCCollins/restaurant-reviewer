@@ -13,6 +13,7 @@ import {
 
 const initialState = {
   items: [],
+  filteredItems: [],
   errors: [],
   isLoading: false,
   selectedFilterIndex: 0,
@@ -58,6 +59,7 @@ const restaurants = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: false,
         items: action.restaurants,
+        filteredItems: action.restaurants,
       });
     case RESTAURANT_CATEGORIES:
       return Object.assign({}, state, {
@@ -82,17 +84,28 @@ const restaurants = (state = initialState, action) => {
     case FILTER_RESTAURANTS_BY_CATEGORY:
       return Object.assign({}, state, {
         selectedFilterIndex: action.category,
+        filteredItems: state.items.filter(item =>
+          item.type.name === state.categories[action.category]
+        ),
       });
     case FILTER_RESTAURANTS_BY_RATING:
       return Object.assign({}, state, {
         selectedRatingFilter: action.rating,
+        filteredItems: state.items.filter(item =>
+          item.average_rating === parseInt(action.rating, 10)
+        ),
       });
     case FILTER_RESTAURANTS_BY_LOCATION:
       return Object.assign({}, state, {
-        selectedLocationFilter: action.rating,
+        selectedLocationFilter: action.location,
+        filteredItems: state.items.filter(item =>
+          item.city === action.location
+        ),
       });
     case CLEAR_RESTAURANTS_FILTERS:
-      return state;
+      return Object.assign({}, state, {
+        filteredItems: state.items,
+      });
     default:
       return state;
   }

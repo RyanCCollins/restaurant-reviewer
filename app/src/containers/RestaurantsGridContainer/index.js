@@ -15,10 +15,11 @@ import {
   LoadingIndicator,
   ErrorAlert,
   FilterRestaurants,
+  NoRestaurantsFound,
 } from 'components';
 
-const visibleRestaurants = (restaurants, filter, property) =>
-  restaurants.filter(i => i[property] === filter);
+const isFilteredBy = (filter) =>
+  typeof filter !== undefined && filter !== 'All';
 
 class RestaurantsGrid extends Component {
   constructor() {
@@ -28,25 +29,13 @@ class RestaurantsGrid extends Component {
     this.handleSwitchTab = this.handleSwitchTab.bind(this);
     this.handleFilterRatings = this.handleFilterRatings.bind(this);
     this.handleFilterLocations = this.handleFilterLocations.bind(this);
-    this.handleRestaurantFiltering = this.handleRestaurantFiltering.bind(this);
-    this.state = {
-      filteredRestaurants: [],
-    };
+    this.getCurrentFilter = this.getCurrentFilter.bind(this);
   }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
-  }
-  componentWillReceiveProps(newProps) {
-    const {
-      restaurants,
-    } = newProps;
-    if (restaurants.length > 0) {
-      console.log('Called componentWillReceiveProps', newProps);
-      this.handleRestaurantFiltering();
-    }
   }
   handleViewDetails(id) {
     const {
@@ -66,55 +55,35 @@ class RestaurantsGrid extends Component {
     }
     ReactDOM.findDOMNode(this.refs.tabHeader).focus();
   }
-  handleFilterRatings(rating) {
+  handleFilterRatings({ value }) {
     const {
       actions,
     } = this.props;
+    const rating = value.toString().split(' ')[0];
     actions.filterRestaurantsByRating(rating);
   }
-  handleFilterLocations(location) {
+  handleFilterLocations({ value }) {
     const {
       actions,
     } = this.props;
-    actions.filterRestaurantsByLocation(location);
+    actions.filterRestaurantsByLocation(value);
   }
-  handleRestaurantFiltering() {
+  getCurrentFilter() {
     const {
-      restaurants,
-      selectedFilterIndex,
       categories,
-      locationFilter,
+      selectedFilterIndex,
       ratingFilter,
+      locationFilter,
     } = this.props;
     const category = categories[selectedFilterIndex];
-    if (typeof category !== 'undefined' && category !== 'All') {
-      const filteredRestaurants = restaurants.filter(rest =>
-        rest.type.name === category,
-      );
-      this.setState({
-        filteredRestaurants,
-      });
-    } else if (typeof locationFilter !== 'undefined' &&
-                      locationFilter !== 'All') {
-      const filteredRestaurants = restaurants.filter(rest =>
-        rest.city === locationFilter,
-      );
-      this.setState({
-        filteredRestaurants,
-      });
-    } else if (typeof ratingFilter !== 'undefined' &&
-                      ratingFilter !== 'All') {
-      const filteredRestaurants = restaurants.filter(rest =>
-        rest.average_rating === parseInt(ratingFilter, 10),
-      );
-      this.setState({
-        filteredRestaurants,
-      });
-    } else {
-      this.setState({
-        filteredRestaurants: restaurants,
-      });
+    if (isFilteredBy(category)) {
+      return category;
+    } else if (isFilteredBy(ratingFilter)) {
+      return ratingFilter;
+    } else if (isFilteredBy(locationFilter)) {
+      return locationFilter;
     }
+    return undefined;
   }
   render() {
     const {
@@ -124,10 +93,8 @@ class RestaurantsGrid extends Component {
       categories,
       locations,
       ratings,
+      restaurants,
     } = this.props;
-    const {
-      filteredRestaurants,
-    } = this.state;
     return (
       <div className={styles.restaurantsGrid}>
         <Article>
@@ -147,7 +114,7 @@ class RestaurantsGrid extends Component {
                         {`${cat} Restaurants`}
                       </Header>
                       {categories[selectedFilterIndex] === 'All' &&
-                          filteredRestaurants.length > 0 &&
+                          restaurants.length > 0 &&
                         <FilterRestaurants
                           locations={locations}
                           ratings={ratings}
@@ -155,11 +122,13 @@ class RestaurantsGrid extends Component {
                           onFilterLocations={this.handleFilterLocations}
                         />
                       }
-                      {filteredRestaurants.length > 0 &&
+                      {restaurants.length > 0 ?
                         <RestaurantGrid
                           onViewDetails={this.handleViewDetails}
-                          restaurants={filteredRestaurants}
+                          restaurants={restaurants}
                         />
+                      :
+                        <NoRestaurantsFound filter={this.getCurrentFilter} />
                       }
                     </Tab>
                   )}
@@ -192,7 +161,7 @@ RestaurantsGrid.contextTypes = {
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
-  restaurants: state.restaurants.items,
+  restaurants: state.restaurants.filteredItems,
   selectedFilterIndex: state.restaurants.selectedFilterIndex,
   isLoading: state.restaurants.isLoading,
   errors: state.restaurants.errors,
@@ -200,7 +169,7 @@ const mapStateToProps = (state) => ({
   locations: state.restaurants.locations,
   ratings: state.restaurants.ratings,
   locationFilter: state.restaurants.selectedLocationFilter,
-  ratingFilter: state.restaurants.selectedLocationFilter,
+  ratingFilter: state.restaurants.selectedRatingFilter,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

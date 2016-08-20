@@ -15,6 +15,7 @@ export const initialState = {
   restaurants: {
     isLoading: false,
     items: [],
+    restaurants: [],
     selectedFilterIndex: 0,
     selectedRatingFilter: 'All',
     selectedLocationFilter: 'All',

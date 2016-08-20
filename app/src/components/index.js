@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export NoRestaurantsFound from './NoRestaurantsFound';
 export FilterMenu from './FilterMenu';
 export FilterRestaurants from './FilterRestaurants';
 export ReviewSrOnly from './ReviewSrOnly';
