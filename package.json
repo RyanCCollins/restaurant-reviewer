@@ -74,6 +74,7 @@
     "image-webpack-loader": "^2.0.0",
     "immutable": "^3.7.5",
     "isomorphic-fetch": "^2.2.0",
+    "isparta": "^4.0.0",
     "json-loader": "^0.5.4",
     "lodash": "^4.14.1",
     "lru-memoize": "^1.0.1",

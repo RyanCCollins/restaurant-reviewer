@@ -105,41 +105,54 @@ class RestaurantsGrid extends Component {
     return (
       <div className={styles.restaurantsGrid}>
         <Article>
-          <Header justify="center" tag="h1" pad={{ vertical: 'medium' }}>
+          <Header
+            justify="center"
+            tag="h1"
+            pad={{ vertical: 'medium' }}
+          >
             Restaurants
           </Header>
           <Section primary>
             {isLoading ?
-              <LoadingIndicator isLoading />
+              <LoadingIndicator
+                isLoading={isLoading}
+              />
             :
               <div>
                 <ErrorAlert errors={errors} onClose={this.handleClearErrors} />
                 <Tabs initialIndex={selectedFilterIndex} justify="center">
-                  {typeof categories !== 'undefined' && categories.map((cat, i) =>
-                    <Tab key={i} onKeyUp={this.handleSwitchTab} title={cat}>
-                      <Header justify="center" tag="h3">
-                        {`${cat} Restaurants`}
-                      </Header>
-                      {categories[selectedFilterIndex] === 'All' &&
-                          restaurants.length > 0 &&
-                        <FilterRestaurants
-                          locations={locations}
-                          ratings={ratings}
-                          isFiltering={this.getCurrentFilter() !== undefined}
-                          onClearFilter={this.handleClearFilter}
-                          onFilterRatings={this.handleFilterRatings}
-                          onFilterLocations={this.handleFilterLocations}
-                        />
-                      }
-                      {restaurants.length > 0 ?
-                        <RestaurantGrid
-                          onViewDetails={this.handleViewDetails}
-                          restaurants={restaurants}
-                        />
-                      :
-                        <NoRestaurantsFound filter={this.getCurrentFilter()} />
-                      }
-                    </Tab>
+                  {typeof categories !== 'undefined' &&
+                      categories.map((cat, i) =>
+                        <Tab
+                          key={i}
+                          onKeyUp={this.handleSwitchTab}
+                          title={cat}
+                        >
+                          <Header justify="center" tag="h3">
+                            {`${cat} Restaurants`}
+                          </Header>
+                          {categories[selectedFilterIndex] === 'All' &&
+                              restaurants.length > 0 &&
+                            <FilterRestaurants
+                              locations={locations}
+                              ratings={ratings}
+                              isFiltering={this.getCurrentFilter() !== undefined}
+                              onClearFilter={this.handleClearFilter}
+                              onFilterRatings={this.handleFilterRatings}
+                              onFilterLocations={this.handleFilterLocations}
+                            />
+                          }
+                          {restaurants.length > 0 ?
+                            <RestaurantGrid
+                              onViewDetails={this.handleViewDetails}
+                              restaurants={restaurants}
+                            />
+                          :
+                            <NoRestaurantsFound
+                              filter={this.getCurrentFilter()}
+                            />
+                          }
+                        </Tab>
                   )}
                 </Tabs>
               </div>
