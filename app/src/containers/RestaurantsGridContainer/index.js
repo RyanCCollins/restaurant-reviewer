@@ -137,7 +137,7 @@ class RestaurantsGrid extends Component {
                           restaurants={restaurants}
                         />
                       :
-                        <NoRestaurantsFound filter={this.getCurrentFilter} />
+                        <NoRestaurantsFound filter={this.getCurrentFilter()} />
                       }
                     </Tab>
                   )}
