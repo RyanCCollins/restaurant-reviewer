@@ -41,7 +41,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     actions.toggleAddReview();
   }
   handleReviewInvalid() {
-
+    console.log('Clicked handle review invalid');
   }
   handleSubmitReview(review) {
     const {

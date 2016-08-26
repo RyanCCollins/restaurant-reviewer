@@ -10,6 +10,7 @@ import Tab from 'grommet/components/tab';
 import Section from 'grommet/components/section';
 import Article from 'grommet/components/article';
 import Header from 'grommet/components/header';
+import Card from 'grommet/components/Card';
 import {
   RestaurantGrid,
   LoadingIndicator,
@@ -120,6 +121,9 @@ class RestaurantsGrid extends Component {
             :
               <div>
                 <ErrorAlert errors={errors} onClose={this.handleClearErrors} />
+                <Card>
+                  <h1>Foo</h1>
+                </Card>
                 <Tabs initialIndex={selectedFilterIndex} justify="center">
                   {typeof categories !== 'undefined' &&
                       categories.map((cat, i) =>
