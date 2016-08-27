@@ -5,9 +5,10 @@ import {
   RESTAURANT_CATEGORIES,
   CLEAR_RESTAURANT_ERRORS,
   RESTAURANT_LOCATIONS,
-  FILTER_RESTAURANTS_BY_CATEGORY,
-  FILTER_RESTAURANTS_BY_RATING,
-  FILTER_RESTAURANTS_BY_LOCATION,
+  SET_FILTER_LOCATION,
+  SET_FILTER_RATING,
+  SET_FILTER_CATEGORY,
+  APPLY_RESTAURANTS_FILTERS,
   CLEAR_RESTAURANTS_FILTERS,
 } from './constants';
 
@@ -16,9 +17,9 @@ const initialState = {
   filteredItems: [],
   errors: [],
   isLoading: false,
-  selectedFilterIndex: 0,
-  selectedRatingFilter: 'All',
-  selectedLocationFilter: 'All',
+  categoryFilter: 'All',
+  ratingFilter: 'All',
+  locationFilter: 'All',
   categories: [],
   locations: [],
   ratings: [
@@ -47,6 +48,30 @@ const initialState = {
       value: '5 Star',
     },
   ],
+};
+
+const filteredItems = (state = [], action) => {
+  switch (action.type) {
+    case APPLY_RESTAURANTS_FILTERS:
+      return state.items.filter(item => {
+        if (state.categoryFilter !== 'All') {
+          return item.type.name === action.category;
+        }
+        return true;
+      }).filter(item => {
+        if (state.ratingFilter !== 'All') {
+          return item.average_rating === parseInt(action.rating, 10);
+        }
+        return true;
+      }).filter(item => {
+        if (state.locationFilter !== 'All') {
+          return item.city === action.location;
+        }
+        return true;
+      });
+    default:
+      return state;
+  }
 };
 
 const restaurants = (state = initialState, action) => {
@@ -81,31 +106,27 @@ const restaurants = (state = initialState, action) => {
       return Object.assign({}, state, {
         errors: [],
       });
-    case FILTER_RESTAURANTS_BY_CATEGORY:
+    case SET_FILTER_LOCATION:
       return Object.assign({}, state, {
-        selectedFilterIndex: action.category,
-        filteredItems: state.items.filter(item =>
-          item.type.name === state.categories[action.category]
-        ),
+        locationFilter: action.location,
       });
-    case FILTER_RESTAURANTS_BY_RATING:
+    case SET_FILTER_RATING:
       return Object.assign({}, state, {
-        selectedFilterIndex: 0,
-        selectedRatingFilter: action.rating,
-        filteredItems: state.items.filter(item =>
-          item.average_rating === parseInt(action.rating, 10)
-        ),
+        ratingFilter: action.rating,
       });
-    case FILTER_RESTAURANTS_BY_LOCATION:
+    case SET_FILTER_CATEGORY:
       return Object.assign({}, state, {
-        selectedFilterIndex: 0,
-        selectedLocationFilter: action.location,
-        filteredItems: state.items.filter(item =>
-          item.city === action.location
-        ),
+        categoryFilter: action.category,
+      });
+    case APPLY_RESTAURANTS_FILTERS:
+      return Object.assign({}, state, {
+        filteredItems: filteredItems(state.filteredItems, action),
       });
     case CLEAR_RESTAURANTS_FILTERS:
       return Object.assign({}, state, {
+        locationFilter: 'All',
+        ratingFilter: 'All',
+        categoryFilter: 'All',
         filteredItems: state.items,
       });
     default:

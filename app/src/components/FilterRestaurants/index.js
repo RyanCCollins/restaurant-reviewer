@@ -17,6 +17,7 @@ import Section from 'grommet/components/Section';
 import Menu from 'grommet/components/Menu';
 import Button from 'grommet/components/button';
 import Close from 'grommet/components/icons/base/Close';
+import Footer from 'grommet/components/Footer';
 
 const FilterRestaurants = ({
   locations,
@@ -25,6 +26,9 @@ const FilterRestaurants = ({
   onFilterRatings,
   isFiltering,
   onClearFilter,
+  categories,
+  onFilterCategories,
+  onApplyFilters,
 }) => (
   <Section
     className={styles.filterRestaurants}
@@ -32,10 +36,15 @@ const FilterRestaurants = ({
     <div className={styles.menuWrapper}>
       <Menu
         direction="row"
-        size="large"
+        size="small"
         responsive
         closeOnClick={false}
       >
+        <FilterMenu
+          menuItems={categories.map((item, id) => ({ id, value: item }))}
+          onSelectItem={onFilterCategories}
+          label="Filter by Category"
+        />
         <FilterMenu
           menuItems={locations}
           onSelectItem={onFilterLocations}
@@ -46,7 +55,9 @@ const FilterRestaurants = ({
           onSelectItem={onFilterRatings}
           label="Filter by Rating"
         />
-        {isFiltering &&
+      </Menu>
+      <Footer className={styles.footerContainer}>
+        {isFiltering ?
           <Button
             classname={styles.clearButton}
             icon={<Close />}
@@ -54,8 +65,14 @@ const FilterRestaurants = ({
             plain
             onClick={onClearFilter}
           />
+        :
+          <Button
+            label="Apply Filter(s)"
+            primary
+            onClick={onApplyFilters}
+          />
         }
-      </Menu>
+      </Footer>
     </div>
   </Section>
 );
@@ -67,6 +84,9 @@ FilterRestaurants.propTypes = {
   onFilterRatings: PropTypes.func.isRequired,
   isFiltering: PropTypes.bool.isRequired,
   onClearFilter: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired,
+  onFilterCategories: PropTypes.func.isRequired,
+  onApplyFilters: PropTypes.func.isRequired,
 };
 
 export default cssModules(FilterRestaurants, styles);

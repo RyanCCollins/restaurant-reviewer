@@ -5,9 +5,10 @@ import {
   RESTAURANT_CATEGORIES,
   RESTAURANT_LOCATIONS,
   CLEAR_RESTAURANT_ERRORS,
-  FILTER_RESTAURANTS_BY_CATEGORY,
-  FILTER_RESTAURANTS_BY_RATING,
-  FILTER_RESTAURANTS_BY_LOCATION,
+  SET_FILTER_LOCATION,
+  SET_FILTER_RATING,
+  SET_FILTER_CATEGORY,
+  APPLY_FILTER,
   CLEAR_RESTAURANTS_FILTERS,
 } from './constants';
 import uniq from 'lodash/uniq';
@@ -106,22 +107,27 @@ export const loadRestaurants = () =>
       });
   };
 
-// filterByCategory :: String -> {Action}
-export const filterRestaurantsByCategory = (category) => ({
-  type: FILTER_RESTAURANTS_BY_CATEGORY,
-  category,
+// setFilterLocation :: String -> {Action}
+export const setFilterLocation = (location) => ({
+  type: SET_FILTER_LOCATION,
+  location,
 });
 
-// filterByRating :: String -> {Action}
-export const filterRestaurantsByRating = (rating) => ({
-  type: FILTER_RESTAURANTS_BY_RATING,
+// setFilterRating :: String -> {Action}
+export const setFilterRating = (rating) => ({
+  type: SET_FILTER_RATING,
   rating,
 });
 
-// filterByLocation :: String -> {Action}
-export const filterRestaurantsByLocation = (location) => ({
-  type: FILTER_RESTAURANTS_BY_LOCATION,
-  location,
+// setFilterCategory :: String -> {Action}
+export const setFilterCategory = (category) => ({
+  type: SET_FILTER_CATEGORY,
+  category,
+});
+
+// applyFilter :: None -> {Action}
+export const applyFilter = () => ({
+  type: APPLY_FILTER,
 });
 
 // clearRestaurantsFilters :: None -> {Action}

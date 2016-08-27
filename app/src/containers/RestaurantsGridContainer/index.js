@@ -5,12 +5,9 @@ import { bindActionCreators } from 'redux';
 import * as RestaurantsGridActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import Tabs from 'grommet/components/tabs';
-import Tab from 'grommet/components/tab';
 import Section from 'grommet/components/section';
 import Article from 'grommet/components/article';
 import Header from 'grommet/components/header';
-import Card from 'grommet/components/Card';
 import {
   RestaurantGrid,
   LoadingIndicator,
@@ -22,6 +19,9 @@ import {
 const isFilteredBy = (filter) =>
   typeof filter !== undefined && filter !== 'All';
 
+const exists = (x) =>
+  typeof x !== undefined && x && x.length > 0;
+
 class RestaurantsGrid extends Component {
   constructor() {
     super();
@@ -32,18 +32,14 @@ class RestaurantsGrid extends Component {
     this.handleFilterLocations = this.handleFilterLocations.bind(this);
     this.getCurrentFilter = this.getCurrentFilter.bind(this);
     this.handleClearFilter = this.handleClearFilter.bind(this);
+    this.handleFilterCategories = this.handleFilterCategories.bind(this);
+    this.handleApplyFilters = this.handleApplyFilters.bind(this);
   }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
-  }
-  handleViewDetails(id) {
-    const {
-      router,
-    } = this.context;
-    router.push(`/restaurants/${id}`);
   }
   handleClearErrors() {
     const {
@@ -72,12 +68,10 @@ class RestaurantsGrid extends Component {
   }
   getCurrentFilter() {
     const {
-      categories,
-      selectedFilterIndex,
+      categoryFilter,
       ratingFilter,
       locationFilter,
     } = this.props;
-    const category = categories[selectedFilterIndex];
     if (isFilteredBy(category)) {
       return category;
     } else if (isFilteredBy(ratingFilter)) {
@@ -87,17 +81,31 @@ class RestaurantsGrid extends Component {
     }
     return undefined;
   }
+  handleViewDetails(id) {
+    const {
+      router,
+    } = this.context;
+    router.push(`/restaurants/${id}`);
+  }
   handleClearFilter() {
     const {
       actions,
     } = this.props;
     actions.clearRestaurantsFilters();
   }
+  handleFilterCategories({ value }) {
+    const {
+      actions,
+    } = this.props;
+    actions.filterRestaurantsByCategory(value);
+  }
+  handleApplyFilters() {
+
+  }
   render() {
     const {
       isLoading,
       errors,
-      selectedFilterIndex,
       categories,
       locations,
       ratings,
@@ -121,41 +129,27 @@ class RestaurantsGrid extends Component {
             :
               <div>
                 <ErrorAlert errors={errors} onClose={this.handleClearErrors} />
-                <Tabs initialIndex={selectedFilterIndex} justify="center">
-                  {typeof categories !== 'undefined' &&
-                      categories.map((cat, i) =>
-                        <Tab
-                          key={i}
-                          onKeyUp={this.handleSwitchTab}
-                          title={cat}
-                        >
-                          <Header justify="center" tag="h3">
-                            {`${cat} Restaurants`}
-                          </Header>
-                          {categories[selectedFilterIndex] === 'All' &&
-                              restaurants.length > 0 &&
-                            <FilterRestaurants
-                              locations={locations}
-                              ratings={ratings}
-                              isFiltering={this.getCurrentFilter() !== undefined}
-                              onClearFilter={this.handleClearFilter}
-                              onFilterRatings={this.handleFilterRatings}
-                              onFilterLocations={this.handleFilterLocations}
-                            />
-                          }
-                          {restaurants.length > 0 ?
-                            <RestaurantGrid
-                              onViewDetails={this.handleViewDetails}
-                              restaurants={restaurants}
-                            />
-                          :
-                            <NoRestaurantsFound
-                              filter={this.getCurrentFilter()}
-                            />
-                          }
-                        </Tab>
-                  )}
-                </Tabs>
+                  <FilterRestaurants
+                    locations={locations}
+                    ratings={ratings}
+                    categories={categories}
+                    onApplyFilters={this.handleApplyFilters}
+                    isFiltering={this.getCurrentFilter() !== undefined}
+                    onClearFilter={this.handleClearFilter}
+                    onFilterRatings={this.handleFilterRatings}
+                    onFilterLocations={this.handleFilterLocations}
+                    onFilterCategories={this.handleFilterCategories}
+                  />
+                  {exists(restaurants) ?
+                    <RestaurantGrid
+                      onViewDetails={this.handleViewDetails}
+                      restaurants={restaurants}
+                    />
+                  :
+                    <NoRestaurantsFound
+                      filter={this.getCurrentFilter()}
+                    />
+                  }
               </div>
             }
           </Section>
@@ -169,7 +163,6 @@ RestaurantsGrid.propTypes = {
   restaurants: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.array,
-  selectedFilterIndex: PropTypes.number.isRequired,
   ratingFilter: PropTypes.string.isRequired,
   locationFilter: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
@@ -185,14 +178,14 @@ RestaurantsGrid.contextTypes = {
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   restaurants: state.restaurants.filteredItems,
-  selectedFilterIndex: state.restaurants.selectedFilterIndex,
   isLoading: state.restaurants.isLoading,
   errors: state.restaurants.errors,
   categories: state.restaurants.categories,
   locations: state.restaurants.locations,
   ratings: state.restaurants.ratings,
-  locationFilter: state.restaurants.selectedLocationFilter,
-  ratingFilter: state.restaurants.selectedRatingFilter,
+  locationFilter: state.restaurants.locationFilter,
+  categoryFilter: state.restaurants.categoryFilter,
+  ratingFilter: state.restaurants.tatingFilter,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
