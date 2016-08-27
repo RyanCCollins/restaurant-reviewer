@@ -58,6 +58,7 @@ export const initialState = {
   },
   addReview: {
     isAddingReview: false,
+    error: undefined,
   },
 };
 

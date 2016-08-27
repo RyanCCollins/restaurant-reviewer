@@ -1,11 +1,12 @@
 import {
   TOGGLE_ADD_REVIEW,
   ADD_REVIEW_INVALID,
+  CLEAR_ADD_REVIEW_ERRORS,
 } from './constants';
 
 const initialState = {
   isAddingReview: false,
-  error: {},
+  error: undefined,
 };
 
 const addReviewReducer =
@@ -18,6 +19,10 @@ const addReviewReducer =
       case ADD_REVIEW_INVALID:
         return Object.assign({}, state, {
           error: action.error,
+        });
+      case CLEAR_ADD_REVIEW_ERRORS:
+        return Object.assign({}, state, {
+          error: undefined,
         });
       default:
         return state;

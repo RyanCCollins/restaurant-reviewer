@@ -5,7 +5,11 @@ import * as AddReviewActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
 import validation from './validation/index';
-import { AddReviewForm, AddButton, } from 'components';
+import {
+  AddReviewForm,
+  AddButton,
+  ErrorAlert,
+} from 'components';
 import { reduxForm } from 'redux-form';
 import Footer from 'grommet/components/footer';
 import Layer from 'grommet/components/layer';
@@ -26,6 +30,7 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleReviewInvalid = this.handleReviewInvalid.bind(this);
+    this.handleClearErrors = this.handleClearErrors.bind(this);
   }
   handleToggleModal() {
     const {
@@ -41,7 +46,12 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     actions.toggleAddReview();
   }
   handleReviewInvalid() {
-    console.log('Clicked handle review invalid');
+    const {
+      actions,
+    } = this.props;
+    actions.addReviewInvalid({
+      message: 'The review was invalid.  Please correct and try again',
+    });
   }
   handleSubmitReview(review) {
     const {
@@ -56,12 +66,19 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
     } = this.props;
     resetForm();
   }
+  handleClearErrors() {
+    const {
+      actions,
+    } = this.props;
+    actions.clearAddReviewErrors();
+  }
   render() {
     const {
       isAddingReview,
       fields,
       hasFab,
       resetForm,
+      error,
     } = this.props;
     return (
       <div className={styles.addReview}>
@@ -72,6 +89,14 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             closer
             align="right"
           >
+            {typeof error !== undefined &&
+              <Box pad={{ vertical: 'large', horizontal: 'small' }}>
+                <ErrorAlert
+                  errors={[error]}
+                  onClose={this.handleClearErrors}
+                />
+              </Box>
+            }
             <Box pad={{ vertical: 'large', horizontal: 'small' }}>
               <AddReviewForm
                 {...fields}
@@ -108,11 +133,13 @@ AddReview.propTypes = {
   onSubmitReview: PropTypes.func.isRequired,
   hasFab: PropTypes.bool.isRequired,
   resetForm: PropTypes.func.isRequired,
+  error: PropTypes.object,
 };
 
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   isAddingReview: state.addReview.isAddingReview,
+  error: state.addReview.error,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}
