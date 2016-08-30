@@ -12,11 +12,12 @@ const NoRestaurantsFound = ({
     <Header justify="center" tag="h4">
       No Restaurants Found
     </Header>
-    {typeof filter !== undefined &&
-      <Paragraph>
-        Sorry, but {filter} did not return any results.
-      </Paragraph>
-    }
+    <Paragraph>
+      Sorry, but the
+      {/* eslint-disable */}
+      {filter != null ? filter : ' All '} {/* eslint-enable */}
+      filter did not return any results.
+    </Paragraph>
   </Section>
 );
 

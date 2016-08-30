@@ -8,7 +8,7 @@ import {
   SET_FILTER_LOCATION,
   SET_FILTER_RATING,
   SET_FILTER_CATEGORY,
-  APPLY_FILTER,
+  APPLY_RESTAURANTS_FILTERS,
   CLEAR_RESTAURANTS_FILTERS,
 } from './constants';
 import uniq from 'lodash/uniq';
@@ -126,8 +126,8 @@ export const setFilterCategory = (category) => ({
 });
 
 // applyFilter :: None -> {Action}
-export const applyFilter = () => ({
-  type: APPLY_FILTER,
+export const applyRestaurantsFilter = () => ({
+  type: APPLY_RESTAURANTS_FILTERS,
 });
 
 // clearRestaurantsFilters :: None -> {Action}

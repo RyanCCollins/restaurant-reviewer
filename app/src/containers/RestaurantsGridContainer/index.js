@@ -16,9 +16,6 @@ import {
   NoRestaurantsFound,
 } from 'components';
 
-const isFilteredBy = (filter) =>
-  typeof filter !== undefined && filter !== 'All';
-
 const exists = (x) =>
   typeof x !== undefined && x && x.length > 0;
 
@@ -30,10 +27,10 @@ class RestaurantsGrid extends Component {
     this.handleSwitchTab = this.handleSwitchTab.bind(this);
     this.handleFilterRatings = this.handleFilterRatings.bind(this);
     this.handleFilterLocations = this.handleFilterLocations.bind(this);
-    this.getCurrentFilter = this.getCurrentFilter.bind(this);
     this.handleClearFilter = this.handleClearFilter.bind(this);
     this.handleFilterCategories = this.handleFilterCategories.bind(this);
     this.handleApplyFilters = this.handleApplyFilters.bind(this);
+    this.isFiltering = this.isFiltering.bind(this);
   }
   componentDidMount() {
     const {
@@ -41,45 +38,17 @@ class RestaurantsGrid extends Component {
     } = this.props;
     actions.loadRestaurants();
   }
-  handleClearErrors() {
-    const {
-      actions,
-    } = this.props;
-    actions.clearRestaurantErrors();
-  }
   handleSwitchTab(e) {
     if (e.keyCode === 9) {
       console.log('Clicked tab');
     }
     ReactDOM.findDOMNode(this.refs.tabHeader).focus();
   }
-  handleFilterRatings({ value }) {
+  handleClearErrors() {
     const {
       actions,
     } = this.props;
-    const rating = value.toString().split(' ')[0];
-    actions.filterRestaurantsByRating(rating);
-  }
-  handleFilterLocations({ value }) {
-    const {
-      actions,
-    } = this.props;
-    actions.filterRestaurantsByLocation(value);
-  }
-  getCurrentFilter() {
-    const {
-      categoryFilter,
-      ratingFilter,
-      locationFilter,
-    } = this.props;
-    if (isFilteredBy(category)) {
-      return category;
-    } else if (isFilteredBy(ratingFilter)) {
-      return ratingFilter;
-    } else if (isFilteredBy(locationFilter)) {
-      return locationFilter;
-    }
-    return undefined;
+    actions.clearRestaurantErrors();
   }
   handleViewDetails(id) {
     const {
@@ -89,18 +58,34 @@ class RestaurantsGrid extends Component {
   }
   handleClearFilter() {
     const {
-      actions,
-    } = this.props;
-    actions.clearRestaurantsFilters();
+      clearRestaurantsFilters,
+    } = this.props.actions;
+    clearRestaurantsFilters();
+  }
+  handleFilterRatings({ value }) {
+    const {
+      setFilterRating,
+    } = this.props.actions;
+    const rating = value.toString().split(' ')[0];
+    setFilterRating(rating);
+  }
+  handleFilterLocations({ value }) {
+    const {
+      setFilterLocation,
+    } = this.props.actions;
+    setFilterLocation(value);
   }
   handleFilterCategories({ value }) {
     const {
-      actions,
-    } = this.props;
-    actions.filterRestaurantsByCategory(value);
+      setFilterCategory,
+    } = this.props.actions;
+    setFilterCategory(value);
   }
   handleApplyFilters() {
-
+    const {
+      applyRestaurantsFilter,
+    } = this.props.actions;
+    applyRestaurantsFilter();
   }
   render() {
     const {
@@ -128,13 +113,16 @@ class RestaurantsGrid extends Component {
               />
             :
               <div>
-                <ErrorAlert errors={errors} onClose={this.handleClearErrors} />
+                <ErrorAlert
+                  errors={errors}
+                  onClose={this.handleClearErrors}
+                />
                   <FilterRestaurants
                     locations={locations}
                     ratings={ratings}
                     categories={categories}
                     onApplyFilters={this.handleApplyFilters}
-                    isFiltering={this.getCurrentFilter() !== undefined}
+                    isFiltering={this.isFiltering()}
                     onClearFilter={this.handleClearFilter}
                     onFilterRatings={this.handleFilterRatings}
                     onFilterLocations={this.handleFilterLocations}
@@ -165,6 +153,7 @@ RestaurantsGrid.propTypes = {
   errors: PropTypes.array,
   ratingFilter: PropTypes.string.isRequired,
   locationFilter: PropTypes.string.isRequired,
+  categoryFilter: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
   locations: PropTypes.array.isRequired,
