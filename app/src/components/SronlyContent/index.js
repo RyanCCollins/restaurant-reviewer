@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 
-const SronlyContent = ({
+const SrOnlyContent = ({
   children,
 }) => (
   <span className={styles.sronlyContent}>
@@ -10,8 +10,8 @@ const SronlyContent = ({
   </span>
 );
 
-SronlyContent.propTypes = {
+SrOnlyContent.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default cssModules(SronlyContent, styles);
+export default cssModules(SrOnlyContent, styles);

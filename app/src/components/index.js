@@ -1,6 +1,6 @@
 /* Assemble all components for export */
 export RestaurantHoursListItem from './RestaurantHoursListItem';
-export SronlyContent from './SronlyContent';
+export SrOnlyContent from './SronlyContent';
 export FilterHeading from './FilterHeading';
 export CodeBlock from './CodeBlock';
 export NoRestaurantsFound from './NoRestaurantsFound';

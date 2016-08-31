@@ -7,7 +7,7 @@ const CodeBlock = ({
   codeBlock,
 }) => (
   <Box full flex pad={{ horizontal: 'medium' }}>
-    <Box pad={{ between: 'medium' }} align={'left'}>
+    <Box pad={{ between: 'medium' }} align="start">
       <pre>
         <code className={styles.codeBlock}>
           {codeBlock}
