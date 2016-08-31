@@ -21,13 +21,15 @@ const RestaurantHoursListItem = ({
   <ListItem justify="between">
     <span>{day}</span>
     <span>{hours}</span>
-    <SrOnlyContent>
-      {
-        `${day}.
-        From ${hours.split(' - ')[0]}
-        to ${hours.split(' - ')[1]}`
-      }
-    </SrOnlyContent>
+    <a href="#">
+      <SrOnlyContent>
+        {
+          `${day}.
+          From ${hours.split(' - ')[0]}
+          to ${hours.split(' - ')[1]}`
+        }
+      </SrOnlyContent>
+    </a>
   </ListItem>
 );
 
