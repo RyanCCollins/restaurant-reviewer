@@ -30,6 +30,7 @@ class RestaurantsGrid extends Component {
     this.handleClearFilter = this.handleClearFilter.bind(this);
     this.handleFilterCategories = this.handleFilterCategories.bind(this);
     this.handleApplyFilters = this.handleApplyFilters.bind(this);
+    this.isFiltering = this.isFiltering.bind(this);
   }
   componentDidMount() {
     const {
@@ -86,6 +87,16 @@ class RestaurantsGrid extends Component {
     } = this.props.actions;
     applyRestaurantsFilter();
   }
+  isFiltering() {
+    const {
+      locationFilter,
+      categoryFilter,
+      ratingFilter,
+    } = this.props;
+    return locationFilter !== 'All' &&
+      ratingFilter !== 'All' &&
+        categoryFilter !== 'All';
+  }
   render() {
     const {
       isLoading,
@@ -134,7 +145,7 @@ class RestaurantsGrid extends Component {
                     />
                   :
                     <NoRestaurantsFound
-                      filter={this.getCurrentFilter()}
+                      filter={null}
                     />
                   }
               </div>
