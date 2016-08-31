@@ -19,6 +19,13 @@ import Button from 'grommet/components/button';
 import Close from 'grommet/components/icons/base/Close';
 import Footer from 'grommet/components/Footer';
 
+const shouldBeEnabled = (filter) =>
+  Object
+    .keys(filter)
+    .map(i => filter[i])
+    .filter(i => i !== 'All')
+    .length > 0;
+
 const FilterRestaurants = ({
   locations,
   ratings,
@@ -74,10 +81,8 @@ const FilterRestaurants = ({
             label="Apply Filter(s)"
             primary
             onClick={
-              filter.ratingFilter !== 'All' ||
-                filter.categoryFilter !== 'All' ||
-                  filter.locationFilter !== 'All' ?
-                    onApplyFilters : null
+              shouldBeEnabled(filter) ?
+                onApplyFilters : null
             }
           />
         }
