@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export FilterHeading from './FilterHeading';
 export CodeBlock from './CodeBlock';
 export NoRestaurantsFound from './NoRestaurantsFound';
 export FilterMenu from './FilterMenu';

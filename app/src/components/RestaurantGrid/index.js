@@ -12,19 +12,25 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
-import { RestaurantGridItem } from 'components';
+import { RestaurantGridItem, FilterHeading } from 'components';
+import shouldBeEnabled from 'utils/filter';
 
 const RestaurantGrid = ({
   restaurants,
   onViewDetails,
+  currentFilter,
+  isFiltered,
 }) => (
   <section className={styles.restaurantGrid}>
-    {restaurants.map((rest, i) =>
+    <FilterHeading
+      filters={currentFilter}
+      isHidden={!shouldBeEnabled(currentFilter) && !isFiltered}
+    />
+    {restaurants.map((restaurant, i) =>
       <RestaurantGridItem
         key={i}
-        restaurant={rest}
-        /* eslint-disable */
-        onViewDetails={onViewDetails} /* eslint-enable */
+        restaurant={restaurant}
+        onViewDetails={onViewDetails} // eslint-disable-line
       />
     )}
   </section>
@@ -33,6 +39,8 @@ const RestaurantGrid = ({
 RestaurantGrid.propTypes = {
   restaurants: PropTypes.array.isRequired,
   onViewDetails: PropTypes.func.isRequired,
+  currentFilter: PropTypes.object,
+  isFiltered: PropTypes.bool.isRequired,
 };
 
 export default cssModules(RestaurantGrid, styles);

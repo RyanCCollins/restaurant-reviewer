@@ -18,13 +18,7 @@ import Menu from 'grommet/components/Menu';
 import Button from 'grommet/components/button';
 import Close from 'grommet/components/icons/base/Close';
 import Footer from 'grommet/components/Footer';
-
-const shouldBeEnabled = (filter) =>
-  Object
-    .keys(filter)
-    .map(i => filter[i])
-    .filter(i => i !== 'All')
-    .length > 0;
+import shouldBeEnabled from 'utils/filter';
 
 const FilterRestaurants = ({
   locations,

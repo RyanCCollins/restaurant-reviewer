@@ -53,27 +53,21 @@ const initialState = {
   ],
 };
 
-const filteredItems = (state = initialState, action) => {
+const filteredItems = (state = [], action, previousState) => {
   switch (action.type) {
     case APPLY_RESTAURANTS_FILTERS:
-      return state.items.filter(item => {
-        if (state.categoryFilter !== 'All') {
-          return item.type.name === action.category;
-        }
-        return true;
-      }).filter(item => {
-        if (state.ratingFilter !== 'All') {
-          return item.average_rating === parseInt(action.rating, 10);
-        }
-        return true;
-      }).filter(item => {
-        if (state.locationFilter !== 'All') {
-          return item.city === action.location;
-        }
-        return true;
-      });
+      return previousState.items.filter(i =>
+        previousState.categoryFilter !== 'All' ?
+          i.type.name === previousState.categoryFilter : true
+      ).filter(i =>
+        previousState.ratingFilter !== 'All' ?
+          i.average_rating === parseInt(previousState.ratingFilter, 10) : true
+      ).filter(i =>
+        previousState.locationFilter !== 'All' ?
+          i.city === previousState.locationFilter : true
+      );
     default:
-      return state.filteredItems;
+      return state;
   }
 };
 
@@ -123,7 +117,7 @@ const restaurants = (state = initialState, action) => {
       });
     case APPLY_RESTAURANTS_FILTERS:
       return Object.assign({}, state, {
-        filteredItems: filteredItems(state, action),
+        filteredItems: filteredItems(state.filteredItems, action, state),
         appliedFilter: {
           isApplied: true,
         },

@@ -145,6 +145,8 @@ class RestaurantsGrid extends Component {
                   {exists(restaurants) ?
                     <RestaurantGrid
                       onViewDetails={this.handleViewDetails}
+                      currentFilter={this.getCurrentFilter()}
+                      isFiltered={filterIsApplied}
                       restaurants={restaurants}
                     />
                   :

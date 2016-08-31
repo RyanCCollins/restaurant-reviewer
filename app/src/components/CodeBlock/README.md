@@ -1,17 +1,16 @@
 ## CodeBlock Component
-A component that ...
+A component that shows as a code block.
 
 ### Example
 
 ```js
-<CodeBlock />
+<CodeBlock codeBlock={
+  `Anything that goes here will be shown as code`
+} />
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
-
-
-### Other Information
+| **codeBlock**    | String   |             | Any string value to be shown as code in a code block.
