@@ -113,7 +113,7 @@ const encodeReview = (review, restaurant) => ({
     text: review.text,
     restaurant_id: restaurant.id,
     person_attributes: {
-      name: review.person,
+      name: review.name,
     },
   },
 });

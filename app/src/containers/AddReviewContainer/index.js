@@ -89,8 +89,11 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             closer
             align="right"
           >
-            {typeof error !== undefined &&
-              <Box pad={{ vertical: 'large', horizontal: 'small' }}>
+            {error != null && // eslint-disable-line
+              <Box
+                className={styles.errorBox}
+                pad={{ vertical: 'large', horizontal: 'small' }}
+              >
                 <ErrorAlert
                   errors={[error]}
                   onClose={this.handleClearErrors}

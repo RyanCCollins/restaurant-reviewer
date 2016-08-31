@@ -42,12 +42,16 @@ class AddReviewForm extends Component {
       itemInvalid(textInput);
   }
   validateReview(review) {
-    return Object.keys(review).forEach(item => {
-      if (typeof review[item] === 'number') {
-        return review[item] >= 1 || review[item] <= 5;
-      }
-      return review[item].length > 0;
-    });
+    const length = Object.keys(review).length;
+    return Object
+      .keys(review)
+      .filter(i => {
+        if (typeof review[i] === 'number') {
+          return review[i] >= 1 && review[i] <= 5;
+        }
+        return review[i].length > 0;
+      })
+      .length === length;
   }
   handleSubmitReview() {
     const {

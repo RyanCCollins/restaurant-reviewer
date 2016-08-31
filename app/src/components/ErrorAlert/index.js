@@ -35,7 +35,7 @@ const ErrorAlert = ({
         <Notification
           style={{ paddingTop: 10 }}
           status="critical"
-          size="large"
+          size="small"
           message={error.message}
           state="Active"
         />

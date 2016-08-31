@@ -17,6 +17,8 @@ import Paragraph from 'grommet/components/paragraph';
 import StarRatingComponent from 'react-star-rating-component';
 import Box from 'grommet/components/box';
 import Article from 'grommet/components/article';
+import fixDate from 'utils/fixDate';
+import fixLongText from 'utils/fixLongText';
 
 const RestaurantReview = ({
   review,
@@ -41,10 +43,10 @@ const RestaurantReview = ({
         />
       </div>
       <Paragraph className={styles.reviewParagraph}>
-        {review.text}
+        {fixLongText(review.text)}
       </Paragraph>
     </Article>
-    <p className={styles.date}>{review.date}</p>
+    <p className={styles.date}>{fixDate(review.date)}</p>
   </Box>
 );
 
