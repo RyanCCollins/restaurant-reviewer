@@ -14,9 +14,10 @@ import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import Menu from 'grommet/components/Menu';
 import Filter from 'grommet/components/icons/base/Filter';
-import List from 'grommet/components/List';
-import ListItem from 'grommet/components/ListItem';
 import Anchor from 'grommet/components/Anchor';
+
+const itemsAreEqual = (item, value) =>
+  item === value || item === value.split(' ')[0];
 
 class FilterMenu extends Component {
   render() {
@@ -35,29 +36,20 @@ class FilterMenu extends Component {
         pad="medium"
         dropAlign={{ left: 'left', top: 'bottom' }}
       >
-        <List
-          style={{ maxHeight: 400 }}
-          selected={selectedItem}
-        >
-          {menuItems.map((item, i) =>
-            <ListItem
-              key={i}
-              ref={`list-item-${item.id}`}
-              justify="between"
-            >
-              <Anchor
-                ref="anchorRef"
-                className={styles.anchor}
-                href="#"
-                onClick={() => // eslint-disable-line react/jsx-no-bind
-                  onSelectItem({ value: item.value })
-                }
-              >
-                {item.value}
-              </Anchor>
-            </ListItem>
-          )}
-        </List>
+        {menuItems.map((item, i) =>
+          <Anchor
+            kef={i}
+            ref="anchorRef"
+            className={itemsAreEqual(selectedItem, item.value) ?
+              styles.anchorSelected : styles.anchor}
+            href="#"
+            onClick={() => // eslint-disable-line react/jsx-no-bind
+              onSelectItem({ value: item.value })
+            }
+          >
+            {item.value}
+          </Anchor>
+        )}
       </Menu>
     );
   }
@@ -67,7 +59,7 @@ FilterMenu.propTypes = {
   menuItems: PropTypes.array.isRequired,
   onSelectItem: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
-  selectedItem: PropTypes.object,
+  selectedItem: PropTypes.string,
 };
 
 export default cssModules(FilterMenu, styles);

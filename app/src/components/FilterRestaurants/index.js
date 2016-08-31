@@ -22,6 +22,7 @@ import Footer from 'grommet/components/Footer';
 const FilterRestaurants = ({
   locations,
   ratings,
+  filter,
   onFilterLocations,
   onFilterRatings,
   isFiltering,
@@ -43,16 +44,19 @@ const FilterRestaurants = ({
         <FilterMenu
           menuItems={categories.map((item, id) => ({ id, value: item }))}
           onSelectItem={onFilterCategories}
+          selectedItem={filter.categoryFilter}
           label="Filter by Category"
         />
         <FilterMenu
           menuItems={locations}
           onSelectItem={onFilterLocations}
+          selectedItem={filter.locationFilter}
           label="Filter by Location"
         />
         <FilterMenu
           menuItems={ratings}
           onSelectItem={onFilterRatings}
+          selectedItem={filter.ratingFilter}
           label="Filter by Rating"
         />
       </Menu>
@@ -69,7 +73,12 @@ const FilterRestaurants = ({
           <Button
             label="Apply Filter(s)"
             primary
-            onClick={onApplyFilters}
+            onClick={
+              filter.ratingFilter !== 'All' ||
+                filter.categoryFilter !== 'All' ||
+                  filter.locationFilter !== 'All' ?
+                    onApplyFilters : null
+            }
           />
         }
       </Footer>
@@ -80,6 +89,7 @@ const FilterRestaurants = ({
 FilterRestaurants.propTypes = {
   locations: PropTypes.array.isRequired,
   ratings: PropTypes.array.isRequired,
+  filter: PropTypes.object.isRequired,
   onFilterLocations: PropTypes.func.isRequired,
   onFilterRatings: PropTypes.func.isRequired,
   isFiltering: PropTypes.bool.isRequired,

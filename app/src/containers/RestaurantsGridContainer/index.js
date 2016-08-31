@@ -135,6 +135,7 @@ class RestaurantsGrid extends Component {
                     ratings={ratings}
                     categories={categories}
                     onApplyFilters={this.handleApplyFilters}
+                    filter={this.getCurrentFilter()}
                     isFiltering={filterIsApplied}
                     onClearFilter={this.handleClearFilter}
                     onFilterRatings={this.handleFilterRatings}
