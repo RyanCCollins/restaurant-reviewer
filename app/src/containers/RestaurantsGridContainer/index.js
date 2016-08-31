@@ -30,7 +30,6 @@ class RestaurantsGrid extends Component {
     this.handleClearFilter = this.handleClearFilter.bind(this);
     this.handleFilterCategories = this.handleFilterCategories.bind(this);
     this.handleApplyFilters = this.handleApplyFilters.bind(this);
-    this.isFiltering = this.isFiltering.bind(this);
   }
   componentDidMount() {
     const {
