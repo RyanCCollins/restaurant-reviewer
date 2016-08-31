@@ -37,10 +37,6 @@ class FilterMenu extends Component {
       >
         <List
           style={{ maxHeight: 400 }}
-          selectable
-          onSelect={() => {
-            console.log('Tapped on select');
-          }}
           selected={selectedItem}
         >
           {menuItems.map((item, i) =>
@@ -51,6 +47,7 @@ class FilterMenu extends Component {
             >
               <Anchor
                 ref="anchorRef"
+                className={styles.anchor}
                 href="#"
                 onClick={() => // eslint-disable-line react/jsx-no-bind
                   onSelectItem({ value: item.value })

@@ -10,7 +10,12 @@ const NoRestaurantsFound = ({
   filter,
 }) => (
   <Section style={styles.centerAndPad}>
-    <Heading strong align="center" tag="h2" className={styles.paragraphCenter}>
+    <Heading
+      strong
+      align="center"
+      tag="h2"
+      className={styles.paragraphCenter}
+    >
       No Restaurants Found
     </Heading>
     <Paragraph size="large" className={styles.paragraphCenter}>
