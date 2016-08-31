@@ -13,7 +13,7 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import { RestaurantGridItem, FilterHeading } from 'components';
-import shouldBeEnabled from 'utils/filter';
+import filterIsSet from 'utils/filter';
 
 const RestaurantGrid = ({
   restaurants,
@@ -24,7 +24,8 @@ const RestaurantGrid = ({
   <section className={styles.restaurantGrid}>
     <FilterHeading
       filters={currentFilter}
-      isHidden={!shouldBeEnabled(currentFilter) && !isFiltered}
+      isFiltered={isFiltered}
+      isHidden={!filterIsSet(currentFilter)}
     />
     {restaurants.map((restaurant, i) =>
       <RestaurantGridItem
