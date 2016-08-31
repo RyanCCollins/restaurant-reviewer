@@ -20,6 +20,9 @@ export const initialState = {
     categoryFilter: 'All',
     ratingFilter: 'All',
     locationFilter: 'All',
+    appliedFilter: {
+      isApplied: false,
+    },
     errors: [],
     categories: [],
     locations: [],

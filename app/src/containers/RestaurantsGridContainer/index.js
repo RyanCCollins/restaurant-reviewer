@@ -30,7 +30,7 @@ class RestaurantsGrid extends Component {
     this.handleClearFilter = this.handleClearFilter.bind(this);
     this.handleFilterCategories = this.handleFilterCategories.bind(this);
     this.handleApplyFilters = this.handleApplyFilters.bind(this);
-    this.isFiltering = this.isFiltering.bind(this);
+    this.getCurrentFilter = this.getCurrentFilter.bind(this);
   }
   componentDidMount() {
     const {
@@ -87,15 +87,17 @@ class RestaurantsGrid extends Component {
     } = this.props.actions;
     applyRestaurantsFilter();
   }
-  isFiltering() {
+  getCurrentFilter() {
     const {
       locationFilter,
       categoryFilter,
       ratingFilter,
     } = this.props;
-    return locationFilter !== 'All' &&
-      ratingFilter !== 'All' &&
-        categoryFilter !== 'All';
+    return {
+      locationFilter,
+      categoryFilter,
+      ratingFilter,
+    };
   }
   render() {
     const {
@@ -105,6 +107,7 @@ class RestaurantsGrid extends Component {
       locations,
       ratings,
       restaurants,
+      filterIsApplied,
     } = this.props;
     return (
       <div className={styles.restaurantsGrid}>
@@ -132,7 +135,7 @@ class RestaurantsGrid extends Component {
                     ratings={ratings}
                     categories={categories}
                     onApplyFilters={this.handleApplyFilters}
-                    isFiltering={this.isFiltering()}
+                    isFiltering={filterIsApplied}
                     onClearFilter={this.handleClearFilter}
                     onFilterRatings={this.handleFilterRatings}
                     onFilterLocations={this.handleFilterLocations}
@@ -145,7 +148,7 @@ class RestaurantsGrid extends Component {
                     />
                   :
                     <NoRestaurantsFound
-                      filter={null}
+                      filter={this.getCurrentFilter()}
                     />
                   }
               </div>
@@ -168,6 +171,7 @@ RestaurantsGrid.propTypes = {
   categories: PropTypes.array.isRequired,
   locations: PropTypes.array.isRequired,
   ratings: PropTypes.array.isRequired,
+  filterIsApplied: PropTypes.bool.isRequired,
 };
 
 RestaurantsGrid.contextTypes = {
@@ -184,7 +188,8 @@ const mapStateToProps = (state) => ({
   ratings: state.restaurants.ratings,
   locationFilter: state.restaurants.locationFilter,
   categoryFilter: state.restaurants.categoryFilter,
-  ratingFilter: state.restaurants.tatingFilter,
+  ratingFilter: state.restaurants.ratingFilter,
+  filterIsApplied: state.restaurants.appliedFilter.isApplied,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

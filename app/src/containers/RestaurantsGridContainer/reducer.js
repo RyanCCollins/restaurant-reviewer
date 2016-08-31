@@ -20,6 +20,9 @@ const initialState = {
   categoryFilter: 'All',
   ratingFilter: 'All',
   locationFilter: 'All',
+  appliedFilter: {
+    isApplied: false,
+  },
   categories: [],
   locations: [],
   ratings: [
@@ -50,7 +53,7 @@ const initialState = {
   ],
 };
 
-const filteredItems = (state = [], action) => {
+const filteredItems = (state = initialState, action) => {
   switch (action.type) {
     case APPLY_RESTAURANTS_FILTERS:
       return state.items.filter(item => {
@@ -70,7 +73,7 @@ const filteredItems = (state = [], action) => {
         return true;
       });
     default:
-      return state;
+      return state.filteredItems;
   }
 };
 
@@ -120,7 +123,10 @@ const restaurants = (state = initialState, action) => {
       });
     case APPLY_RESTAURANTS_FILTERS:
       return Object.assign({}, state, {
-        filteredItems: filteredItems(state.filteredItems, action),
+        filteredItems: filteredItems(state, action),
+        appliedFilter: {
+          isApplied: true,
+        },
       });
     case CLEAR_RESTAURANTS_FILTERS:
       return Object.assign({}, state, {
@@ -128,6 +134,9 @@ const restaurants = (state = initialState, action) => {
         ratingFilter: 'All',
         categoryFilter: 'All',
         filteredItems: state.items,
+        appliedFilter: {
+          isApplied: false,
+        },
       });
     default:
       return state;
