@@ -33,6 +33,7 @@ class FilterMenu extends Component {
         closeOnClick={false}
         label={label}
         className={styles.filterMenu}
+        a11yTitle={label}
         pad="medium"
         dropAlign={{ left: 'left', top: 'bottom' }}
       >

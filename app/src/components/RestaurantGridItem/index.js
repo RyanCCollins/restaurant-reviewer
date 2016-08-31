@@ -16,7 +16,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import Heading from 'grommet/components/Heading';
 import Article from 'grommet/components/article';
 import { Link } from 'react-router';
-import { RestaurantInfo } from 'components';
+import { RestaurantInfo, SrOnlyContent } from 'components';
 import Button from 'grommet/components/button';
 import Footer from 'grommet/components/footer';
 import Information from 'grommet/components/icons/base/information';
@@ -42,9 +42,9 @@ const RestaurantGridItem = ({
             src={restaurant.image}
             alt={`A restaurant named ${restaurant.name}`}
           />
-          <span className={styles.srOnly}>
+          <SrOnlyContent>
             {`Average rating of ${restaurant.average_rating} out of 5 stars`}
-          </span>
+          </SrOnlyContent>
         </Link>
       </div>
     </div>

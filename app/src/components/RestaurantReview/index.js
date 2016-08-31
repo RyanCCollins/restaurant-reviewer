@@ -26,6 +26,8 @@ const RestaurantReview = ({
 }) => (
   <Box
     colorIndex="light-1"
+    a11yTitle={`Review by ${review.person}.  Click for full content.`}
+    focusable
     pad="medium"
     className={styles.box}
     onClick={() => onReviewClick(review.id)} // eslint-disable-line react/jsx-no-bind

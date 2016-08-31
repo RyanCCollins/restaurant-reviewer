@@ -21,7 +21,7 @@ const ReviewGrid = ({
   reviews,
   onClickReview,
 }) => (
-  <Section>
+  <Section primary a11yTitle="Review Grid">
     <div className={styles.reviewGrid}>
       <Heading className={styles.headline} margin="large" tag="h1" align="center">
         Reviews

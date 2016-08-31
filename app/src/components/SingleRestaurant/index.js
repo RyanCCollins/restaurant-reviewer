@@ -17,16 +17,19 @@ import {
   BannerHeader,
 } from 'components';
 import Article from 'grommet/components/article';
+import Section from 'grommet/components/Section';
 
 const SingleRestaurant = ({
   restaurant,
 }) => (
-  <div className={styles.singleRestaurant}>
+  <main className={styles.singleRestaurant}>
     <BannerHeader heading={restaurant.name} />
-    <Article pad="medium">
-      <RestaurantPanel restaurant={restaurant} />
-    </Article>
-  </div>
+    <Section primary a11yTitle="Restaurant Info Panel">
+      <Article pad="medium">
+        <RestaurantPanel restaurant={restaurant} />
+      </Article>
+    </Section>
+  </main>
 );
 
 SingleRestaurant.propTypes = {

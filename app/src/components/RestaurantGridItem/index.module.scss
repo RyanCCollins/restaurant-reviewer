@@ -73,14 +73,3 @@
   display: flex;
   justify-content: center;
 }
-
-.srOnly {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  border: 0;
-}
