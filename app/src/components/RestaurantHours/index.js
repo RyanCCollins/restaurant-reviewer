@@ -19,6 +19,8 @@ import Button from 'grommet/components/Button';
 import Heading from 'grommet/components/Heading';
 import Section from 'grommet/components/section';
 import Box from 'grommet/components/Box';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Animate from 'grommet/components/Animate';
 import { RestaurantHoursListItem } from 'components';
 
 const daysOfWeek = [
@@ -41,22 +43,33 @@ const RestaurantHours = ({
       Restaurant Hours
     </Heading>
     <Button
-      icon={isExpanded ? <Contract /> : <Expand />}
-      label="View Details"
+      icon={
+        isExpanded ?
+          <Contract a11yTitle a11yTitleId="Hide Details" />
+        :
+          <Expand a11yTitleId="Show Details" a11yTitle />
+      }
+      label={isExpanded ? 'Hide Details' : 'Show Details'}
       plain
       onClick={onExpandHours}
     />
-    <Box>
-      <List selectable={false} className={styles.list}>
-        {daysOfWeek.map((item, index) =>
-          <RestaurantHoursListItem
-            key={index}
-            day={item.toUpperCase()}
-            hours={restaurant.hours[`${item}`]}
-          />
-        )}
-      </List>
-    </Box>
+    <Animate
+      enter={{ animation: 'slide-down', duration: 1000 }}
+      leave={{ animation: 'slide-down', duration: 1000 }}
+      visible={isExpanded}
+    >
+      <Box>
+        <List selectable={false} className={styles.list}>
+          {daysOfWeek.map((item, index) =>
+            <RestaurantHoursListItem
+              key={index}
+              day={item.toUpperCase()}
+              hours={restaurant.hours[`${item}`]}
+            />
+          )}
+        </List>
+      </Box>
+    </Animate>
   </Section>
 );
 
