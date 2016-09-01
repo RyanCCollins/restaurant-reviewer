@@ -44,7 +44,6 @@ const singleRestaurant =
           isLoading: true,
         });
       case ADD_REVIEW_SUCCESS:
-        console.log(`Calling add review success with ${JSON.stringify(action.review)}`)
         return Object.assign({}, state, {
           isLoading: false,
           reviews: [
