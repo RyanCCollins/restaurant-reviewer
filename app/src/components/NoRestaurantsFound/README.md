@@ -4,14 +4,11 @@ A component that ...
 ### Example
 
 ```js
-<NoRestaurantsFound />
+<NoRestaurantsFound filter={myFilter} />
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
-
-
-### Other Information
+| **filter**    | String   |             | Object that represents the currently set filter. 

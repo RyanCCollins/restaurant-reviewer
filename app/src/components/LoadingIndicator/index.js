@@ -18,7 +18,7 @@ const LoadingIndicator = ({
 }) => (
   <div className={styles.loadingIndicator}>
     {isLoading &&
-      <span>
+      <span role="status">
         <div className="dizzy-gillespie" />
         <h3>Loading...</h3>
       </span>

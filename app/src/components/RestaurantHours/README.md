@@ -15,4 +15,4 @@ A component that shows a section with hours that the restaurant is open.
 
 
 ### Other Information
-Presentational component that uses the built in grommet accordian components.
+Presentational component that uses the built in grommet accordion components.

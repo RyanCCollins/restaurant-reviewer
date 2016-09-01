@@ -1,17 +1,16 @@
-## SronlyContent Component
-A component that ...
+## SrOnlyContent Component
+A component that is a screen reader only element.
 
 ### Example
 
 ```js
-<SronlyContent />
+<SrOnlyContent>
+  {children}
+</SrOnlyContent>
 ```
 
 ### Props
 
 | Prop          | Type     | Default     | Possible Values
 | ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
-
-
-### Other Information
+| **children**    | Node   |             | React node children content

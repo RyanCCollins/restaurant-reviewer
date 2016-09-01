@@ -13,6 +13,7 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import { RestaurantGridItem, FilterHeading } from 'components';
+import Section from 'grommet/components/Section';
 import filterIsSet from 'utils/filter';
 
 const RestaurantGrid = ({
@@ -21,7 +22,7 @@ const RestaurantGrid = ({
   currentFilter,
   isFiltered,
 }) => (
-  <section className={styles.restaurantGrid}>
+  <Section className={styles.restaurantGrid}>
     <FilterHeading
       filters={currentFilter}
       isFiltered={isFiltered}
@@ -34,7 +35,7 @@ const RestaurantGrid = ({
         onViewDetails={onViewDetails} // eslint-disable-line
       />
     )}
-  </section>
+  </Section>
 );
 
 RestaurantGrid.propTypes = {
