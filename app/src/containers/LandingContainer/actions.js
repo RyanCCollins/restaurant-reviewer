@@ -14,23 +14,19 @@ const loadImagesSuccess = () => ({
   type: LOAD_IMAGES_SUCCESS,
 });
 
-// loadImagesFailure :: Error -> {Action}
-const loadImagesFailure = (error) => ({
-  type: LOAD_IMAGES_FAILURE,
-  error,
-});
-
+// fakeDelay :: None -> Promise
 const fakeDelay = () =>
-  new Promise((resolve, _) => {
+  new Promise((resolve) => {
     setTimeout(() => {
-      resolve('hello :D!');
-    }, 3000);
+      resolve('Wooha!!');
+    }, 2000);
   });
 
+// loadImagesAsync :: None -> Function -> {Action}
 export const loadImagesAsync = () =>
   (dispatch) => {
     dispatch(loadImagesInitiation());
-    fakeDelay()
+    fakeDelay() // Fake asynchronicity.
       .then(() => dispatch(
         loadImagesSuccess()
       )

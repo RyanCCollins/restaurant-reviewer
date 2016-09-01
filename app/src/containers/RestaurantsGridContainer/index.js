@@ -110,7 +110,7 @@ class RestaurantsGrid extends Component {
       filterIsApplied,
     } = this.props;
     return (
-      <div className={styles.restaurantsGrid}>
+      <Section primary className={styles.restaurantsGrid}>
         <Article>
           <Header
             justify="center"
@@ -119,7 +119,7 @@ class RestaurantsGrid extends Component {
           >
             Restaurants
           </Header>
-          <Section primary>
+          <Section>
             {isLoading ?
               <LoadingIndicator
                 isLoading={isLoading}
@@ -158,7 +158,7 @@ class RestaurantsGrid extends Component {
             }
           </Section>
         </Article>
-      </div>
+      </Section>
     );
   }
 }

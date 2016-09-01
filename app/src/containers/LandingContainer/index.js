@@ -4,10 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as LandingActionCreators from './actions';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import {
-  Headline,
-  Section,
-} from 'grommet';
+import Section from 'grommet/components/Section';
 import {
   HeroCarousel,
   LoadingIndicator,
@@ -24,9 +21,9 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
   }
   handleLoading() {
     const {
-      actions,
-    } = this.props;
-    actions.loadImagesAsync();
+      loadImagesAsync,
+    } = this.props.actions;
+    loadImagesAsync();
   }
   render() {
     const {
@@ -34,13 +31,13 @@ class Landing extends Component { // eslint-disable-line react/prefer-stateless-
       isLoading,
     } = this.props;
     return (
-      <div className={styles.landing}>
+      <Section className={styles.landing}>
         {!isLoading ?
           <HeroCarousel restaurants={restaurants} />
         :
           <LoadingIndicator isLoading={isLoading} />
         }
-      </div>
+      </Section>
     );
   }
 }
