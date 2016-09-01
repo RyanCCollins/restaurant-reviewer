@@ -9,6 +9,7 @@ import {
   OPEN_FULL_REVIEW,
   CLOSE_FULL_REVIEW,
   LOAD_INITIAL_REVIEWS,
+  TOGGLE_RESTAURANT_HOURS,
 } from './constants';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     isLoading: false,
     selectedRestaurant: null,
     selectedReviewId: null,
+    hoursAreExpanded: false,
   },
 };
 
@@ -71,6 +73,10 @@ const singleRestaurant =
       case LOAD_INITIAL_REVIEWS:
         return Object.assign({}, state, {
           reviews: action.reviews,
+        });
+      case TOGGLE_RESTAURANT_HOURS:
+        return Object.assign({}, state, {
+          hoursAreExpanded: !state.hoursAreExpanded
         });
       default:
         return state;

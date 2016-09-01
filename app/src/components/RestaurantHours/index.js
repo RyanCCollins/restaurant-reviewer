@@ -13,9 +13,12 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import List from 'grommet/components/list';
+import Contract from 'grommet/components/icons/base/contract';
+import Expand from 'grommet/components/icons/base/expand';
+import Button from 'grommet/components/Button';
+import Heading from 'grommet/components/Heading';
 import Section from 'grommet/components/section';
-import Accordion from 'grommet/components/Accordion';
-import AccordionPanel from 'grommet/components/AccordionPanel';
+import Box from 'grommet/components/Box';
 import { RestaurantHoursListItem } from 'components';
 
 const daysOfWeek = [
@@ -30,26 +33,37 @@ const daysOfWeek = [
 
 const RestaurantHours = ({
   restaurant,
+  onExpandHours,
+  isExpanded,
 }) => (
   <Section>
-    <Accordion a11yTitle="Restaurant Hours">
-      <AccordionPanel heading="Restaurant Hours">
-        <List className={styles.list}>
-          {daysOfWeek.map((item, index) =>
-            <RestaurantHoursListItem
-              key={index}
-              day={item.toUpperCase()}
-              hours={restaurant.hours[`${item}`]}
-            />
-          )}
-        </List>
-      </AccordionPanel>
-    </Accordion>
+    <Heading align="center" tag="h2">
+      Restaurant Hours
+    </Heading>
+    <Button
+      icon={isExpanded ? <Contract /> : <Expand />}
+      label="View Details"
+      plain
+      onClick={onExpandHours}
+    />
+    <Box>
+      <List selectable={false} className={styles.list}>
+        {daysOfWeek.map((item, index) =>
+          <RestaurantHoursListItem
+            key={index}
+            day={item.toUpperCase()}
+            hours={restaurant.hours[`${item}`]}
+          />
+        )}
+      </List>
+    </Box>
   </Section>
 );
 
 RestaurantHours.propTypes = {
   restaurant: PropTypes.object.isRequired,
+  isExpanded: PropTypes.bool.isRequired,
+  onExpandHours: PropTypes.func.isRequired,
 };
 
 export default cssModules(RestaurantHours, styles);

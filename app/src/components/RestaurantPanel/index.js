@@ -19,6 +19,8 @@ import Heading from 'grommet/components/heading';
 
 const RestaurantPanel = ({
   restaurant,
+  hoursAreExpanded,
+  onExpandHours,
 }) => (
   <div className={styles.restaurantPanel}>
     <div className={styles.panel}>
@@ -31,7 +33,11 @@ const RestaurantPanel = ({
       <Section className={styles.textWrapper}>
         <Heading align="center" tag="h3" />
         <RestaurantInfo restaurant={restaurant} />
-        <RestaurantHours restaurant={restaurant} />
+        <RestaurantHours
+          restaurant={restaurant}
+          isExpanded={hoursAreExpanded}
+          onExpandHours={onExpandHours}
+        />
       </Section>
     </div>
   </div>
@@ -39,6 +45,8 @@ const RestaurantPanel = ({
 
 RestaurantPanel.propTypes = {
   restaurant: PropTypes.object.isRequired,
+  hoursAreExpanded: PropTypes.bool.isRequired,
+  onExpandHours: PropTypes.func.isRequired,
 };
 
 export default cssModules(RestaurantPanel, styles);

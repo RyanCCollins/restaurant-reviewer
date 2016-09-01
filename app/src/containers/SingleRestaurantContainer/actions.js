@@ -9,6 +9,7 @@ import {
   OPEN_FULL_REVIEW,
   CLOSE_FULL_REVIEW,
   LOAD_INITIAL_REVIEWS,
+  TOGGLE_RESTAURANT_HOURS,
 } from './constants';
 const baseUrl = 'https://restaurant-reviewer-api.herokuapp.com/api/v1/';
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
@@ -160,3 +161,8 @@ export const submitReview = (review, restaurant) =>
       );
     });
   };
+
+// toggleRestaurantHours :: None -> {Action}
+export const toggleRestaurantHours = () => ({
+  type: TOGGLE_RESTAURANT_HOURS,
+});

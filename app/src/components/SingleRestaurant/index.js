@@ -21,12 +21,18 @@ import Section from 'grommet/components/Section';
 
 const SingleRestaurant = ({
   restaurant,
+  onExpandHours,
+  hoursAreExpanded,
 }) => (
   <main className={styles.singleRestaurant}>
     <BannerHeader heading={restaurant.name} />
     <Section primary a11yTitle="Restaurant Info Panel">
       <Article pad="medium">
-        <RestaurantPanel restaurant={restaurant} />
+        <RestaurantPanel
+          onExpandHours={onExpandHours}
+          hoursAreExpanded={hoursAreExpanded}
+          restaurant={restaurant}
+        />
       </Article>
     </Section>
   </main>
@@ -34,6 +40,8 @@ const SingleRestaurant = ({
 
 SingleRestaurant.propTypes = {
   restaurant: PropTypes.object.isRequired,
+  hoursAreExpanded: PropTypes.bool.isRequired,
+  onExpandHours: PropTypes.func.isRequired,
 };
 
 export default cssModules(SingleRestaurant, styles);

@@ -14,7 +14,6 @@ const routes = (
       onUpdate={() => {
         document.getElementById('content').focus();
         window.scrollTo(0, 0);
-
       }} /* eslint-enable */
       history={history}
     >

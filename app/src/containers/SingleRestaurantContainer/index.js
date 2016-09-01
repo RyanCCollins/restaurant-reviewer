@@ -20,6 +20,7 @@ class SingleRestaurantContainer extends Component {
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
     this.handleCloseReview = this.handleCloseReview.bind(this);
     this.handleOpenReview = this.handleOpenReview.bind(this);
+    this.handleToggleHours = this.handleToggleHours.bind(this);
   }
   componentDidMount() {
     this.handleLoadingOfRestaurant();
@@ -63,6 +64,12 @@ class SingleRestaurantContainer extends Component {
     document.getElementById('app').classList.add('no-scroll');
     actions.openFullReview(id);
   }
+  handleToggleHours() {
+    const {
+      toggleRestaurantHours,
+    } = this.props.actions;
+    toggleRestaurantHours();
+  }
   render() {
     const {
       selectedReviewId,
@@ -70,12 +77,17 @@ class SingleRestaurantContainer extends Component {
       errors,
       selectedRestaurant,
       reviews,
+      hoursAreExpanded,
     } = this.props;
     return (
       <div className={styles.singleRestaurant}>
         {selectedRestaurant ?
           <Section className={styles.noPad}>
-            <SingleRestaurant restaurant={selectedRestaurant} />
+            <SingleRestaurant
+              onExpandHours={this.handleToggleHours}
+              hoursAreExpanded={hoursAreExpanded}
+              restaurant={selectedRestaurant}
+            />
             <AddReviewContainer
               hasFab
               onClear={this.handleClear}
@@ -123,6 +135,7 @@ SingleRestaurantContainer.propTypes = {
   actions: PropTypes.object.isRequired,
   addReviewData: PropTypes.object,
   selectedRestaurant: PropTypes.object.isRequired,
+  hoursAreExpanded: PropTypes.bool.isRequired,
 };
 
 SingleRestaurantContainer.contextTypes = {
@@ -138,6 +151,7 @@ const mapStateToProps = (state) => ({
   addReviewData: state.form.addReview,
   selectedReviewId: state.singleRestaurant.selectedReviewId,
   selectedRestaurant: state.singleRestaurant.selectedRestaurant,
+  hoursAreExpanded: state.singleRestaurant.hoursAreExpanded,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

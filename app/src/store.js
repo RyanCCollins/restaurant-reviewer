@@ -59,6 +59,7 @@ export const initialState = {
     isLoading: false,
     selectedRestaurant: null,
     selectedReviewId: null,
+    hoursAreExpanded: false,
   },
   addReview: {
     isAddingReview: false,
