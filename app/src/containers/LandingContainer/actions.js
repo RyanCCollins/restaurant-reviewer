@@ -1,6 +1,5 @@
 import {
   LOAD_IMAGES_SUCCESS,
-  LOAD_IMAGES_FAILURE,
   LOAD_IMAGES_INITIATION,
 } from './constants';
 

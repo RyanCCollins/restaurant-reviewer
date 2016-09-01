@@ -85,29 +85,28 @@ class AddReviewForm extends Component {
         <FormFields>
           <FormField
             label="Name Input"
-            htmlFor="nameInput"
+            htmlFor="reviewNameInput"
             help="What is your name"
             error={nameInput.touched && nameInput.error ? nameInput.error : null}
           >
             <input
               {...nameInput}
               ref="nameInput"
-              id="nameInput"
+              id="reviewNameInput"
               type="text"
               name="name"
             />
           </FormField>
           <FormField
             label="Review Text"
-            htmlFor="textInput"
+            htmlFor="reviewTextInput"
             help="Add some text for your review"
             error={textInput.touched && textInput.error ? textInput.error : null}
           >
             <textarea
               {...textInput}
-              id="textInput"
-              ref="textInput"
-              name="text"
+              id="reviewTextInput"
+              ref="reviewTextInput"
               type="text"
               rows="5"
               cols="40"
@@ -115,16 +114,16 @@ class AddReviewForm extends Component {
           </FormField>
           <FormField
             label="Rating Input"
-            htmlFor="ratingInput"
+            htmlFor="reviewRatingInput"
             help="How many stars (1-5)"
             error={ratingInput.touched && ratingInput.error ? ratingInput.error : null}
           >
             <NumberInput
               {...ratingInput}
               min={1}
-              ref="ratingInput"
+              ref="reviewRatingInput"
               max={5}
-              id="ratingInput"
+              id="reviewRatingInput"
               name="rating"
             />
           </FormField>

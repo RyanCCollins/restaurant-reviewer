@@ -15,12 +15,13 @@ import cssModules from 'react-css-modules';
 import Notification from 'grommet/components/notification';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import Button from 'grommet/components/button';
+import Section from 'grommet/components/Section';
 
 const ErrorAlert = ({
   errors,
   onClose,
 }) => (
-  <div className={styles.errorAlert}>
+  <Section className={styles.errorAlert}>
     {errors.length > 0 && errors.map((error, i) =>
       <div key={i} className={styles.error}>
         <div className="error-alert__closer">
@@ -28,20 +29,23 @@ const ErrorAlert = ({
             plain
             onClick={onClose}
             className={styles.closeButton}
+            a11yTitle="Close Alert"
           >
             <CloseIcon a11yTitle="Close Alert" />
           </Button>
         </div>
         <Notification
+          role="alert"
           style={{ paddingTop: 10 }}
           status="critical"
+          a11yTitle="Submission Failed"
           size="small"
           message={error.message}
           state="Active"
         />
       </div>
     )}
-  </div>
+  </Section>
 );
 
 ErrorAlert.propTypes = {

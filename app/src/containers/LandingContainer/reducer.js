@@ -1,6 +1,5 @@
 import {
   LOAD_IMAGES_SUCCESS,
-  LOAD_IMAGES_FAILURE,
   LOAD_IMAGES_INITIATION,
 } from './constants';
 
@@ -51,11 +50,6 @@ const featured = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: false,
         restaurants: seedData, // So bad, I know, but this will fake the image data
-      });
-    case LOAD_IMAGES_FAILURE:
-      return Object.assign({}, state, {
-        isLoading: false,
-        errors: [...action.error],
       });
     default:
       return state;

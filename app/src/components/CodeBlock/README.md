@@ -4,9 +4,11 @@ A component that shows as a code block.
 ### Example
 
 ```js
-<CodeBlock codeBlock={
-  `Anything that goes here will be shown as code`
-} />
+<CodeBlock
+  codeBlock={
+    `Anything that goes here will be shown as code`
+  }
+/>
 ```
 
 ### Props
