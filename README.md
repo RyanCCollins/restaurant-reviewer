@@ -34,6 +34,25 @@ React, Redux
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+## Troubleshooting
+If you run into troubles installing the app's dependencies, you should ensure that you are using the following NPM and Node versions.
+```
+  "node": "4.2.4",
+  "npm": "3.8.8"
+```
+
+[NVM](https://github.com/creationix/nvm) can be used to change your NodeJS version.
+
+If you are on windows and the install, or any other scripts fail, you can try to install Webpack and Webpack Dev Server globally
+```
+npm install -g webpack webpack-dev-server
+```
+
+and then run the app with the following command:
+```
+webpack-dev-server
+```
+
 ## Screen Shots
 ![Main Page](https://github.com/RyanCCollins/cdn/blob/master/portfolio-image-gallery-images/restaurant-reviewer-swnd/mainpage.png?raw=true)
 ![Single Restaurant](https://github.com/RyanCCollins/cdn/blob/master/portfolio-image-gallery-images/restaurant-reviewer-swnd/singlerestaurantmain.png?raw=true)
