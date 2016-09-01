@@ -12,19 +12,12 @@ import {
 } from './constants';
 const baseUrl = 'https://restaurant-reviewer-api.herokuapp.com/api/v1/';
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
-const singleReview = (restaurantId, id) => `${reviewsUrl(restaurantId)}${id}`;
 import fetch from 'isomorphic-fetch';
 
 const headers = new Headers({
   'content-type': 'application/json',
   'Access-Control-Allow-Origin': '*',
 });
-
-const getOptions = {
-  method: 'GET',
-  headers,
-  mode: 'no-cors',
-};
 
 // closeFullReview :: None -> {Action}
 export const closeFullReview = () => ({
@@ -67,12 +60,13 @@ const loadInitialReviews = (reviews) => ({
   reviews,
 });
 
+// loadCachedReviews :: Object -> Function -> {Action}
 export const loadCachedReviews = (selectedRestaurant) =>
   (dispatch) => {
     dispatch(
       loadReviewsInitiation(selectedRestaurant)
     );
-    const reviewPromise = new Promise((resolve, reject) => {
+    const reviewPromise = new Promise((resolve) => {
       setTimeout(() => {
         resolve(selectedRestaurant.reviews);
       }, 3000);
@@ -87,28 +81,6 @@ export const loadCachedReviews = (selectedRestaurant) =>
         loadReviewsSuccess(reviews)
       );
     }).catch(err => {
-      dispatch(
-        loadReviewsFailure(err)
-      );
-    });
-  };
-
-// loadReviews :: Integer -> Func -> Action -> Action Success : Failure
-export const loadReviews = (selectedRestaurant) =>
-  (dispatch) => {
-    dispatch(
-      loadReviewsInitiation(selectedRestaurant)
-    );
-    fetch(
-      reviewsUrl(selectedRestaurant.id),
-      getOptions,
-    )
-    .then(data => data.json()).then(data => {
-      dispatch(
-        loadReviewsSuccess(data.reviews)
-      );
-    })
-    .catch(err => {
       dispatch(
         loadReviewsFailure(err)
       );
