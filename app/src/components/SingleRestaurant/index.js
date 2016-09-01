@@ -24,7 +24,7 @@ const SingleRestaurant = ({
   onExpandHours,
   hoursAreExpanded,
 }) => (
-  <main className={styles.singleRestaurant}>
+  <div className={styles.singleRestaurant}>
     <BannerHeader heading={restaurant.name} />
     <Section primary a11yTitle="Restaurant Info Panel">
       <Article pad="medium">
@@ -35,7 +35,7 @@ const SingleRestaurant = ({
         />
       </Article>
     </Section>
-  </main>
+  </div>
 );
 
 SingleRestaurant.propTypes = {
