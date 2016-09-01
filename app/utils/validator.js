@@ -44,6 +44,7 @@ const validateWithRE = (RE, message) =>
     if (!RE.test(value)) {
       return message;
     }
+    return undefined;
   };
 
 export const minLength = (minimum) =>
@@ -51,6 +52,7 @@ export const minLength = (minimum) =>
     if (!noValue(value) && value.length < minimum) {
       return `Value must contain at least ${minimum} characters`;
     }
+    return undefined;
   };
 
 export const maxLength = (maximum) =>
@@ -58,41 +60,63 @@ export const maxLength = (maximum) =>
     if (!noValue(value) && value.length > maximum) {
       return `Value must be no more than ${maximum} characters in length`;
     }
+    return undefined;
   };
 
 export const valueRequired = (value) => {
   if (noValue(value)) {
     return 'Value Required';
   }
+  return undefined;
 };
 
 export const containsSpecialChar = (value) =>
-  value && validateWithRE(specialCharRE, 'Must contain 1 special character.')(value);
+  value &&
+    validateWithRE(
+      specialCharRE, 'Must contain 1 special character.'
+    )(value);
 
-export const isInteger = (value) => {
-  return value && validateWithRE(isIntegerRE, 'Must be an integer value.')(value);
-};
+export const isInteger = (value) =>
+  value &&
+    validateWithRE(
+      isIntegerRE,
+      'Must be an integer value.'
+    )(value);
 
-export const containsNumber = (value) => {
-  return value && validateWithRE(numberRE, 'Must Contain at least one number')(value);
-};
+export const containsNumber = (value) =>
+  value &&
+    validateWithRE(
+      numberRE,
+      'Must Contain at least one number'
+    )(value);
 
-export const containsLowercase = (value) => {
-  return value && validateWithRE(lowercaseRE, 'Must contain at least one lowercase letter.')(value);
-};
+export const containsLowercase = (value) =>
+  value &&
+    validateWithRE(
+      lowercaseRE,
+      'Must contain at least one lowercase letter.'
+    )(value);
 
-export const containsUppercase = (value) => {
-  return value && validateWithRE(uppercaseRE, 'Must contain at least one uppercase letter')(value);
-};
+export const containsUppercase = (value) =>
+  value &&
+    validateWithRE(
+      uppercaseRE,
+      'Must contain at least one uppercase letter'
+    )(value);
 
-export const containsTwoWords = (value) => {
-  const lowercaseValue = value ? value.toLowerCase() : '';
-  return value && validateWithRE(twoWordsRE, 'Must contain two words, i.e. full name.')(lowercaseValue);
-};
+export const containsTwoWords = (value) =>
+  value &&
+    validateWithRE(
+      twoWordsRE,
+      'Must contain two words, i.e. full name.'
+    )(value ? value.toLowerCase() : '');
 
-export const isEmail = (value) => {
-  return value && validateWithRE(emailRE, 'Must be a valid email address.')(value);
-};
+export const isEmail = (value) =>
+  value &&
+    validateWithRE(
+      emailRE,
+      'Must be a valid email address.'
+    )(value);
 
 export const createValidator = (validationRules) =>
   (data = {}) => {

@@ -19,7 +19,6 @@ import Button from 'grommet/components/Button';
 import Heading from 'grommet/components/Heading';
 import Section from 'grommet/components/section';
 import Box from 'grommet/components/Box';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Animate from 'grommet/components/Animate';
 import { RestaurantHoursListItem } from 'components';
 
@@ -55,7 +54,7 @@ const RestaurantHours = ({
     />
     <Animate
       enter={{ animation: 'slide-down', duration: 1000 }}
-      leave={{ animation: 'slide-down', duration: 1000 }}
+      leave={{ animation: 'slide-up', duration: 1000 }}
       visible={isExpanded}
     >
       <Box>
