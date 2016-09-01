@@ -3,7 +3,20 @@
   width: 100%
 };
 
-.header {
-  font-size: 32px;
-  font: 'Open Sans';
+.footerCenter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.sectionHeader {
+  margin-top: 40px;
+}
+
+.putInMiddle {
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }

@@ -4,12 +4,20 @@ import styles from './index.module.scss';
 import {
   SingleRestaurantContainer,
 } from 'containers';
+import { updatePageTitle } from 'utils/a11y';
 
-const SingleRestaurantPage = (props) => (
-  <div className={styles.container}>
-    <SingleRestaurantContainer {...props} />
-  </div>
-);
+class SingleRestaurantPage extends Component {
+  componentDidMount() {
+    updatePageTitle('Restaurant Details');
+  }
+  render() {
+    return (
+      <div className={styles.container}>
+        <SingleRestaurantContainer {...this.props} />
+      </div>
+    );
+  }
+}
 
 SingleRestaurantPage.propTypes = {
   location: PropTypes.object.isRequired,

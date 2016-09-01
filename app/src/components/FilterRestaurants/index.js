@@ -65,14 +65,14 @@ const FilterRestaurants = ({
         {isFiltering ?
           <Button
             classname={styles.clearButton}
-            icon={<Close />}
-            label="Clear"
+            icon={<Close a11yTitle="" />}
+            label="Clear Filters"
             plain
             onClick={onClearFilter}
           />
         :
           <Button
-            label="Apply Filter(s)"
+            label="Apply Filters"
             primary
             onClick={
               shouldBeEnabled(filter) ?

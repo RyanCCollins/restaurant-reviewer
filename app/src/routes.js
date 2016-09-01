@@ -12,8 +12,9 @@ const routes = (
     <Router
       /* eslint-disable */
       onUpdate={() => {
-        document.body.focus();
+        document.getElementById('content').focus();
         window.scrollTo(0, 0);
+
       }} /* eslint-enable */
       history={history}
     >
