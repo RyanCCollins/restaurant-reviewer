@@ -28,13 +28,15 @@ const RestaurantGrid = ({
       isFiltered={isFiltered}
       isHidden={!filterIsSet(currentFilter)}
     />
-    {restaurants.map((restaurant, i) =>
-      <RestaurantGridItem
-        key={i}
-        restaurant={restaurant}
-        onViewDetails={onViewDetails} // eslint-disable-line
-      />
-    )}
+    <div className={styles.restaurantGrid}>
+      {restaurants.map((restaurant, i) =>
+        <RestaurantGridItem
+          key={i}
+          restaurant={restaurant}
+          onViewDetails={onViewDetails} // eslint-disable-line
+        />
+      )}
+    </div>
   </Section>
 );
 

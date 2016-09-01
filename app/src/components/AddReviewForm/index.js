@@ -84,7 +84,7 @@ class AddReviewForm extends Component {
       <Form onSubmit={onSubmitReview}>
         <FormFields>
           <FormField
-            label="Name Input"
+            label="Your Name"
             htmlFor="reviewNameInput"
             help="What is your name"
             error={nameInput.touched && nameInput.error ? nameInput.error : null}
@@ -98,7 +98,7 @@ class AddReviewForm extends Component {
             />
           </FormField>
           <FormField
-            label="Review Text"
+            label="Your Review Text"
             htmlFor="reviewTextInput"
             help="Add some text for your review"
             error={textInput.touched && textInput.error ? textInput.error : null}
@@ -113,7 +113,7 @@ class AddReviewForm extends Component {
             />
           </FormField>
           <FormField
-            label="Rating Input"
+            label="Your Rating"
             htmlFor="reviewRatingInput"
             help="How many stars (1-5)"
             error={ratingInput.touched && ratingInput.error ? ratingInput.error : null}
