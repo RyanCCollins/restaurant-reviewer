@@ -9,7 +9,6 @@
  LICENSE file in the root directory of this source tree.
 */
 
-
 import React, { PropTypes } from 'react';
 import ListItem from 'grommet/components/ListItem';
 import { SrOnlyContent } from 'components';
@@ -21,15 +20,15 @@ const RestaurantHoursListItem = ({
   <ListItem justify="between">
     <span>{day}</span>
     <span>{hours}</span>
-    <a href="#">
-      <SrOnlyContent>
+    <SrOnlyContent>
+      <a href="#">
         {
           `${day}.
           From ${hours.split(' - ')[0]}
           to ${hours.split(' - ')[1]}`
         }
-      </SrOnlyContent>
-    </a>
+      </a>
+    </SrOnlyContent>
   </ListItem>
 );
 

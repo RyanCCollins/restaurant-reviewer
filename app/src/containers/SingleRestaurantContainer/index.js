@@ -20,9 +20,6 @@ class SingleRestaurantContainer extends Component {
     this.handleSubmitReview = this.handleSubmitReview.bind(this);
     this.handleCloseReview = this.handleCloseReview.bind(this);
     this.handleOpenReview = this.handleOpenReview.bind(this);
-    this.state = {
-      selectedRestaurant: null,
-    };
   }
   componentDidMount() {
     this.handleLoadingOfRestaurant();
@@ -40,17 +37,16 @@ class SingleRestaurantContainer extends Component {
       } = this.context;
       router.push('/');
     }
-    this.setState({
-      selectedRestaurant,
-    });
+    const {
+      loadCachedReviews,
+    } = this.props.actions;
+    loadCachedReviews(selectedRestaurant);
   }
   handleSubmitReview(review) {
     const {
       actions,
-    } = this.props;
-    const {
       selectedRestaurant,
-    } = this.state;
+    } = this.props;
     actions.submitReview(review, selectedRestaurant);
   }
   handleCloseReview() {
@@ -69,12 +65,11 @@ class SingleRestaurantContainer extends Component {
   }
   render() {
     const {
-      selectedRestaurant,
-    } = this.state;
-    const {
       selectedReviewId,
       isLoading,
       errors,
+      selectedRestaurant,
+      reviews,
     } = this.props;
     return (
       <div className={styles.singleRestaurant}>
@@ -86,23 +81,26 @@ class SingleRestaurantContainer extends Component {
               onClear={this.handleClear}
               onSubmitReview={this.handleSubmitReview}
             />
-            {isLoading &&
-              <LoadingIndicator isLoading />
-            }
             {errors.length > 0 &&
               <ErrorAlert errors={errors} />
             }
-            <ReviewGrid
-              onClickReview={this.handleOpenReview}
-              reviews={selectedRestaurant.reviews}
-            />
-            <FullReviewModalContainer
-              onToggleClose={this.handleCloseReview}
-              isOpen={selectedReviewId !== null}
-              review={selectedRestaurant.reviews.filter(item =>
-                item.id === selectedReviewId
-              )[0]}
-            />
+            {isLoading ?
+              <LoadingIndicator isLoading />
+            :
+              <div>
+                <ReviewGrid
+                  onClickReview={this.handleOpenReview}
+                  reviews={reviews}
+                />
+                <FullReviewModalContainer
+                  onToggleClose={this.handleCloseReview}
+                  isOpen={selectedReviewId !== null}
+                  review={reviews.filter(item =>
+                    item.id === selectedReviewId
+                  )[0]}
+                />
+              </div>
+            }
           </Section>
         :
           <div className={styles.containerCenter}>
@@ -120,9 +118,11 @@ SingleRestaurantContainer.propTypes = {
   errors: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
   restaurants: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
   params: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   addReviewData: PropTypes.object,
+  selectedRestaurant: PropTypes.object.isRequired,
 };
 
 SingleRestaurantContainer.contextTypes = {
@@ -134,8 +134,10 @@ const mapStateToProps = (state) => ({
   errors: state.singleRestaurant.errors,
   isLoading: state.singleRestaurant.isLoading,
   restaurants: state.restaurants.items,
+  reviews: state.singleRestaurant.reviews,
   addReviewData: state.form.addReview,
   selectedReviewId: state.singleRestaurant.selectedReviewId,
+  selectedRestaurant: state.singleRestaurant.selectedRestaurant,
 });
 
 // mapDispatchToProps :: Dispatch -> {Action}

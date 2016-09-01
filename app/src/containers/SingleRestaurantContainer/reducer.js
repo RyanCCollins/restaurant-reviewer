@@ -8,6 +8,7 @@ import {
   REVIEWS_ERRORS,
   OPEN_FULL_REVIEW,
   CLOSE_FULL_REVIEW,
+  LOAD_INITIAL_REVIEWS,
 } from './constants';
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
     reviews: [],
     errors: [],
     isLoading: false,
-    selectedRestaurantId: null,
+    selectedRestaurant: null,
     selectedReviewId: null,
   },
 };
@@ -26,7 +27,7 @@ const singleRestaurant =
       case REVIEWS_LOAD_INITIATION:
         return Object.assign({}, state, {
           isLoading: true,
-          selectedRestaurantId: action.selectedRestaurantId,
+          selectedRestaurant: action.selectedRestaurant,
         });
       case REVIEWS_LOAD_SUCCESS:
         return Object.assign({}, state, {
@@ -43,11 +44,12 @@ const singleRestaurant =
           isLoading: true,
         });
       case ADD_REVIEW_SUCCESS:
+        console.log(`Calling add review success with ${JSON.stringify(action.review)}`)
         return Object.assign({}, state, {
           isLoading: false,
           reviews: [
-            ...state.reviews,
-            ...action.review,
+            action.review,
+            ...state.selectedRestaurant.reviews,
           ],
         });
       case ADD_REVIEW_FAILURE:
@@ -66,6 +68,10 @@ const singleRestaurant =
       case CLOSE_FULL_REVIEW:
         return Object.assign({}, state, {
           selectedReviewId: null,
+        });
+      case LOAD_INITIAL_REVIEWS:
+        return Object.assign({}, state, {
+          reviews: action.reviews,
         });
       default:
         return state;

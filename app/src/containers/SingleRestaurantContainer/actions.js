@@ -8,6 +8,7 @@ import {
   REVIEWS_ERRORS,
   OPEN_FULL_REVIEW,
   CLOSE_FULL_REVIEW,
+  LOAD_INITIAL_REVIEWS,
 } from './constants';
 const baseUrl = 'https://restaurant-reviewer-api.herokuapp.com/api/v1/';
 const reviewsUrl = (restaurantId) => `${baseUrl}restaurants/${restaurantId}/reviews/`;
@@ -37,9 +38,9 @@ export const openFullReview = (review) => ({
 });
 
 // loadReviewsInitiation :: None -> {Action}
-const loadReviewsInitiation = (restaurantId) => ({
+const loadReviewsInitiation = (selectedRestaurant) => ({
   type: REVIEWS_LOAD_INITIATION,
-  selectedRestaurantId: restaurantId,
+  selectedRestaurant,
 });
 
 // loadReviewsSuccess :: [JSON] -> {Action}
@@ -60,14 +61,46 @@ export const reviewsErrors = (errors) => ({
   errors,
 });
 
-// loadReviews :: Integer -> Func -> Action -> Action Success : Failure
-export const loadReviews = (restaurantId) =>
+// loadInitialReviews :: Array -> {Action}
+const loadInitialReviews = (reviews) => ({
+  type: LOAD_INITIAL_REVIEWS,
+  reviews,
+});
+
+export const loadCachedReviews = (selectedRestaurant) =>
   (dispatch) => {
     dispatch(
-      loadReviewsInitiation(restaurantId)
+      loadReviewsInitiation(selectedRestaurant)
+    );
+    const reviewPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(selectedRestaurant.reviews);
+      }, 3000);
+    });
+    reviewPromise.then(reviews => {
+      dispatch(
+        loadInitialReviews(reviews)
+      );
+      return reviews;
+    }).then(reviews => {
+      dispatch(
+        loadReviewsSuccess(reviews)
+      );
+    }).catch(err => {
+      dispatch(
+        loadReviewsFailure(err)
+      );
+    });
+  };
+
+// loadReviews :: Integer -> Func -> Action -> Action Success : Failure
+export const loadReviews = (selectedRestaurant) =>
+  (dispatch) => {
+    dispatch(
+      loadReviewsInitiation(selectedRestaurant)
     );
     fetch(
-      reviewsUrl(restaurantId),
+      reviewsUrl(selectedRestaurant.id),
       getOptions,
     )
     .then(data => data.json()).then(data => {
@@ -139,15 +172,15 @@ export const submitReview = (review, restaurant) =>
     )
     .then(res => res.json())
     .then(data => {
-      dispatch(
-        addReviewSuccess(data.review)
-      );
-    }).then(_ => {
-      dispatch(
-        closeFullReview()
-      );
-    }).then(_ => {
-      loadReviews(restaurant.id);
+      const {
+        review,
+      } = data;
+      setTimeout(() => {
+        dispatch(
+          addReviewSuccess(review)
+        );
+      }, 2000);
+      return data;
     })
     .catch(error => {
       dispatch(

@@ -57,7 +57,7 @@ export const initialState = {
     reviews: [],
     errors: [],
     isLoading: false,
-    selectedRestaurantId: null,
+    selectedRestaurant: null,
     selectedReviewId: null,
   },
   addReview: {

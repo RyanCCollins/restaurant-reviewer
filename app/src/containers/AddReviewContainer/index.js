@@ -47,9 +47,9 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
   }
   handleReviewInvalid() {
     const {
-      actions,
-    } = this.props;
-    actions.addReviewInvalid({
+      addReviewInvalid,
+    } = this.props.actions;
+    addReviewInvalid({
       message: 'The review was invalid.  Please correct and try again',
     });
   }
