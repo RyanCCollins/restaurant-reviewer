@@ -12,11 +12,9 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
-import {
-  Carousel,
-  Heading,
-  Headline,
-} from 'grommet';
+import Carousel from 'grommet/components/Carousel';
+import Headline from 'grommet/components/Headline';
+import Heading from 'grommet/components/Heading';
 
 class HeroCarousel extends Component {
   render() {
