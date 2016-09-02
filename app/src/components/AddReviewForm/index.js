@@ -118,7 +118,7 @@ class AddReviewForm extends Component {
             label="Review Rating *"
             htmlFor="ratingInput"
             help="How many stars (1-5)"
-            error={ratingInput.error ? ratingInput.error : null}
+            error={ratingInput.touched && ratingInput.error ? ratingInput.error : null}
           >
             <NumberInput
               min={1}
