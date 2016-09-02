@@ -27,7 +27,11 @@ npm run start
 The project uses the [Scalable React Boilerplate Project](https://github.com/RyanCCollins/scalable-react-boilerplate), so please reference it for more useful scripts.
 
 ## Built With
-React, Redux
+- [React](https://facebook.github.io/react/)
+- [Redux](http://redux.js.org/docs/introduction/)
+- [Grommet](http://grommet.io)
+- [Scalable React Boilerplate](https://github.com/RyanCCollins/scalable-react-boilerplate)
+
 ## Authors
 * **Ryan Collins**
 
