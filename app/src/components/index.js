@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export AboutInfo from './AboutInfo';
 export AppFooter from './AppFooter';
 export RestaurantHoursListItem from './RestaurantHoursListItem';
 export SrOnlyContent from './SronlyContent';

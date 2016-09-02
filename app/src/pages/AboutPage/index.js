@@ -1,13 +1,11 @@
 import React from 'react';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-import { AppFooter } from 'components';
+import { AppFooter, AboutInfo } from 'components';
 
-
-// Pages map directly to Routes, i.e. one page equals on Route
-
-const AboutPage = (props) => (
+const AboutPage = () => (
   <div className={styles.container}>
+    <AboutInfo />
     <AppFooter />
   </div>
 );

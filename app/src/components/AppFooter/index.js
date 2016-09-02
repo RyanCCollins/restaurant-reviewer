@@ -20,11 +20,11 @@ const AppFooter = () => (
         and{' '}
         <a href="https://grommet.io">Grommet UX</a>
       </Heading>
-      <Paragraph>
+      <Heading tag="h5">
         This app is licensed under the{' '}
         <a href="https://github.com/RyanCCollins/restaurant-reviewer/blob/master/LICENSE">MIT License.</a>{' '}
         Take a peak at the <a href="https://github.com/RyanCCollins/restaurant-reviewer">source code.</a>
-      </Paragraph>
+      </Heading>
       <Menu direction="row">
         <SocialShare
           type="facebook"
