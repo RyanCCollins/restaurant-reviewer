@@ -25,14 +25,22 @@ const Navbar = () => (
       <Link to="/">
         <img
           className={styles.logo}
-          src='https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true'
+          src="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/a11ylogo.png?raw=true"
           alt="A11y Written in rainbow colors"
         />
       </Link>
     </Title>
-    <Menu className={styles.menu} direction="row" align="center" responsive={false}>
+    <Menu
+      className={styles.menu}
+      direction="row"
+      align="center"
+      responsive={false}
+    >
       <Anchor href="/">
         Home
+      </Anchor>
+      <Anchor href="/about">
+        About
       </Anchor>
     </Menu>
   </Header>

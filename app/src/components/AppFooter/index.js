@@ -11,11 +11,18 @@ import Menu from 'grommet/components/Menu';
 const AppFooter = () => (
   <Footer className={styles.appFooter}>
     <Box direction="column" align="center" pad="none" responsive className={styles.flexOne}>
-      <Heading tag="h2">
+      <Heading tag="h3">
         By <a href="https://www.ryancollins.io">Ryan Collins</a>
       </Heading>
+      <Heading tag="h5">
+        Showcasing the{' '}
+        <a href="https://github.com/RyanCCollins/scalable-react-boilerplate">Scalable React Boilerplate</a>{' '}
+        and{' '}
+        <a href="https://grommet.io">Grommet UX</a>
+      </Heading>
       <Paragraph>
-        This app is licensed under the MIT License.
+        This app is licensed under the{' '}
+        <a href="https://github.com/RyanCCollins/restaurant-reviewer/blob/master/LICENSE">MIT License.</a>{' '}
         Take a peak at the <a href="https://github.com/RyanCCollins/restaurant-reviewer">source code.</a>
       </Paragraph>
       <Menu direction="row">
