@@ -35,30 +35,28 @@ const FullReviewModal = ({
         closer
         className={styles.fullReviewModal}
       >
-        <Article>
-          <Section>
-            <Header className={styles.header}>
-              <h2>{review.person}</h2>
-            </Header>
-            <Paragraph className={styles.dateWrapper}>
-              <span className={styles.dateDivider}>
-                <span className={styles.date}>{review.date}</span>
-              </span>
-            </Paragraph>
-            <div className={styles.starRating}>
-              <StarRatingComponent
-                name="Review Stars"
-                starColor={"#FF7D28"}
-                value={review.total_stars}
-                editing={false}
-              />
-            </div>
-            <Paragraph className={styles.reviewParagraph}>
-              <p className={styles.quote}>{review.text}</p>
-            </Paragraph>
-            <ReviewSrOnly review={review} />
-          </Section>
-        </Article>
+        <Section role="dialog">
+          <Header className={styles.header}>
+            <h2>{review.person}</h2>
+          </Header>
+          <Paragraph className={styles.dateWrapper}>
+            <span className={styles.dateDivider}>
+              <span className={styles.date}>{review.date}</span>
+            </span>
+          </Paragraph>
+          <div className={styles.starRating}>
+            <StarRatingComponent
+              name="Review Stars"
+              starColor={"#FF7D28"}
+              value={review.total_stars}
+              editing={false}
+            />
+          </div>
+          <Paragraph className={styles.reviewParagraph}>
+            <p className={styles.quote}>{review.text}</p>
+          </Paragraph>
+          <ReviewSrOnly review={review} />
+        </Section>
       </Layer>
     :
       <noscript />

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import cssModules from 'react-css-modules';
 import styles from './index.module.scss';
-// Example to import a component using ES6 destructuring.
 /* eslint-disable*/ // Containers is an alias, so no file is found
 import {
   LandingContainer,

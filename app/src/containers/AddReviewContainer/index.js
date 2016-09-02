@@ -16,6 +16,7 @@ import Layer from 'grommet/components/layer';
 import Box from 'grommet/components/box';
 import Button from 'grommet/components/button';
 import Menu from 'grommet/components/menu';
+import Section from 'grommet/components/Section';
 
 export const addReviewFields = [
   'nameInput',
@@ -89,25 +90,27 @@ class AddReview extends Component { // eslint-disable-line react/prefer-stateles
             closer
             align="right"
           >
-            {error != null && // eslint-disable-line
-              <Box
-                className={styles.errorBox}
-                pad={{ vertical: 'large', horizontal: 'small' }}
-              >
-                <ErrorAlert
-                  errors={[error]}
-                  onClose={this.handleClearErrors}
+            <Section role="dialog">
+              {error != null && // eslint-disable-line
+                <Box
+                  className={styles.errorBox}
+                  pad={{ vertical: 'large', horizontal: 'small' }}
+                >
+                  <ErrorAlert
+                    errors={[error]}
+                    onClose={this.handleClearErrors}
+                  />
+                </Box>
+              }
+              <Box pad={{ vertical: 'large', horizontal: 'small' }}>
+                <AddReviewForm
+                  {...fields}
+                  onSubmitReview={this.handleSubmitReview}
+                  onSubmitReviewInvalid={this.handleReviewInvalid}
+                  onClear={resetForm}
                 />
               </Box>
-            }
-            <Box pad={{ vertical: 'large', horizontal: 'small' }}>
-              <AddReviewForm
-                {...fields}
-                onSubmitReview={this.handleSubmitReview}
-                onSubmitReviewInvalid={this.handleReviewInvalid}
-                onClear={resetForm}
-              />
-            </Box>
+            </Section>
           </Layer>
         :
           <Footer className={styles.addReviewFooter}>
