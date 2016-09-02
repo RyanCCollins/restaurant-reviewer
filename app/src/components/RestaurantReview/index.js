@@ -26,7 +26,7 @@ const RestaurantReview = ({
 }) => (
   <Box
     colorIndex="light-1"
-    a11yTitle={`Review by ${review.person}.  Click for full content.`}
+    a11yTitle={`A Review by ${review.person}.`}
     focusable
     pad="medium"
     className={styles.box}

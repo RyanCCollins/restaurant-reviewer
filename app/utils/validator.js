@@ -70,6 +70,18 @@ export const valueRequired = (value) => {
   return undefined;
 };
 
+export const isAtLeast = (min) =>
+  (value) => {
+    if (value < min) { return `${value} must be no less than ${min}`; }
+    return undefined;
+  };
+
+export const isAtMost = (max) =>
+  (value) => {
+    if (value > max) { return `${value} must be no greater than ${max}`; }
+    return undefined;
+  };
+
 export const containsSpecialChar = (value) =>
   value &&
     validateWithRE(

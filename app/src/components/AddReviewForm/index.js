@@ -84,7 +84,7 @@ class AddReviewForm extends Component {
       <Form onSubmit={onSubmitReview}>
         <FormFields>
           <FormField
-            label="Your Name"
+            label="Your Name *"
             htmlFor="reviewNameInput"
             help="What is your name"
             error={nameInput.touched && nameInput.error ? nameInput.error : null}
@@ -95,12 +95,13 @@ class AddReviewForm extends Component {
               id="reviewNameInput"
               type="text"
               name="name"
+              required
             />
           </FormField>
           <FormField
-            label="Your Review Text"
+            label="Review Text Content *"
             htmlFor="reviewTextInput"
-            help="Add some text for your review"
+            help="Add text content for your review"
             error={textInput.touched && textInput.error ? textInput.error : null}
           >
             <textarea
@@ -110,21 +111,24 @@ class AddReviewForm extends Component {
               type="text"
               rows="5"
               cols="40"
+              required
             />
           </FormField>
           <FormField
-            label="Your Rating"
-            htmlFor="reviewRatingInput"
+            label="Review Rating *"
+            htmlFor="ratingInput"
             help="How many stars (1-5)"
-            error={ratingInput.touched && ratingInput.error ? ratingInput.error : null}
+            error={ratingInput.error ? ratingInput.error : null}
           >
             <NumberInput
-              {...ratingInput}
               min={1}
-              ref="reviewRatingInput"
+              ref="ratingInput"
               max={5}
-              id="reviewRatingInput"
+              id="ratingInput"
               name="rating"
+              defaultValue={1}
+              required
+              {...ratingInput}
             />
           </FormField>
         </FormFields>
@@ -134,8 +138,8 @@ class AddReviewForm extends Component {
               className={styles.button}
               label="Submit"
               primary
-              disabled={this.formIsInvalid}
-              onClick={this.handleSubmitReview}
+              disabled={this.formIsInvalid()}
+              onClick={this.formIsInvalid() ? null : this.handleSubmitReview}
             />
             <Button label="Clear" onClick={onClear} />
           </Menu>
