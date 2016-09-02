@@ -13,6 +13,10 @@
   margin-top: 50px;
 }
 
+.container {
+  padding-bottom: 0 !important;
+}
+
 .responsive {
   flex-basis: calc(25% - 24px);
   @media screen and (max-width: 1600px) {

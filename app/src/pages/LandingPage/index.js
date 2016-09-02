@@ -7,6 +7,9 @@ import {
   LandingContainer,
   RestaurantsGridContainer,
 } from 'containers';
+import {
+  AppFooter,
+} from 'components';
 import { updatePageTitle } from 'utils/a11y';
 
 /* eslint-enable */
@@ -22,6 +25,7 @@ class LandingPage extends Component {
       <div className={styles.container}>
         <LandingContainer />
         <RestaurantsGridContainer />
+        <AppFooter />
       </div>
     );
   }

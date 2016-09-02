@@ -80,7 +80,7 @@ class SingleRestaurantContainer extends Component {
       hoursAreExpanded,
     } = this.props;
     return (
-      <div className={styles.singleRestaurant}>
+      <div>
         {selectedRestaurant ?
           <Section className={styles.noPad}>
             <SingleRestaurant

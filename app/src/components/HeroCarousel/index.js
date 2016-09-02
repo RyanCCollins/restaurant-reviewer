@@ -27,12 +27,9 @@ class HeroCarousel extends Component {
           <Headline className={styles.headline} align="center" size="large">
             Restaurant Reviewer
           </Headline>
-          <Headline className={styles.headline} align="center" size="small">
+          <Headline className={styles.headline} align="center" size="medium">
             Accessibility App
           </Headline>
-          <Heading className={styles.subHeadline} align="center" tag="h6">
-            by <a className={styles.link} href="http://www.ryancollins.io">Ryan Collins</a>
-          </Heading>
         </div>
         <Carousel>
           {restaurants.map((item, index) =>

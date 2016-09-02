@@ -4,6 +4,9 @@ import styles from './index.module.scss';
 import {
   SingleRestaurantContainer,
 } from 'containers';
+import {
+  AppFooter,
+} from 'components';
 import { updatePageTitle } from 'utils/a11y';
 
 class SingleRestaurantPage extends Component {
@@ -14,6 +17,7 @@ class SingleRestaurantPage extends Component {
     return (
       <div className={styles.container}>
         <SingleRestaurantContainer {...this.props} />
+        <AppFooter />
       </div>
     );
   }

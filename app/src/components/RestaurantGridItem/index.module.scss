@@ -15,7 +15,7 @@
   speak: none;
   opacity: 1 !important;
   text-align: center;
-  color: #865CD6;
+  color: black;
   padding: 20px;
   letter-spacing: 20px;
   font-size: 1.6rem;
@@ -60,7 +60,7 @@
   left: 0;
   width: 100%;
   z-index: 0;
-  opacity: 0.2;
+  opacity: 0.1;
   transition: all .6s ease-in-out;
   &:hover {
     opacity: 1.0;
