@@ -32,7 +32,7 @@ const RestaurantGridItem = ({
         <StarRatingComponent
           name="Restaurant Star Rating"
           role="presentation"
-          starColor={"#FF7D28"}
+          starColor={"#0000ff"}
           value={restaurant.average_rating}
           editing={false}
         />

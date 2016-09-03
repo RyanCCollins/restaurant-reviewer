@@ -23,29 +23,30 @@ import Java from 'grommet/components/icons/base/Java';
 
 const RestaurantInfo = ({
   restaurant,
+  i,
 }) => (
   <div className={styles.cardInfo}>
     <Box>
       <Paragraph className={styles.paragraph}>
-        <Java />
+        <Java id={`java-icon-link${i}`} />
         <span className={styles.type}>
           {restaurant.type.name}
         </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <ContactUs />{'   '}
+        <ContactUs id={`contact-us-icon-link-${i}`} />{'   '}
           <span>
             {restaurant.phone}
           </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <LocationPin />
+        <LocationPin id={`location-pin-${i}`} />
         <span>
           {restaurant.city}, {restaurant.state} {restaurant.country}
         </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <LinkIcon />
+        <LinkIcon id={`link-icon-${i}`} />
         <Anchor href={restaurant.website}>
           {restaurant.website.length > 30 ? 'Visit Website' : restaurant.website}
         </Anchor>
@@ -56,6 +57,7 @@ const RestaurantInfo = ({
 
 RestaurantInfo.propTypes = {
   restaurant: PropTypes.object.isRequired,
+  i: PropTypes.number.isRequired,
 };
 
 export default cssModules(RestaurantInfo, styles);
