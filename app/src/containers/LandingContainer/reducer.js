@@ -11,14 +11,21 @@ const initialState = {
 
 const seedData = [
   {
-    src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restauranttwo.jpg?raw=true',
+    src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurantone.jpg?raw=true',
+    caption: 'Awesome Restaurant One',
+    name: 'Name One',
+    rating: 4,
+    type: 'Japanese',
+  },
+  {
+    src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restauranttwo.jpeg?raw=true',
     caption: 'Awesome Restaurant Two',
     name: 'Name Two',
     rating: 3,
     type: 'Japanese',
   },
   {
-    src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurantthree.jpg?raw=true',
+    src: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurantthree.jpeg?raw=true',
     caption: 'Awesome Restaurant Three',
     name: 'Name Three',
     rating: 4,

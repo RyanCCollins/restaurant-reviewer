@@ -37,7 +37,8 @@ const AboutInfo = () => (
           >
             <Image
               full="horizontal"
-              src="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/main.jpg?raw=true"
+              className={styles.boogie}
+              src="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/mainhighres.jpg?raw=true"
             />
           </Box>
           <Box
@@ -69,11 +70,13 @@ const AboutInfo = () => (
             />
           </Box>
         </Section>
+        <hr />
         <Section pad={{ vertical: 'large', horizontal: 'large' }}>
           <Heading align="center">
             Made With These Great Technologies
           </Heading>
-          <Tiles justify="center" full="horizontal" style={{ paddingTop: 50 }}>
+          <span style={{ marginBottom: 80 }} />
+          <Tiles justify="center" full="horizontal">
             <Tile align="start">
               <Image src="http://coenraets.org/present/react/img/react.png" />
             </Tile>
