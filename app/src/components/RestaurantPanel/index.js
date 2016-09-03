@@ -16,13 +16,14 @@ import Image from 'grommet/components/image';
 import Section from 'grommet/components/section';
 import { RestaurantInfo, RestaurantHours } from 'components';
 import Heading from 'grommet/components/heading';
+import Article from 'grommet/components/Article';
 
 const RestaurantPanel = ({
   restaurant,
   hoursAreExpanded,
   onExpandHours,
 }) => (
-  <div className={styles.restaurantPanel}>
+  <Article className={styles.restaurantPanel}>
     <div className={styles.panel}>
       <Image
         className={styles.featureImage}
@@ -31,8 +32,10 @@ const RestaurantPanel = ({
         full="horizontal"
       />
       <Section className={styles.textWrapper}>
-        <Heading align="center" tag="h3" />
-        <RestaurantInfo restaurant={restaurant} />
+        <Heading tag="h2" aling="center">
+          {`About ${restaurant.name}`}
+        </Heading>
+        <RestaurantInfo restaurant={restaurant} i={1} />
         <RestaurantHours
           restaurant={restaurant}
           isExpanded={hoursAreExpanded}
@@ -40,7 +43,7 @@ const RestaurantPanel = ({
         />
       </Section>
     </div>
-  </div>
+  </Article>
 );
 
 RestaurantPanel.propTypes = {

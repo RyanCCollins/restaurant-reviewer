@@ -39,14 +39,14 @@ const RestaurantHours = ({
 }) => (
   <Section>
     <Heading align="center" tag="h2">
-      Restaurant Hours
+      Hours of Operation
     </Heading>
     <Button
       icon={
         isExpanded ?
-          <Contract a11yTitle a11yTitleId="Hide Details" />
+          <Contract a11yTitleId="hide-details-icon-1" a11yTitle="Hide Details" />
         :
-          <Expand a11yTitleId="Show Details" a11yTitle />
+          <Expand a11yTitleId="show-details-icon-1" a11yTitle="Show Details" />
       }
       label={isExpanded ? 'Hide Details' : 'Show Details'}
       plain

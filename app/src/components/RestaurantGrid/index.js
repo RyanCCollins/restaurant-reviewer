@@ -32,6 +32,7 @@ const RestaurantGrid = ({
       {restaurants.map((restaurant, i) =>
         <RestaurantGridItem
           key={i}
+          i={i}
           restaurant={restaurant}
           onViewDetails={onViewDetails} // eslint-disable-line
         />

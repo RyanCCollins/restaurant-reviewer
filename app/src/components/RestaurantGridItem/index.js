@@ -12,7 +12,7 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
-import StarRatingComponent from 'react-star-rating-component';
+import ReactStars from 'react-stars';
 import Heading from 'grommet/components/Heading';
 import Article from 'grommet/components/article';
 import { Link } from 'react-router';
@@ -24,18 +24,31 @@ import Information from 'grommet/components/icons/base/information';
 const RestaurantGridItem = ({
   restaurant,
   onViewDetails,
+  i,
 }) => (
   <Article className={styles.panel}>
     <div className={styles.imageWrapper}>
       <div className={styles.contents}>
-        <Heading uppercase tag="h3" className={styles.title}>{restaurant.name}</Heading>
-        <StarRatingComponent
-          name="Restaurant Star Rating"
-          role="presentation"
-          starColor={"#0000ff"}
-          value={restaurant.average_rating}
-          editing={false}
-        />
+        <Heading
+          uppercase
+          tag="h3"
+          className={styles.title}
+        >
+          {restaurant.name}
+        </Heading>
+        <div className={styles.starRating}>
+          <ReactStars
+            name="Restaurant Star Rating"
+            role="presentation"
+            count={5}
+            half={false}
+            edit={false}
+            value={restaurant.average_rating}
+            color2={'#8C50FF'}
+            color1={'rgb(0, 0, 0)'}
+            size={30}
+          />
+        </div>
         <Link className={styles.link} to={`/restaurants/${restaurant.id}`}>
           <img
             className={styles.cardImage}
@@ -48,7 +61,7 @@ const RestaurantGridItem = ({
         </Link>
       </div>
     </div>
-    <RestaurantInfo restaurant={restaurant} />
+    <RestaurantInfo restaurant={restaurant} i={i} />
     <Footer className={styles.footer}>
       <Button
         plain
@@ -59,7 +72,8 @@ const RestaurantGridItem = ({
           <Information
             size="medium"
             colorIndex="brand"
-            a11yTitle="View details of restaurant"
+            a11yTitle="View Restaurant Details"
+            a11yTitleId={`view-details-${i}`}
           />
         }
       />
@@ -70,6 +84,7 @@ const RestaurantGridItem = ({
 RestaurantGridItem.propTypes = {
   restaurant: PropTypes.object.isRequired,
   onViewDetails: PropTypes.func.isRequired,
+  i: PropTypes.number.isRequired,
 };
 
 export default cssModules(RestaurantGridItem, styles);

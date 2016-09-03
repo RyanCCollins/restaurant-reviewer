@@ -13,21 +13,25 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import Heading from 'grommet/components/heading';
+import sanityCheck from 'utils/sanityCheck';
 
 const BannerHeader = ({
   heading,
+  children,
 }) => (
   <header className={styles.bannerHeader}>
     <div className={styles.banner}>
       <Heading tag="h1" strong align="center">
         {heading}
       </Heading>
+      {sanityCheck(children) && children}
     </div>
   </header>
 );
 
 BannerHeader.propTypes = {
   heading: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 export default cssModules(BannerHeader, styles);

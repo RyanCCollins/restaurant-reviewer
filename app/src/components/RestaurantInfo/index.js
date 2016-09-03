@@ -28,25 +28,33 @@ const RestaurantInfo = ({
   <div className={styles.cardInfo}>
     <Box>
       <Paragraph className={styles.paragraph}>
-        <Java id={`java-icon-link${i}`} />
+        <Java
+          a11yTitle="Restaurant Icon"
+          a11yTitleId={`restaurant-icon-${i}`}
+        />
         <span className={styles.type}>
           {restaurant.type.name}
         </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <ContactUs id={`contact-us-icon-link-${i}`} />{'   '}
-          <span>
-            {restaurant.phone}
-          </span>
+        <ContactUs
+          a11yTitle="Contact Us Icon"
+          a11yTitleId={`contact-us-icon-${i}`}
+        />
+        {'   '}
+        <span>{restaurant.phone}</span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <LocationPin id={`location-pin-${i}`} />
+        <LocationPin
+          a11yTitle="Location Pin Icon"
+          a11yTitleId={`location-pin-icon-${i}`}
+        />
         <span>
           {restaurant.city}, {restaurant.state} {restaurant.country}
         </span>
       </Paragraph>
       <Paragraph className={styles.paragraph}>
-        <LinkIcon id={`link-icon-${i}`} />
+        <LinkIcon a11yTitle="Link Icon" a11yTitleId={`link-icon-${i}`} />
         <Anchor href={restaurant.website}>
           {restaurant.website.length > 30 ? 'Visit Website' : restaurant.website}
         </Anchor>

@@ -12,9 +12,9 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
+import ReactStars from 'react-stars';
 import Heading from 'grommet/components/heading';
 import Paragraph from 'grommet/components/paragraph';
-import StarRatingComponent from 'react-star-rating-component';
 import Box from 'grommet/components/box';
 import Article from 'grommet/components/article';
 import fixDate from 'utils/fixDate';
@@ -37,11 +37,16 @@ const RestaurantReview = ({
     </Heading>
     <Article className={styles.content}>
       <div className={styles.starRating}>
-        <StarRatingComponent
-          name="Review Stars"
-          starColor={"#FF7D28"}
+        <ReactStars
+          name="Review Star Rating"
+          role="presentation"
+          count={5}
+          half={false}
+          edit={false}
           value={review.total_stars}
-          editing={false}
+          color2={'#8C50FF'}
+          color1={'rgb(0, 0, 0)'}
+          size={30}
         />
       </div>
       <Paragraph className={styles.reviewParagraph}>

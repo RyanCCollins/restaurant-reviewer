@@ -16,8 +16,8 @@ import {
   RestaurantPanel,
   BannerHeader,
 } from 'components';
-import Article from 'grommet/components/article';
 import Section from 'grommet/components/Section';
+import Heading from 'grommet/components/Heading';
 
 const SingleRestaurant = ({
   restaurant,
@@ -25,15 +25,17 @@ const SingleRestaurant = ({
   hoursAreExpanded,
 }) => (
   <div className={styles.singleRestaurant}>
-    <BannerHeader heading={restaurant.name} />
+    <BannerHeader heading={restaurant.name}>
+      <Heading align="center" tag="h3">
+        {`Average ${restaurant.average_rating} out of 5 Stars`}
+      </Heading>
+    </BannerHeader>
     <Section primary a11yTitle="Restaurant Info Panel">
-      <Article pad="medium">
-        <RestaurantPanel
-          onExpandHours={onExpandHours}
-          hoursAreExpanded={hoursAreExpanded}
-          restaurant={restaurant}
-        />
-      </Article>
+      <RestaurantPanel
+        onExpandHours={onExpandHours}
+        hoursAreExpanded={hoursAreExpanded}
+        restaurant={restaurant}
+      />
     </Section>
   </div>
 );

@@ -15,11 +15,28 @@ import cssModules from 'react-css-modules';
 import Menu from 'grommet/components/Menu';
 import Filter from 'grommet/components/icons/base/Filter';
 import Anchor from 'grommet/components/Anchor';
+import uuid from 'node-uuid';
 
 const itemsAreEqual = (item, value) =>
   item === value || item === value.split(' ')[0];
 
+const randomId = () => uuid.v1();
+
+const parseLabel = (label) =>
+  label.toLowerCase().split(' ').join('-');
+
 class FilterMenu extends Component {
+  constructor() {
+    super();
+    this.setDOMIds = this.setDOMIds.bind(this);
+  }
+  componentDidMount() {
+
+  }
+  setDOMIds() {
+    let menuTitles = document.querySelector('#menu-down-id');
+
+  }
   render() {
     const {
       menuItems,
@@ -29,11 +46,17 @@ class FilterMenu extends Component {
     } = this.props;
     return (
       <Menu
-        icon={<Filter />}
+        icon={
+          <Filter
+            a11yTitle={label}
+            a11yTitleId={`${parseLabel(label)}-${randomId()}`}
+          />
+        }
         closeOnClick={false}
         label={label}
         className={styles.filterMenu}
         a11yTitle={label}
+        a11yTitleId={`${parseLabel(label)}-${randomId()}`}
         pad="medium"
         dropAlign={{ left: 'left', top: 'bottom' }}
       >

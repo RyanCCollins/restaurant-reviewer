@@ -19,6 +19,7 @@ import FormFields from 'grommet/components/formfields';
 import Footer from 'grommet/components/footer';
 import Button from 'grommet/components/button';
 import NumberInput from 'grommet/components/numberinput';
+import ReactStars from 'react-stars';
 import Menu from 'grommet/components/menu';
 
 const itemInvalid = (item) =>
