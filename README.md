@@ -31,6 +31,7 @@ The project uses the [Scalable React Boilerplate Project](https://github.com/Rya
 - [Redux](http://redux.js.org/docs/introduction/)
 - [Grommet](http://grommet.io)
 - [Scalable React Boilerplate](https://github.com/RyanCCollins/scalable-react-boilerplate)
+- [CSS Modules](https://github.com/css-modules/css-modules)
 
 ## Authors
 * **Ryan Collins**
