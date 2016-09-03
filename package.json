@@ -1,7 +1,7 @@
 {
   "name": "restaurant-reviewer",
   "version": "1.0.1",
-  "description": "A highly scalable React starter project",
+  "description": "An UX / A11y focused Restaurant Review App",
   "main": "index.js",
   "babel": {
     "presets": [
@@ -25,7 +25,7 @@
     "generate:container": "plop --plopfile config/generators/index.js container",
     "generate:page": "plop --plopfile config/generators/index.js page",
     "lint": "eslint . --ext .js --ext .jsx; exit 0",
-    "deploy": "NODE_ENV=production `npm bin`/webpack -p",
+    "deploy": "NODE_ENV=production webpack -p",
     "start": "npm run dev",
     "clean": "rm -rf app/dist app/build",
     "setup": "npm install"
