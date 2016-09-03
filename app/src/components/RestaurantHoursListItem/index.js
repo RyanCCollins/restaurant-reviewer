@@ -11,7 +11,6 @@
 
 import React, { PropTypes } from 'react';
 import ListItem from 'grommet/components/ListItem';
-import { SrOnlyContent } from 'components';
 
 const RestaurantHoursListItem = ({
   day,
@@ -20,15 +19,6 @@ const RestaurantHoursListItem = ({
   <ListItem justify="between">
     <span>{day}</span>
     <span>{hours}</span>
-    <SrOnlyContent>
-      <a href="#">
-        {
-          `${day}.
-          From ${hours.split(' - ')[0]}
-          to ${hours.split(' - ')[1]}`
-        }
-      </a>
-    </SrOnlyContent>
   </ListItem>
 );
 
