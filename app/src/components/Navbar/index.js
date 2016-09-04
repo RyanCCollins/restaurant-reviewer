@@ -16,7 +16,6 @@ import cssModules from 'react-css-modules';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Menu from 'grommet/components/Menu';
-import Anchor from 'grommet/components/Anchor';
 import { Link } from 'react-router';
 
 const Navbar = () => (
@@ -36,12 +35,12 @@ const Navbar = () => (
       align="center"
       responsive={false}
     >
-      <Anchor href="/">
+      <a className="grommetux-anchor" href="/" aria-label="Navigate to Home Page">
         Home
-      </Anchor>
-      <Anchor href="/about">
+      </a>
+      <a className="grommetux-anchor" href="/about" aria-label="Navigate to About Page">
         About
-      </Anchor>
+      </a>
     </Menu>
   </Header>
 );

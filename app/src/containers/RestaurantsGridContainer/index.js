@@ -24,25 +24,32 @@ class RestaurantsGrid extends Component {
     super();
     this.handleViewDetails = this.handleViewDetails.bind(this);
     this.handleClearErrors = this.handleClearErrors.bind(this);
-    this.handleSwitchTab = this.handleSwitchTab.bind(this);
     this.handleFilterRatings = this.handleFilterRatings.bind(this);
     this.handleFilterLocations = this.handleFilterLocations.bind(this);
     this.handleClearFilter = this.handleClearFilter.bind(this);
     this.handleFilterCategories = this.handleFilterCategories.bind(this);
     this.handleApplyFilters = this.handleApplyFilters.bind(this);
     this.getCurrentFilter = this.getCurrentFilter.bind(this);
+    this.dedupeIds = this.dedupeIds.bind(this);
   }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
+    this.dedupeIds();
   }
-  handleSwitchTab(e) {
-    if (e.keyCode === 9) {
-      console.log('Clicked tab');
-    }
-    ReactDOM.findDOMNode(this.refs.tabHeader).focus();
+  getCurrentFilter() {
+    const {
+      locationFilter,
+      categoryFilter,
+      ratingFilter,
+    } = this.props;
+    return {
+      locationFilter,
+      categoryFilter,
+      ratingFilter,
+    };
   }
   handleClearErrors() {
     const {
@@ -87,17 +94,15 @@ class RestaurantsGrid extends Component {
     } = this.props.actions;
     applyRestaurantsFilter();
   }
-  getCurrentFilter() {
-    const {
-      locationFilter,
-      categoryFilter,
-      ratingFilter,
-    } = this.props;
-    return {
-      locationFilter,
-      categoryFilter,
-      ratingFilter,
-    };
+  dedupeIds() {
+    const duplicates = document.querySelectorAll('#menu-down-id');
+    console.log(`Deduplicating elements`);
+    let index = 0;
+    for (const item of duplicates) {
+      console.log(`Looping through with ${item}`)
+      item.id = `menu-down-id-${index}`;
+      index += 1;
+    }
   }
   render() {
     const {
