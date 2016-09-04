@@ -12,9 +12,6 @@ import {
 import { updatePageTitle } from 'utils/a11y';
 
 /* eslint-enable */
-
-// Pages map directly to Routes, i.e. one page equals on Route
-// Handler that maps to a route in /utils/routes
 class LandingPage extends Component {
   componentDidMount() {
     updatePageTitle('Home Page');
