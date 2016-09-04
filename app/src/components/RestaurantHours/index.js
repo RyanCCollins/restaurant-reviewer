@@ -44,11 +44,11 @@ const RestaurantHours = ({
     <Button
       icon={
         isExpanded ?
-          <Contract a11yTitleId="hide-details-icon-1" a11yTitle="Hide Details" />
+          <Contract a11yTitleId="hide-details-icon-1" a11yTitle="Contract Menu" />
         :
-          <Expand a11yTitleId="show-details-icon-1" a11yTitle="Show Details" />
+          <Expand a11yTitleId="show-details-icon-1" a11yTitle="Expand Menu" />
       }
-      label={isExpanded ? 'Hide Details' : 'Show Details'}
+      label={isExpanded ? ' Hide Details' : ' Show Details'}
       plain
       onClick={onExpandHours}
     />

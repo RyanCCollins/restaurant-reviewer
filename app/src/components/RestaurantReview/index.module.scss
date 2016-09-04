@@ -30,23 +30,6 @@
   margin-bottom: 0 !important;
 }
 
-.starRating {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  letter-spacing: 10px;
-  @media screen and (max-width: 768px) {
-    font-size: 1.4rem;
-    letter-spacing: 5px;
-  }
-  @media screen and (max-width: 600px) {
-    flex-wrap: wrap;
-    font-size: 1rem;
-  }
-}
-
 .reviewParagraph {
   text-align: left;
   font-size: 1.3rem !important;

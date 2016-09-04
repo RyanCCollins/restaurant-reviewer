@@ -19,8 +19,7 @@ const ReviewSronly = ({
 }) => (
   <a href="#" className={styles.srOnly}>
     <span>
-      {`Review by ${review.person} on ${review.date}.
-        ${review.total_stars} out of 5 stars. ${review.text}`}
+      {`${review.total_stars} out of 5 stars.`}
     </span>
   </a>
 );

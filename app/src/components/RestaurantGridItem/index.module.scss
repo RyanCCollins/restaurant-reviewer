@@ -26,9 +26,14 @@
     font-family: 'Raleway';
     font-size: 1.3rem;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 821px) {
     letter-spacing: 10px;
     font-size: 1.4rem;
+    padding: 10px;
+  }
+  @media screen and (max-width: 340px) {
+    padding: 0;
+    font-size: 1.2rem;
   }
 }
 
@@ -73,11 +78,4 @@
 .footer {
   display: flex;
   justify-content: center;
-}
-
-.starRating {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
 }

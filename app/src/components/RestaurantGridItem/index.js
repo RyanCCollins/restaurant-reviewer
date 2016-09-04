@@ -12,11 +12,14 @@
 import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
-import ReactStars from 'react-stars';
 import Heading from 'grommet/components/Heading';
 import Article from 'grommet/components/article';
 import { Link } from 'react-router';
-import { RestaurantInfo, SrOnlyContent } from 'components';
+import {
+  RestaurantInfo,
+  SrOnlyContent,
+  StarRating,
+} from 'components';
 import Button from 'grommet/components/button';
 import Footer from 'grommet/components/footer';
 import Information from 'grommet/components/icons/base/information';
@@ -36,19 +39,11 @@ const RestaurantGridItem = ({
         >
           {restaurant.name}
         </Heading>
-        <div className={styles.starRating}>
-          <ReactStars
-            name="Restaurant Star Rating"
-            role="presentation"
-            count={5}
-            half={false}
-            edit={false}
-            value={restaurant.average_rating}
-            color2={'#8C50FF'}
-            color1={'rgb(0, 0, 0)'}
-            size={30}
-          />
-        </div>
+        <StarRating
+          value={restaurant.average_rating}
+          editable={false}
+          label="Average Rating"
+        />
         <Link className={styles.link} to={`/restaurants/${restaurant.id}`}>
           <img
             className={styles.cardImage}

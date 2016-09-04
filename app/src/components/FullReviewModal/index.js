@@ -15,11 +15,9 @@ import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import Header from 'grommet/components/header';
 import Paragraph from 'grommet/components/paragraph';
-import StarRatingComponent from 'react-star-rating-component';
-import Article from 'grommet/components/article';
 import Layer from 'grommet/components/layer';
 import Section from 'grommet/components/section';
-import { ReviewSrOnly } from 'components';
+import { ReviewSrOnly, StarRating } from 'components';
 
 const FullReviewModal = ({
   isOpen,
@@ -44,14 +42,11 @@ const FullReviewModal = ({
               <span className={styles.date}>{review.date}</span>
             </span>
           </Paragraph>
-          <div className={styles.starRating}>
-            <StarRatingComponent
-              name="Review Stars"
-              starColor={"#FF7D28"}
-              value={review.total_stars}
-              editing={false}
-            />
-          </div>
+          <StarRating
+            value={review.total_stars}
+            editable={false}
+            label="Review Stars"
+          />
           <Paragraph className={styles.reviewParagraph}>
             <p className={styles.quote}>{review.text}</p>
           </Paragraph>

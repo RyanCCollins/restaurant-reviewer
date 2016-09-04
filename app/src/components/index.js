@@ -1,4 +1,5 @@
 /* Assemble all components for export */
+export StarRating from './StarRating';
 export AboutInfo from './AboutInfo';
 export AppFooter from './AppFooter';
 export RestaurantHoursListItem from './RestaurantHoursListItem';

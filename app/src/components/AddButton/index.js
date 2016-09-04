@@ -23,10 +23,15 @@ const AddButton = ({
       <Button
         className={styles.addButton}
         icon={
-          <Add className={styles.icon} />
+          <Add
+            a11yTitle="Add Review Floating"
+            a11yTitleId="add-review-floating-button-icon"
+            className={styles.icon}
+          />
         }
         onClick={onAdd}
-        a11yTitle="Add Review Button"
+        a11yTitle="Add Review Floating"
+        a11yTitleId="add-review-floating-button"
       />
     </div>
   </div>

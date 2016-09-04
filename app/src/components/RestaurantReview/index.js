@@ -13,6 +13,7 @@ import React, { PropTypes } from 'react';
 import styles from './index.module.scss';
 import cssModules from 'react-css-modules';
 import ReactStars from 'react-stars';
+import { StarRating } from 'components';
 import Heading from 'grommet/components/heading';
 import Paragraph from 'grommet/components/paragraph';
 import Box from 'grommet/components/box';
@@ -36,19 +37,11 @@ const RestaurantReview = ({
       {review.person}
     </Heading>
     <Article className={styles.content}>
-      <div className={styles.starRating}>
-        <ReactStars
-          name="Review Star Rating"
-          role="presentation"
-          count={5}
-          half={false}
-          edit={false}
-          value={review.total_stars}
-          color2={'#8C50FF'}
-          color1={'rgb(0, 0, 0)'}
-          size={30}
-        />
-      </div>
+      <StarRating
+        value={review.total_stars}
+        editable={false}
+        label="Review Star Rating"
+      />
       <Paragraph className={styles.reviewParagraph}>
         {fixLongText(review.text)}
       </Paragraph>
