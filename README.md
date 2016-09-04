@@ -34,7 +34,7 @@ npm run start
 
 The project includes deploy and build scripts.  Included in the repo is a pre-built bundle.js, which is located within the /server directory.  To serve the bundle without running a build process, please run:
 ```
-npm run serve bundle
+npm run serve:bundle
 ```
 
 and browse the served bundle at: `http://0.0.0.0:8016`
