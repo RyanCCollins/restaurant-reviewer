@@ -25,7 +25,7 @@ const AboutInfo = () => (
         Restaurant Reviewer
       </Heading>
     </Hero>
-    <Section pad={{ vertical: 'large', horizontal: 'large' }} primary>
+    <Section pad={{ vertical: 'large', horizontal: 'large' }}>
       <Article>
         <Section pad={{ vertical: 'large' }}>
           <Box
@@ -38,6 +38,7 @@ const AboutInfo = () => (
             <Image
               full="horizontal"
               className={styles.boogie}
+              alt="Pouring water in a glass"
               src="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/mainhighres.jpg?raw=true"
             />
           </Box>
@@ -131,7 +132,7 @@ const AboutInfo = () => (
             </Box>
           </Box>
         </Section>
-        <Footer primary>
+        <Footer>
           <Box
             pad="medium"
             align="center"
