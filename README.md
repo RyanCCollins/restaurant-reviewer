@@ -25,8 +25,6 @@ In order for the app to be built, it needs the following packages installed glob
 npm run install-globals
 ```
 
-These can be installed with one of the npm scripts: `npm run install-globals`
-
 To get the app running after install, run:
 ```
 npm run start
