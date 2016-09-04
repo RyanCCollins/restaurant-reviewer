@@ -48,7 +48,7 @@ const RestaurantGridItem = ({
           <img
             className={styles.cardImage}
             src={restaurant.image}
-            alt={`A restaurant named ${restaurant.name}`}
+            alt={`${restaurant.name} - ${restaurant.average_rating} Stars`}
           />
         </Link>
       </div>
