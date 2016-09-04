@@ -19,7 +19,15 @@ To install the dependencies, run
 ```
 npm run setup
 ```
-Then run
+
+In order for the app to be built, it needs the following packages installed globally:
+```
+npm install -g webpack webpack-dev-server
+```
+
+These can be installed with one of the npm scripts: `npm run install-globals`
+
+To get the app running after install, run:
 ```
 npm run start
 ```
@@ -37,7 +45,7 @@ The project uses the [Scalable React Boilerplate Project](https://github.com/Rya
 * **Ryan Collins**
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Troubleshooting
 If you run into troubles installing the app's dependencies, you should ensure that you are using the following NPM and Node versions.
