@@ -30,14 +30,12 @@ class RestaurantsGrid extends Component {
     this.handleFilterCategories = this.handleFilterCategories.bind(this);
     this.handleApplyFilters = this.handleApplyFilters.bind(this);
     this.getCurrentFilter = this.getCurrentFilter.bind(this);
-    this.dedupeIds = this.dedupeIds.bind(this);
   }
   componentDidMount() {
     const {
       actions,
     } = this.props;
     actions.loadRestaurants();
-    this.dedupeIds();
   }
   getCurrentFilter() {
     const {
@@ -93,16 +91,6 @@ class RestaurantsGrid extends Component {
       applyRestaurantsFilter,
     } = this.props.actions;
     applyRestaurantsFilter();
-  }
-  dedupeIds() {
-    const duplicates = document.querySelectorAll('#menu-down-id');
-    console.log(`Deduplicating elements`);
-    let index = 0;
-    for (const item of duplicates) {
-      console.log(`Looping through with ${item}`)
-      item.id = `menu-down-id-${index}`;
-      index += 1;
-    }
   }
   render() {
     const {
