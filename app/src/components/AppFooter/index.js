@@ -51,27 +51,34 @@ const AppFooter = () => (
           source code.
         </a>
       </Heading>
-      <Menu direction="row">
+      <nav
+        aria-hidden
+        className={
+          'grommetux-box grommetux-box--direction-row ' +
+          'grommetux-box--responsive grommetux-box--pad-none ' +
+          'grommetux-menu grommetux-menu--row grommetux-menu--inline'
+        }
+      >
         <SocialShare
-          a11yTitle="Navigate to Facebook to Share this website"
+          a11yTitle="Go to Facebook to Share this website"
           type="facebook"
           link="http://restaurant-reviewer-client.herokuapp.com"
           text="A11y Restaurant Reviewer App"
         />
         <SocialShare
-          a11yTitle="Navigate to Twitter to Share this website"
+          a11yTitle="Go to Twitter to Share this website"
           type="twitter"
           link="http://restaurant-reviewer-client.herokuapp.com"
           text="A11y Restaurant Reviewer App"
         />
         <SocialShare
-          a11yTitle="Navigate to Linkedin to Share this website"
+          a11yTitle="Go to Linkedin to Share this website"
           type="linkedin"
           link="http://restaurant-reviewer-client.herokuapp.com"
           title="Restaurant Reviewer"
           text="A11y Restaurant Reviewer App"
         />
-      </Menu>
+      </nav>
     </Box>
   </Footer>
 );

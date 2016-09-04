@@ -73,27 +73,39 @@ const AboutInfo = () => (
         </Section>
         <hr />
         <Section pad={{ vertical: 'large', horizontal: 'large' }}>
-          <Heading align="center">
+          <Heading align="center" tag="h2">
             Made With These Great Technologies
           </Heading>
           <span style={{ marginBottom: 80 }} />
           <Tiles justify="center" full="horizontal">
             <Tile align="start">
-              <Image src="http://coenraets.org/present/react/img/react.png" />
+              <Image
+                alt="React Logo"
+                src="http://coenraets.org/present/react/img/react.png"
+              />
             </Tile>
             <Tile align="start">
-              <Image src="https://camo.githubusercontent.com/17515422f0b959746bb2dcaf02533e7e00bac225/68747470733a2f2f67726f6d6d65742e6769746875622e696f2f696d672f67726f6d6d65742e737667" />
+              <Image
+                alt="Redux Logo"
+                src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png"
+              />
             </Tile>
             <Tile align="start">
-              <Image src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" />
+              <Image
+                alt="Grommet Logo"
+                src="https://camo.githubusercontent.com/17515422f0b959746bb2dcaf02533e7e00bac225/68747470733a2f2f67726f6d6d65742e6769746875622e696f2f696d672f67726f6d6d65742e737667"
+              />
             </Tile>
             <Tile align="start">
-              <Image src="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/scalable-react-boilerplate.png?raw=true" />
+              <Image
+                alt="Scalable React Boilerplate"
+                src="https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/scalable-react-boilerplate.png?raw=true"
+              />
             </Tile>
           </Tiles>
         </Section>
         <Section pad={{ vertical: 'large', horizontal: 'large' }}>
-          <Heading align="center" className={styles.techHeader}>
+          <Heading align="center" tag="h2">
             About the Developer
           </Heading>
           <Box
@@ -106,6 +118,7 @@ const AboutInfo = () => (
           >
             <img
               src="https://github.com/RyanCCollins/cdn/blob/master/misc/ryanc.jpg?raw=true"
+              alt="Ryan Collins, Full Stack Developer"
               className={styles.avatar}
             />
             <Box
