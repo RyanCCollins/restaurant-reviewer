@@ -5,7 +5,6 @@ import Footer from 'grommet/components/Footer';
 import Box from 'grommet/components/Box';
 import Heading from 'grommet/components/Heading';
 import SocialShare from 'grommet/components/SocialShare';
-import Menu from 'grommet/components/Menu';
 
 const AppFooter = () => (
   <Footer className={styles.appFooter}>
@@ -82,9 +81,5 @@ const AppFooter = () => (
     </Box>
   </Footer>
 );
-
-AppFooter.propTypes = {
-
-};
 
 export default cssModules(AppFooter, styles);
