@@ -28,7 +28,9 @@
     "deploy": "NODE_ENV=production webpack -p",
     "start": "npm run dev",
     "clean": "rm -rf app/dist app/build",
-    "setup": "npm install"
+    "setup": "npm install",
+    "install-globals": "npm install -g webpack webpack-dev-server",
+    "serve:bundle": "NODE_ENV=production PORT=1337 node server.js"
   },
   "repository": {
     "type": "git",
