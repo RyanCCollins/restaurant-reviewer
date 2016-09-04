@@ -22,10 +22,8 @@ npm run setup
 
 In order for the app to be built, it needs the following packages installed globally:
 ```
-npm install -g webpack webpack-dev-server
+npm run install-globals
 ```
-
-These can be installed with one of the npm scripts: `npm run install-globals`
 
 To get the app running after install, run:
 ```
@@ -66,16 +64,6 @@ If you run into troubles installing the app's dependencies, you should ensure th
 ```
 
 [NVM](https://github.com/creationix/nvm) can be used to change your NodeJS version.
-
-If you are on windows and the install, or any other scripts fail, you can try to install Webpack and Webpack Dev Server globally
-```
-npm install -g webpack webpack-dev-server
-```
-
-and then run the app with the following command:
-```
-webpack-dev-server
-```
 
 ## Screen Shots
 ![Main Page](https://github.com/RyanCCollins/cdn/blob/master/portfolio-image-gallery-images/restaurant-reviewer-swnd/mainpage.png?raw=true)
