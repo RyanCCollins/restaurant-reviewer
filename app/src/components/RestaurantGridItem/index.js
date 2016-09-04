@@ -50,9 +50,6 @@ const RestaurantGridItem = ({
             src={restaurant.image}
             alt={`A restaurant named ${restaurant.name}`}
           />
-          <SrOnlyContent>
-            {`Average rating of ${restaurant.average_rating} out of 5 stars`}
-          </SrOnlyContent>
         </Link>
       </div>
     </div>

@@ -1,17 +1,10 @@
 ## AppFooter Component
-A component that ...
+A component that shows up as a footer at the bottom of the page.  It shows information about the project and also social sharing links.
+
+The component is completely presentational and is stateless.  No props are passed in.
 
 ### Example
 
 ```js
 <AppFooter />
 ```
-
-### Props
-
-| Prop          | Type     | Default     | Possible Values
-| ------------- | -------- | ----------- | ---------------------------------------------
-| **myProp**    | String   |             | Any string value
-
-
-### Other Information
