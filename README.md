@@ -8,7 +8,9 @@ A proof of concept restaurant review application built with a focus on accessibi
 Accesses JSON served from a [Ruby on Rails API](https://github.com/RyanCCollins/restaurant-reviewer-api) containing restaurant information (including name, a photograph, address, cuisine type and operating hours) as well as JSON containing review information for each restaurant (name of reviewer, date of review, 5-star rating and comments). Includes an application header, and a menu providing multiple ways to filter the restaurants (by cuisine, by location, etc). When viewing a specific restaurant, current reviews are displayed along with a form for the user to submit their own review.
 
 ## UX & Accessibility Features
-This app integrates [grommet](https://github.com/grommet/grommet), the world's most advanced UX framework.  It implements many accessibility best practices, including the usage of skip links, proper focus handling, aria attributes, and many others.  
+This app integrates [grommet](https://github.com/grommet/grommet), the world's most advanced UX framework.  It implements many accessibility best practices, including the usage of semantic elements, skip links, proper focus handling, aria attributes, et. al.  Color selection and contrast is made with accessibility in mind.
+
+The design is focused on UX and a11y best practices, incorporating responsive design and proper styling for accessible single page applications.  All images utilize alt attributes to provide meaningful information to non-sighted and other users.  Interactive elements handle focus successfully, including modals.  The project completely passes the Chrome Accessibility Audit tests, making it a joy to use from a screen reader, with the keyboard, zoomed in, or any other way the user desires.
 
 ### Getting Started
 The application requires npm v3.8.8 and node v4.2.4.  Errors may occur if you are using other versions.  For details on setting node and npm permissions and using node version manager to install specific node versions, please see [this gist](https://gist.github.com/RyanCCollins/69443f0ff1f7725d305d).
@@ -20,9 +22,9 @@ To install the dependencies, run
 npm run setup
 ```
 
-Note: there is a script to install webpack and other dependencies globally.  This will be run when you run `npm run setup`.  If you only run npm install, you need to make sure to also run the global install script: `npm run install-globals`.
+Note: there is a script to install webpack and other dependencies globally.  This will be run when you run `npm run setup`.  If you need to install the global packages manually, make sure to run both `npm install` and also `npm run install-globals`.
 
-To get build the package.json and serve with webpack-dev-server, run:
+To build the bundle.js and serve with webpack-dev-server, run:
 ```
 npm run start
 ```
