@@ -26,17 +26,6 @@ const parseLabel = (label) =>
   label.toLowerCase().split(' ').join('-');
 
 class FilterMenu extends Component {
-  constructor() {
-    super();
-    this.setDOMIds = this.setDOMIds.bind(this);
-  }
-  componentDidMount() {
-
-  }
-  setDOMIds() {
-    let menuTitles = document.querySelector('#menu-down-id');
-
-  }
   render() {
     const {
       menuItems,
