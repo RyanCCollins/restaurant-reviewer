@@ -13,7 +13,7 @@ const AppFooter = () => (
         By{' '}
         <a
           className={styles.footerAnchor}
-          href="https://www.ryancollins.io"
+          href="http://www.ryancollins.io"
         >
           Ryan Collins
         </a>
@@ -29,7 +29,7 @@ const AppFooter = () => (
         {' '}and{' '}
         <a
           className={styles.footerAnchor}
-          href="https://grommet.io"
+          href="http://grommet.io"
         >
           Grommet UX
         </a>
