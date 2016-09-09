@@ -1,3 +1,6 @@
+[![Codacy grade](https://img.shields.io/codacy/grade/87a3eab9fd7a48d6b7dc15c682ada4fe.svg?maxAge=2592000)](https://github.com/RyanCCollins/ryancollins.io)
+[![Travis](https://img.shields.io/travis/RyanCCollins/restaurant-reviewer.svg?maxAge=2592000?style=plastic)](https://github.com/RyanCCollins/restaurant-reviewer)
+
 ![Restaurant Reviewer](https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/main.jpg?raw=true)
 
 
