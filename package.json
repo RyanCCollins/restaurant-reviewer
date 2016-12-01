@@ -69,7 +69,7 @@
     "express": "^4.14.0",
     "file-loader": "^0.9.0",
     "foundation-sites": "^6.2.3",
-    "grommet": "https://github.com/ryanccollins/grommet/tarball/stable",
+    "grommet-udacity": "https://github.com/ryanccollins/grommet/tarball/stable",
     "grunt": "^0.4.5",
     "history": "^1.14.0",
     "html-webpack-plugin": "^2.7.1",
